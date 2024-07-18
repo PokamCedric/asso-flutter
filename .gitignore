@@ -51,10 +51,32 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
 # Generated files
-ios/
-android/
-windows/
-macos/
-linux/
-web/
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/ServiceDefinitions.json
+ios/Runner/GeneratedPluginRegistrant.*
+android/.gradle
+android/app/proguard-rules.pro
+android/app/google-services.json
+android/key.properties
+android/gradle.properties
+android/local.properties
+android/app/build/
+android/app/*.keystore
+ios/Podfile.lock
+ios/Pods
+ios/Runner.xcworkspace
+ios/build/
+windows/Flutter/ephemeral/
+windows/CMakeCache.txt
+windows/flutter/ephemeral/
+macos/Flutter/ephemeral/
+linux/flutter/ephemeral/
