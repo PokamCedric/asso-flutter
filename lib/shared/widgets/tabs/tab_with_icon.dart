@@ -1,20 +1,20 @@
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TabWithIcon extends StatelessWidget {
   const TabWithIcon({
     super.key,
-    required this.title,
+    this.title,
     required this.iconSrc,
     this.isSelected = false,
   });
 
   final bool isSelected;
 
-  final String title, iconSrc;
+  final String? title;
+  final String iconSrc;
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +32,15 @@ class TabWithIcon extends StatelessWidget {
             height: 24,
             width: 24,
             colorFilter: ColorFilter.mode(
-              isSelected ? AppColors.iconBlack : AppColors.textLight,
+              isSelected ? Theme.of(context).primaryColor : Theme.of(context).hintColor,
               BlendMode.srcIn,
             ),
           ),
           gapW4,
           Text(
-            title,
+            title??"",
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                color: isSelected ? AppColors.iconBlack : null,
+                color: isSelected ? Theme.of(context).primaryColor : null,
                 fontWeight: FontWeight.w600),
           ),
         ],

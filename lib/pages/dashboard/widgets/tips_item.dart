@@ -1,7 +1,6 @@
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/avatar/customer_rounded_avatar.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -35,14 +34,14 @@ class TipsItem extends StatelessWidget {
             style: OutlinedButton.styleFrom(
               fixedSize: Size(height, width),
               shape: const CircleBorder(),
-              backgroundColor: backgroundColor,
+              backgroundColor: backgroundColor?? Theme.of(context).canvasColor,
             ),
             child: SvgPicture.asset(
               iconSrc,
               height: 24,
               width: 24,
-              colorFilter: const ColorFilter.mode(
-                AppColors.titleLight,
+              colorFilter: ColorFilter.mode(
+                Theme.of(context).primaryColor,
                 BlendMode.srcIn,
               ),
             ),
@@ -82,7 +81,7 @@ class TipsItem extends StatelessWidget {
                         AppDefaults.borderRadius * 0.5,
                       ),
                       border: Border.all(
-                        color: AppColors.highlightLight,
+                        color: Theme.of(context).highlightColor,
                       ),
                     ),
                     child: Row(

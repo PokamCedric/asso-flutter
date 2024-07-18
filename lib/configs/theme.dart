@@ -15,7 +15,7 @@ class AppTheme {
   /// Default Theme
   static ThemeModel currentTheme = ThemeModel(
     name: "default",
-    colorSeed: ColorSeed.indigo, // Example default theme using ColorSeed enum
+    colorSeed: ColorSeed.pink, // Example default theme using ColorSeed enum
   );
 
   /// List Theme Support in Application

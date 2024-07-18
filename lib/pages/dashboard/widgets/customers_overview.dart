@@ -72,6 +72,7 @@ class CoustomersOverview extends StatelessWidget {
                   style: OutlinedButton.styleFrom(
                     fixedSize: const Size(64, 64),
                     shape: const CircleBorder(),
+                    backgroundColor: Theme.of(context).splashColor,
                   ),
                   child: const Icon(Icons.arrow_forward_outlined),
                 ),

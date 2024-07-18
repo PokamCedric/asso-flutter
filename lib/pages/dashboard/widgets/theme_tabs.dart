@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:core_dashboard/configs/theme.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/widgets/tabs/tab_with_icon.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 
 class ThemeTabs extends StatefulWidget {
   const ThemeTabs({super.key});
@@ -19,7 +18,7 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
 
   @override
   void initState() {
-    _tabController = TabController(length: 2, vsync: this)
+    _tabController = TabController(length: 3, vsync: this) // Updated to 3 tabs
       ..addListener(() {
         setState(() {
           _selectedIndex = _tabController.index;
@@ -29,21 +28,17 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
     super.initState();
   }
 
-  @override
-  void dispose() {
-    AppBloc.dispose();
-    super.dispose();
-  }
-
   /// On Change Theme based on tab selection
   void _onTabChanged(int index) {
-
     if (index == 0) {
       // Light theme tab selected
       _onChangeDarkOption(DarkOption.alwaysOff);
     } else if (index == 1) {
       // Dark theme tab selected
       _onChangeDarkOption(DarkOption.alwaysOn);
+    } else if (index == 2) {
+      // System theme tab selected
+      _onChangeDarkOption(DarkOption.dynamic);
     }
   }
 
@@ -56,7 +51,7 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: AppColors.bgLight,
+        color: Theme.of(context).canvasColor,
         borderRadius: BorderRadius.circular(AppDefaults.borderRadius * 5),
       ),
       child: TabBar(
@@ -78,19 +73,21 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
               spreadRadius: 2,
             ),
           ],
-          color: AppColors.bgSecondaryLight,
+          color: Theme.of(context).cardColor,
         ),
         indicatorSize: TabBarIndicatorSize.tab,
         tabs: [
           TabWithIcon(
             isSelected: _selectedIndex == 0,
-            title: 'Light',
             iconSrc: 'assets/icons/sun_filled.svg',
           ),
           TabWithIcon(
             isSelected: _selectedIndex == 1,
-            title: 'Dark',
             iconSrc: 'assets/icons/moon_light.svg',
+          ),
+          TabWithIcon(
+            isSelected: _selectedIndex == 2,
+            iconSrc: 'assets/icons/sun_filled.svg',
           ),
         ],
       ),

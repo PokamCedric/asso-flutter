@@ -3,7 +3,6 @@ import 'package:core_dashboard/responsive.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/sidemenu/customer_info.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -152,8 +151,8 @@ class Sidebar extends StatelessWidget {
                         'assets/icons/help_light.svg',
                         height: 24,
                         width: 24,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.textLight,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).hintColor,
                           BlendMode.srcIn,
                         ),
                       ),

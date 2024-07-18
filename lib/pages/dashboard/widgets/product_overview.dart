@@ -126,19 +126,19 @@ class BarChartSample1State extends State<BarChartSample8> {
         BarChartRodData(
           toY: y,
           color: (x % 2 == 0)
-              ? Theme.of(context).indicatorColor
+              ? Theme.of(context).primaryColor.withAlpha(200)
               : (x % 3 == 0)
-                  ? Theme.of(context).primaryColor
-                  : Theme.of(context).primaryColorLight,
+                  ? Theme.of(context).primaryColorLight
+                  : Theme.of(context).primaryColor.withAlpha(250),
           borderRadius: BorderRadius.circular(2),
           // borderDashArray: x >= 4 ? [4, 4] : null,
           width: Responsive.isMobile(context) ? 20 : 40,
           borderSide: BorderSide(
             color: (x % 2 == 0)
-                ? Theme.of(context).indicatorColor
-                : (x % 3 == 0)
-                    ? Theme.of(context).primaryColor
-                    : Theme.of(context).primaryColorLight,
+                ? Theme.of(context).primaryColor.withAlpha(200)
+              : (x % 3 == 0)
+                  ? Theme.of(context).primaryColorLight
+                  : Theme.of(context).primaryColor.withAlpha(250),
             width: 2.0,
           ),
         ),

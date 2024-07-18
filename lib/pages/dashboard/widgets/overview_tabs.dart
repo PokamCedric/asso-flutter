@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../shared/constants/defaults.dart';
 import '../../../shared/constants/ghaps.dart';
 import '../../../shared/widgets/tabs/tab_with_growth.dart';
-import '../../../theme/app_colors.dart';
 import 'customers_overview.dart';
 import 'revenue_line_chart.dart';
 
@@ -48,11 +47,11 @@ class _OverviewTabsState extends State<OverviewTabs>
             dividerHeight: 0,
             padding: const EdgeInsets.symmetric(
                 horizontal: 0, vertical: AppDefaults.padding),
-            indicator: const BoxDecoration(
-              borderRadius: BorderRadius.all(
+            indicator: BoxDecoration(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(AppDefaults.borderRadius),
               ),
-              color: AppColors.bgSecondaryLight,
+              color: Theme.of(context).canvasColor,
             ),
             tabs: [
               TabWithGrowth(

@@ -63,7 +63,7 @@ class RefundRequest extends StatelessWidget {
                       text: "You have ",
                       style: TextStyle(
                         fontSize: 15,
-                        color: Theme.of(context).indicatorColor,
+                        color: Theme.of(context).secondaryHeaderColor,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [
@@ -79,7 +79,7 @@ class RefundRequest extends StatelessWidget {
                           text: " to action. This includes ",
                           style: TextStyle(
                             fontSize: 15,
-                            color: Theme.of(context).indicatorColor,
+                            color: Theme.of(context).secondaryHeaderColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -95,7 +95,7 @@ class RefundRequest extends StatelessWidget {
                           text: " 👀",
                           style: TextStyle(
                             fontSize: 15,
-                            color: Theme.of(context).highlightColor,
+                            color: Theme.of(context).secondaryHeaderColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

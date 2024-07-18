@@ -3,20 +3,20 @@ import 'package:core_dashboard/responsive.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/section_title.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
-final List<TipsItem> proTipsDummyData = [
+List<TipsItem> proTipsDummyData(BuildContext context)
+  => [
   const TipsItem(
     title: 'Early access',
     time: '3 mins read',
     iconSrc: 'assets/icons/schedule_light.svg',
   ),
-  const TipsItem(
+  TipsItem(
     title: 'Asset use guidelines',
     time: 'Time',
     iconSrc: 'assets/icons/arrow_forward_light.svg',
-    backgroundColor: AppColors.highlightLight,
+    backgroundColor: Theme.of(context).splashColor,
   ),
   const TipsItem(
     title: 'Exclusive downloads',
@@ -42,14 +42,13 @@ final List<TipsItem> proTipsDummyData = [
 
 class ProTips extends StatelessWidget {
   const ProTips({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(AppDefaults.padding),
-      decoration: const BoxDecoration(
-        color: AppColors.bgSecondaryLight,
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: const BorderRadius.all(
           Radius.circular(AppDefaults.borderRadius),
         ),
       ),
@@ -70,7 +69,7 @@ class ProTips extends StatelessWidget {
           ),
           gapH20,
           GridView.builder(
-            itemCount: proTipsDummyData.length,
+            itemCount: List.from(proTipsDummyData(context)).length,
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
@@ -79,7 +78,7 @@ class ProTips extends StatelessWidget {
               crossAxisSpacing: AppDefaults.padding,
               mainAxisSpacing: AppDefaults.padding,
             ),
-            itemBuilder: (context, index) => proTipsDummyData[index],
+            itemBuilder: (context, index) => List.from(proTipsDummyData(context))[index],
           ),
         ],
       ),
