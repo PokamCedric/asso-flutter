@@ -78,7 +78,7 @@ class _CommentItemState extends State<CommentItem> {
                                     text: "${widget.name} ",
                                     style: TextStyle(
                                       color: isProfileHovered
-                                          ? Theme.of(context).primaryColor
+                                          ? Theme.of(context).secondaryHeaderColor
                                           : Theme.of(context)
                                               .textTheme
                                               .titleLarge!
@@ -91,8 +91,11 @@ class _CommentItemState extends State<CommentItem> {
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: isProfileHovered
-                                              ? Theme.of(context).primaryColor
-                                              : AppColors.textGrey,
+                                              ? Theme.of(context).secondaryHeaderColor
+                                              : Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge!
+                                                  .color,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -121,7 +124,7 @@ class _CommentItemState extends State<CommentItem> {
                                         text: widget.product,
                                         style: TextStyle(
                                           color: isProductHovered
-                                              ? Theme.of(context).primaryColor
+                                              ? Theme.of(context).secondaryHeaderColor
                                               : Theme.of(context)
                                                   .textTheme
                                                   .titleLarge!

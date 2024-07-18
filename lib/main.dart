@@ -1,4 +1,4 @@
-import 'package:core_dashboard/configs/theme.dart';
+import 'package:core_dashboard/configs/app_theme.dart';
 import 'package:core_dashboard/shared/navigation/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +13,17 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
+      theme: CollectionTheme.getCollectionTheme(
+        theme: "primaryLight",
+        colorSeed: ColorSeed.blue, // Choose any ColorSeed
+      ),
+      darkTheme: CollectionTheme.getCollectionTheme(
+        theme: "primaryDark",
+        colorSeed: ColorSeed.blue, // Choose any ColorSeed
+      ),
+      themeMode: ThemeMode.system, // Choose the system theme mode
       routerConfig: routerConfig,
     );
   }
 }
+
