@@ -1,6 +1,10 @@
-import 'package:core_dashboard/configs/app_theme.dart';
-import 'package:core_dashboard/shared/navigation/routes.dart';
+import 'package:core_dashboard/blocs/theme/theme_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:core_dashboard/app_bloc.dart';
+import 'package:core_dashboard/configs/theme.dart';
+import 'package:core_dashboard/shared/navigation/routes.dart';
+import 'package:core_dashboard/blocs/theme/theme_bloc.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,19 +15,20 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: CollectionTheme.getCollectionTheme(
-        theme: "primaryLight",
-        colorSeed: ColorSeed.blue, // Choose any ColorSeed
+    return MultiBlocProvider(
+      providers: AppBloc.providers,
+      child: BlocBuilder<ThemeBloc, ThemeState>(
+        builder: (context, themeState) {
+
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: ThemeMode.system,
+            routerConfig: routerConfig,
+          );
+        },
       ),
-      darkTheme: CollectionTheme.getCollectionTheme(
-        theme: "primaryDark",
-        colorSeed: ColorSeed.blue, // Choose any ColorSeed
-      ),
-      themeMode: ThemeMode.system, // Choose the system theme mode
-      routerConfig: routerConfig,
     );
   }
 }
-

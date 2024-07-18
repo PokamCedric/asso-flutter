@@ -1,71 +1,63 @@
-import 'package:core_dashboard/models/model_theme.dart';
-import 'package:core_dashboard/configs/app_theme.dart';
+import 'package:core_dashboard/models/model_theme.dart'; // Adjust import as per your project structure
+import 'package:core_dashboard/configs/app_theme.dart'; // Adjust import as per your project structure
 import 'package:flutter/material.dart';
 
 enum DarkOption { dynamic, alwaysOn, alwaysOff }
 
 class AppTheme {
 
-  ///Default font
-  static String currentFont = "Raleway";
+  /// Default font
+  static String currentFont = "Roboto";
 
-  ///List Font support
+  /// List Font support
   static List<String> fontSupport = ["Raleway", "Roboto", "Merriweather"];
 
-  ///Default Theme
-  static ThemeModel currentTheme = ThemeModel.fromJson({
-    "name": "default",
-    "color": const Color(0xffe5634d),
-    "light": "primaryLight",
-    "dark": "primaryDark",
-  });
+  /// Default Theme
+  static ThemeModel currentTheme = ThemeModel(
+    name: "default",
+    colorSeed: ColorSeed.indigo, // Example default theme using ColorSeed enum
+  );
 
-  ///List Theme Support in Application
-  static List themeSupport = [
-    {
-      "name": "default",
-      "color": const Color(0xffe5634d),
-      "light": "primaryLight",
-      "dark": "primaryDark",
-    },
-    {
-      "name": "brown",
-      "color": const Color(0xffa0877e),
-      "light": "brownLight",
-      "dark": "brownDark",
-    },
-    {
-      "name": "pink",
-      "color": const Color(0xffe0a6c1),
-      "light": "pinkLight",
-      "dark": "pinkDark",
-    },
-    {
-      "name": "orange",
-      "color": const Color(0xfff6bb41),
-      "light": "pastelOrangeLight",
-      "dark": "pastelOrangeDark",
-    },
-    {
-      "name": "green",
-      "color": const Color(0xff93b7b0),
-      "light": "greenLight",
-      "dark": "greenDark",
-    },
-  ].map((item) => ThemeModel.fromJson(item)).toList();
+  /// List Theme Support in Application
+  static List<ThemeModel> themeSupport = [
+    ThemeModel(
+      name: "default",
+      colorSeed: ColorSeed.indigo, // Example default theme using ColorSeed enum
+    ),
+    ThemeModel(
+      name: "brown",
+      colorSeed: ColorSeed.teal, // Adjust based on your ColorSeed enum values
+    ),
+    ThemeModel(
+      name: "pink",
+      colorSeed: ColorSeed.pink, // Adjust based on your ColorSeed enum values
+    ),
+    ThemeModel(
+      name: "orange",
+      colorSeed: ColorSeed.orange, // Adjust based on your ColorSeed enum values
+    ),
+    ThemeModel(
+      name: "green",
+      colorSeed: ColorSeed.green, // Adjust based on your ColorSeed enum values
+    ),
+  ];
 
-  ///Dark Theme option
+  /// Dark Theme option
   static DarkOption darkThemeOption = DarkOption.dynamic;
 
   static ThemeData lightTheme = CollectionTheme.getCollectionTheme(
-    theme: currentTheme.lightTheme,
+    colorSeed: currentTheme.colorSeed!,
+    font: currentFont,
+    brightness: Brightness.light,
   );
 
   static ThemeData darkTheme = CollectionTheme.getCollectionTheme(
-    theme: currentTheme.darkTheme,
+    colorSeed: currentTheme.colorSeed!,
+    font: currentFont,
+    brightness: Brightness.dark,
   );
 
-  ///Singleton factory
+  /// Singleton factory
   static final AppTheme _instance = AppTheme._internal();
 
   factory AppTheme() {

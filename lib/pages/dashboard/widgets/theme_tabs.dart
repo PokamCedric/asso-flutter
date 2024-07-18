@@ -1,7 +1,10 @@
+import 'package:core_dashboard/app_bloc.dart';
+import 'package:core_dashboard/blocs/theme/theme_event.dart';
+import 'package:flutter/material.dart';
+import 'package:core_dashboard/configs/theme.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/widgets/tabs/tab_with_icon.dart';
 import 'package:core_dashboard/theme/app_colors.dart';
-import 'package:flutter/material.dart';
 
 class ThemeTabs extends StatefulWidget {
   const ThemeTabs({super.key});
@@ -10,10 +13,8 @@ class ThemeTabs extends StatefulWidget {
   State<ThemeTabs> createState() => _ThemeTabsState();
 }
 
-class _ThemeTabsState extends State<ThemeTabs>
-    with SingleTickerProviderStateMixin {
+class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-
   int _selectedIndex = 0;
 
   @override
@@ -22,10 +23,33 @@ class _ThemeTabsState extends State<ThemeTabs>
       ..addListener(() {
         setState(() {
           _selectedIndex = _tabController.index;
+          _onTabChanged(_selectedIndex);
         });
       });
-    ;
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    AppBloc.dispose();
+    super.dispose();
+  }
+
+  /// On Change Theme based on tab selection
+  void _onTabChanged(int index) {
+
+    if (index == 0) {
+      // Light theme tab selected
+      _onChangeDarkOption(DarkOption.alwaysOff);
+    } else if (index == 1) {
+      // Dark theme tab selected
+      _onChangeDarkOption(DarkOption.alwaysOn);
+    }
+  }
+
+  ///On Change Dark Option
+  void _onChangeDarkOption(DarkOption darkOption) {
+    AppBloc.themeBloc.add(OnChangeTheme(darkOption: darkOption));
   }
 
   @override
@@ -52,7 +76,7 @@ class _ThemeTabsState extends State<ThemeTabs>
               color: Colors.black.withOpacity(0.1),
               blurRadius: 5,
               spreadRadius: 2,
-            )
+            ),
           ],
           color: AppColors.bgSecondaryLight,
         ),

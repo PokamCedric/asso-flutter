@@ -22,19 +22,11 @@ enum ColorSeed {
 
 class CollectionTheme {
   static ThemeData getCollectionTheme({
-    required String theme,
+    required Brightness brightness,
     required ColorSeed colorSeed,
     String font = "Raleway",
-  }) {
-    switch (theme) {
-      case "primaryLight":
-        return primaryLight(colorSeed, font);
-      case "primaryDark":
-        return primaryDark(colorSeed, font);
-      default:
-        return primaryLight(colorSeed, font);
-    }
-  }
+  }) => myTheme(colorSeed, font, brightness);
+
 
   static ColorScheme getColorScheme({
     required ColorSeed colorSeed,
@@ -69,198 +61,36 @@ class CollectionTheme {
     return brightness > 128 ? Brightness.light : Brightness.dark;
   }
 
-  static ThemeData primaryDark(ColorSeed colorSeed, String font) {
-    final colorScheme = getColorScheme(colorSeed: colorSeed, brightness: Brightness.dark);
+
+  static ThemeData myTheme(ColorSeed colorSeed, String font, Brightness brightness) {
+    final isLight = brightness == Brightness.light;
+    final colorScheme = getColorScheme(colorSeed: colorSeed, brightness: brightness);
+    final contrastColor = isLight ? Colors.black : Colors.white;
+    final myGrey = isLight ? Colors.grey[300] : Colors.grey[800];
+    final myGreyLight = isLight ? Colors.grey[400] : Colors.grey[600];
 
     return ThemeData(
       colorScheme: colorScheme,
-      inputDecorationTheme: AppTextFormFieldTheme.darkInputDecorationTheme,
+      inputDecorationTheme: isLight ? AppTextFormFieldTheme.lightInputDecorationTheme
+                                    : AppTextFormFieldTheme.darkInputDecorationTheme,
       fontFamily: font,
-      brightness: Brightness.dark,
+      brightness: brightness,
       primaryColor: colorScheme.primary,
       primaryColorLight: colorScheme.primary.withOpacity(0.7),
       primaryColorDark: colorScheme.primary.withOpacity(0.9),
       canvasColor: colorScheme.background,
       scaffoldBackgroundColor: colorScheme.background,
       cardColor: colorScheme.surface,
-      dividerColor: Colors.grey[800],
-      highlightColor: Colors.white.withOpacity(0.1),
-      splashColor: Colors.white.withOpacity(0.1),
-      unselectedWidgetColor: Colors.white.withOpacity(0.7),
-      disabledColor: Colors.grey[600],
+      dividerColor: myGrey,
+      highlightColor: contrastColor.withOpacity(0.1),
+      splashColor: contrastColor.withOpacity(0.1),
+      unselectedWidgetColor: contrastColor.withOpacity(0.7),
+      disabledColor: myGreyLight,
       secondaryHeaderColor: colorScheme.secondary,
       dialogBackgroundColor: colorScheme.surface,
       indicatorColor: colorScheme.onSecondary,
-      hintColor: Colors.white.withOpacity(0.5),
-      appBarTheme: AppBarTheme(
-        color: colorScheme.background,
-      ),
-      buttonTheme: ButtonThemeData(
-        textTheme: ButtonTextTheme.accent,
-        minWidth: 88,
-        height: 48,
-        padding: EdgeInsets.only(left: 16, right: 16),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: colorScheme.primary.withOpacity(0.5),
-            width: 0,
-            style: BorderStyle.none,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-        buttonColor: colorScheme.primary,
-        disabledColor: Colors.grey[600],
-        highlightColor: colorScheme.primary.withOpacity(0.1),
-        splashColor: colorScheme.primary.withOpacity(0.1),
-        focusColor: colorScheme.primary.withOpacity(0.2),
-        hoverColor: colorScheme.primary.withOpacity(0.2),
-      ),
-      chipTheme: ChipThemeData(
-        backgroundColor: colorScheme.primary.withOpacity(0.2),
-        brightness: Brightness.dark,
-        deleteIconColor: colorScheme.onPrimary,
-        disabledColor: Colors.grey[800],
-        labelPadding: EdgeInsets.only(left: 8, right: 8),
-        labelStyle: TextStyle(
-          fontSize: 12,
-          fontFamily: font,
-          color: colorScheme.onPrimary,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ),
-        padding: EdgeInsets.all(4),
-        secondaryLabelStyle: TextStyle(
-          fontSize: 12,
-          fontFamily: font,
-          color: colorScheme.onSecondary,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ),
-        secondarySelectedColor: colorScheme.secondary,
-        selectedColor: colorScheme.primary,
-        shape: StadiumBorder(
-          side: BorderSide(
-            color: colorScheme.primary.withOpacity(0.5),
-            width: 0,
-            style: BorderStyle.none,
-          ),
-        ),
-      ),
-      sliderTheme: SliderThemeData.fromPrimaryColors(
-        primaryColor: colorScheme.primary,
-        primaryColorLight: colorScheme.primary.withOpacity(0.7),
-        primaryColorDark: colorScheme.primary.withOpacity(0.9),
-        valueIndicatorTextStyle: TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ),
-      ),
-      dialogTheme: DialogTheme(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-      ),
-      cardTheme: CardTheme(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
+      hintColor: contrastColor.withOpacity(0.5),
     );
   }
 
-  static ThemeData primaryLight(ColorSeed colorSeed, String font) {
-    final colorScheme = getColorScheme(colorSeed: colorSeed, brightness: Brightness.light);
-
-    return ThemeData(
-      colorScheme: colorScheme,
-      inputDecorationTheme: AppTextFormFieldTheme.lightInputDecorationTheme,
-      fontFamily: font,
-      brightness: Brightness.light,
-      primaryColor: colorScheme.primary,
-      primaryColorLight: colorScheme.primary.withOpacity(0.7),
-      primaryColorDark: colorScheme.primary.withOpacity(0.9),
-      canvasColor: colorScheme.background,
-      scaffoldBackgroundColor: colorScheme.background,
-      cardColor: colorScheme.surface,
-      dividerColor: Colors.grey[300],
-      highlightColor: Colors.black.withOpacity(0.1),
-      splashColor: Colors.black.withOpacity(0.1),
-      unselectedWidgetColor: Colors.black.withOpacity(0.7),
-      disabledColor: Colors.grey[400],
-      secondaryHeaderColor: colorScheme.secondary,
-      dialogBackgroundColor: colorScheme.surface,
-      indicatorColor: colorScheme.onSecondary,
-      hintColor: Colors.black.withOpacity(0.5),
-      buttonTheme: ButtonThemeData(
-        textTheme: ButtonTextTheme.accent,
-        minWidth: 88,
-        height: 48,
-        padding: EdgeInsets.only(left: 16, right: 16),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-            color: colorScheme.primary.withOpacity(0.5),
-            width: 0,
-            style: BorderStyle.none,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-        buttonColor: colorScheme.primary,
-        disabledColor: Colors.grey[400],
-        highlightColor: colorScheme.primary.withOpacity(0.1),
-        splashColor: colorScheme.primary.withOpacity(0.1),
-        focusColor: colorScheme.primary.withOpacity(0.2),
-        hoverColor: colorScheme.primary.withOpacity(0.2),
-      ),
-      chipTheme: ChipThemeData(
-        backgroundColor: colorScheme.primary.withOpacity(0.2),
-        brightness: Brightness.light,
-        deleteIconColor: colorScheme.onPrimary,
-        disabledColor: Colors.grey[300],
-        labelPadding: EdgeInsets.only(left: 8, right: 8),
-        labelStyle: TextStyle(
-          fontSize: 12,
-          fontFamily: font,
-          color: colorScheme.onPrimary,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ),
-        padding: EdgeInsets.all(4),
-        secondaryLabelStyle: TextStyle(
-          fontSize: 12,
-          fontFamily: font,
-          color: colorScheme.onSecondary,
-          fontWeight: FontWeight.w400,
-          fontStyle: FontStyle.normal,
-        ),
-        secondarySelectedColor: colorScheme.secondary,
-        selectedColor: colorScheme.primary,
-        shape: StadiumBorder(
-          side: BorderSide(
-            color: colorScheme.primary.withOpacity(0.5),
-            width: 0,
-            style: BorderStyle.none,
-          ),
-        ),
-      ),
-      dialogTheme: DialogTheme(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
-      ),
-      cardTheme: CardTheme(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-      ),
-    );
-  }
 }
