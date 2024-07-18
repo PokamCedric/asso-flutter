@@ -11,5 +11,5 @@ class AppDefaults {
       ),
       borderSide: BorderSide.none);
   static OutlineInputBorder focusedOutlineInputBorder = outlineInputBorder
-      .copyWith(borderSide: BorderSide(width: 2, color: AppColors.primary));
+      .copyWith(borderSide: const BorderSide(width: 2, color: AppColors.primaryLight));
 }

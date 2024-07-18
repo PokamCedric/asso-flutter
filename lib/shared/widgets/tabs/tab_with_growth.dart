@@ -14,7 +14,7 @@ class TabWithGrowth extends StatelessWidget {
     required this.growthPercentage,
     this.iconSrc = "assets/icons/shopping_bag_light.svg",
     this.isPositiveGrowth = true,
-    this.iconBgColor = AppColors.secondaryBabyBlue,
+    required this.iconBgColor,
   });
   final String title, amount, growthPercentage, iconSrc;
   final bool isPositiveGrowth;

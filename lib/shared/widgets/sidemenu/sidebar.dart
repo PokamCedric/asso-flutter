@@ -74,7 +74,7 @@ class Sidebar extends StatelessWidget {
                       ),
                       children: [
                         MenuTile(
-                          isSubmenu: true,
+                          isActive: true,
                           title: "Dashboard",
                           onPressed: () {},
                         ),
@@ -167,7 +167,7 @@ class Sidebar extends StatelessWidget {
                       ),
                       const Spacer(),
                       Chip(
-                        backgroundColor: AppColors.secondaryLavender,
+                        backgroundColor: Theme.of(context).primaryColorLight,
                         side: BorderSide.none,
                         padding: const EdgeInsets.symmetric(horizontal: 0.5),
                         label: Text(

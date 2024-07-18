@@ -156,7 +156,7 @@ class RevenueLineChart extends StatelessWidget {
 
   LineChartBarData get lineChartBarData1_1 => LineChartBarData(
         isCurved: true,
-        color: AppColors.primary,
+        color: AppColors.primaryLight,
         barWidth: 4,
         isStrokeCapRound: true,
         dotData: const FlDotData(show: false),

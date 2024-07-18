@@ -17,7 +17,7 @@ class Header extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: AppDefaults.padding, vertical: AppDefaults.padding),
-      color: AppColors.bgSecondayLight,
+      color: AppColors.bgSecondaryLight,
       child: SafeArea(
         bottom: false,
         child: Row(

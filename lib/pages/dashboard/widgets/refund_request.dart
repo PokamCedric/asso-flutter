@@ -1,7 +1,6 @@
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/section_title.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,9 +16,9 @@ class RefundRequest extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-        color: AppColors.bgSecondayLight,
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: const BorderRadius.all(
           Radius.circular(AppDefaults.borderRadius),
         ),
       ),
@@ -27,13 +26,13 @@ class RefundRequest extends StatelessWidget {
       child: Column(
         children: [
           gapH8,
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               horizontal: AppDefaults.padding * 0.5,
             ),
             child: SectionTitle(
               title: "Refund requests",
-              color: AppColors.secondaryPeach,
+              color: Theme.of(context).primaryColorLight,
             ),
           ),
           gapH24,
@@ -46,13 +45,13 @@ class RefundRequest extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 24,
-                  backgroundColor: AppColors.secondaryMistyrose,
+                  backgroundColor: Theme.of(context).splashColor,
                   child: SvgPicture.asset(
                     'assets/icons/basket_light.svg',
                     height: 24,
                     width: 24,
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.error,
+                    colorFilter: ColorFilter.mode(
+                      Theme.of(context).errorColor,
                       BlendMode.srcIn,
                     ),
                   ),
@@ -62,9 +61,9 @@ class RefundRequest extends StatelessWidget {
                   child: Text.rich(
                     TextSpan(
                       text: "You have ",
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 15,
-                        color: AppColors.textGrey,
+                        color: Theme.of(context).indicatorColor,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [
@@ -76,11 +75,11 @@ class RefundRequest extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const TextSpan(
+                        TextSpan(
                           text: " to action. This includes ",
                           style: TextStyle(
                             fontSize: 15,
-                            color: AppColors.textGrey,
+                            color: Theme.of(context).indicatorColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -92,11 +91,11 @@ class RefundRequest extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
-                        const TextSpan(
+                        TextSpan(
                           text: " 👀",
                           style: TextStyle(
                             fontSize: 15,
-                            color: AppColors.textGrey,
+                            color: Theme.of(context).highlightColor,
                             fontWeight: FontWeight.w500,
                           ),
                         ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/app_colors.dart';
 import '../../constants/ghaps.dart';
 
 class CustomerAvatar extends StatefulWidget {
@@ -41,7 +40,7 @@ class _CustomerAvatarState extends State<CustomerAvatar> {
             style: Theme.of(context)
                 .textTheme
                 .titleSmall!
-                .copyWith(color: isHovered ? AppColors.primary : null),
+                .copyWith(color: isHovered ? Theme.of(context).primaryColor : null),
           )
         ],
       ),

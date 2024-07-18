@@ -78,7 +78,7 @@ class _CommentItemState extends State<CommentItem> {
                                     text: "${widget.name} ",
                                     style: TextStyle(
                                       color: isProfileHovered
-                                          ? AppColors.primary
+                                          ? Theme.of(context).primaryColor
                                           : Theme.of(context)
                                               .textTheme
                                               .titleLarge!
@@ -91,7 +91,7 @@ class _CommentItemState extends State<CommentItem> {
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: isProfileHovered
-                                              ? AppColors.primary
+                                              ? Theme.of(context).primaryColor
                                               : AppColors.textGrey,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -121,7 +121,7 @@ class _CommentItemState extends State<CommentItem> {
                                         text: widget.product,
                                         style: TextStyle(
                                           color: isProductHovered
-                                              ? AppColors.primary
+                                              ? Theme.of(context).primaryColor
                                               : Theme.of(context)
                                                   .textTheme
                                                   .titleLarge!

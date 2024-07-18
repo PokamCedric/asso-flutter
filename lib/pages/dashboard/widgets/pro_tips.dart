@@ -48,7 +48,7 @@ class ProTips extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(AppDefaults.padding),
       decoration: const BoxDecoration(
-        color: AppColors.bgSecondayLight,
+        color: AppColors.bgSecondaryLight,
         borderRadius: BorderRadius.all(
           Radius.circular(AppDefaults.borderRadius),
         ),
@@ -57,9 +57,9 @@ class ProTips extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           gapH8,
-          const SectionTitle(
+          SectionTitle(
             title: "Pro tips",
-            color: AppColors.secondaryMintGreen,
+            color: Theme.of(context).primaryColorLight,
           ),
           gapH20,
           Text(

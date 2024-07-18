@@ -2,7 +2,6 @@ import 'package:core_dashboard/responsive.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/section_title.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -13,17 +12,17 @@ class GetMoreCustomers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(AppDefaults.padding * 1.25),
-      decoration: const BoxDecoration(
-        color: AppColors.bgSecondayLight,
-        borderRadius: BorderRadius.all(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: const BorderRadius.all(
           Radius.circular(AppDefaults.borderRadius),
         ),
       ),
       child: Column(
         children: [
-          const SectionTitle(
+          SectionTitle(
             title: "Get more customers!",
-            color: AppColors.secondaryBabyBlue,
+            color: Theme.of(context).primaryColorLight,
           ),
           gapH20,
           const Text(
@@ -42,8 +41,8 @@ class GetMoreCustomers extends StatelessWidget {
                         'assets/icons/facebook_filled.svg',
                         height: 24,
                         width: 24,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.textLight,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).hintColor,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -71,8 +70,8 @@ class GetMoreCustomers extends StatelessWidget {
                         'assets/icons/twitter_light.svg',
                         height: 24,
                         width: 24,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.textLight,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).hintColor,
                           BlendMode.srcIn,
                         ),
                       ),
@@ -100,8 +99,8 @@ class GetMoreCustomers extends StatelessWidget {
                         'assets/icons/instagram_light.svg',
                         height: 24,
                         width: 24,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.textLight,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).hintColor,
                           BlendMode.srcIn,
                         ),
                       ),

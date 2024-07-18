@@ -54,7 +54,7 @@ class _ThemeTabsState extends State<ThemeTabs>
               spreadRadius: 2,
             )
           ],
-          color: AppColors.bgSecondayLight,
+          color: AppColors.bgSecondaryLight,
         ),
         indicatorSize: TabBarIndicatorSize.tab,
         tabs: [

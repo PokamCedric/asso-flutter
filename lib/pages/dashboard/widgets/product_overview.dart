@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import '../../../shared/constants/defaults.dart';
 import '../../../shared/constants/ghaps.dart';
 import '../../../shared/widgets/section_title.dart';
-import '../../../theme/app_colors.dart';
 
 class ProductOverviews extends StatelessWidget {
   const ProductOverviews({super.key});
@@ -17,25 +16,25 @@ class ProductOverviews extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(AppDefaults.padding),
-      decoration: const BoxDecoration(
-        color: AppColors.bgSecondayLight,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
         borderRadius:
-            BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
+            const BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
       ),
       child: Column(
         children: [
           Row(
             children: [
-              const SectionTitle(
+              SectionTitle(
                 title: "Product views",
-                color: AppColors.secondaryLavender,
+                color: Theme.of(context).primaryColorLight,
               ),
               const Spacer(),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.all(
                       Radius.circular(AppDefaults.borderRadius)),
-                  border: Border.all(width: 2, color: AppColors.highlightLight),
+                  border: Border.all(width: 2, color: Theme.of(context).highlightColor),
                 ),
                 child: DropdownButton(
                   padding: const EdgeInsets.symmetric(
@@ -71,8 +70,6 @@ class ProductOverviews extends StatelessWidget {
 class BarChartSample8 extends StatefulWidget {
   const BarChartSample8({super.key});
 
-  final Color barBackgroundColor = AppColors.bgSecondayLight;
-  final Color barColor = AppColors.secondaryMintGreen;
 
   @override
   State<StatefulWidget> createState() => BarChartSample1State();
@@ -98,7 +95,7 @@ class BarChartSample1State extends State<BarChartSample8> {
           //     Text(
           //       'Sales forecasting chart',
           //       style: TextStyle(
-          //         color: widget.barColor,
+          //         color: Theme.of(context).primaryColorLight,
           //         fontSize: 18,
           //         fontWeight: FontWeight.bold,
           //       ),
@@ -119,6 +116,7 @@ class BarChartSample1State extends State<BarChartSample8> {
   }
 
   BarChartGroupData makeGroupData(
+    BuildContext context,
     int x,
     double y,
   ) {
@@ -128,19 +126,19 @@ class BarChartSample1State extends State<BarChartSample8> {
         BarChartRodData(
           toY: y,
           color: (x % 2 == 0)
-              ? AppColors.secondaryPeach
+              ? Theme.of(context).indicatorColor
               : (x % 3 == 0)
-                  ? AppColors.primary
-                  : widget.barColor,
+                  ? Theme.of(context).primaryColor
+                  : Theme.of(context).primaryColorLight,
           borderRadius: BorderRadius.circular(2),
           // borderDashArray: x >= 4 ? [4, 4] : null,
           width: Responsive.isMobile(context) ? 20 : 40,
           borderSide: BorderSide(
             color: (x % 2 == 0)
-                ? AppColors.secondaryPeach
+                ? Theme.of(context).indicatorColor
                 : (x % 3 == 0)
-                    ? AppColors.primary
-                    : widget.barColor,
+                    ? Theme.of(context).primaryColor
+                    : Theme.of(context).primaryColorLight,
             width: 2.0,
           ),
         ),
@@ -214,6 +212,7 @@ class BarChartSample1State extends State<BarChartSample8> {
       barGroups: List.generate(
         7,
         (i) => makeGroupData(
+          context,
           i,
           Random().nextInt(20).toDouble() + 10,
         ),

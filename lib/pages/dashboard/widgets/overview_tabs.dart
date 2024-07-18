@@ -38,10 +38,10 @@ class _OverviewTabsState extends State<OverviewTabs>
     return Column(
       children: [
         Container(
-          decoration: const BoxDecoration(
-            color: AppColors.bgLight,
+          decoration: BoxDecoration(
+            color: Theme.of(context).cardColor,
             borderRadius:
-                BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
+                const BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
           ),
           child: TabBar(
             controller: _tabController,
@@ -52,18 +52,19 @@ class _OverviewTabsState extends State<OverviewTabs>
               borderRadius: BorderRadius.all(
                 Radius.circular(AppDefaults.borderRadius),
               ),
-              color: AppColors.bgSecondayLight,
+              color: AppColors.bgSecondaryLight,
             ),
-            tabs: const [
+            tabs: [
               TabWithGrowth(
                 title: "Customers",
                 amount: "1,200",
                 growthPercentage: "20%",
+                iconBgColor: Theme.of(context).cardColor,
               ),
               TabWithGrowth(
                 title: "Revenue",
                 iconSrc: "assets/icons/activity_light.svg",
-                iconBgColor: AppColors.secondaryLavender,
+                iconBgColor: Theme.of(context).cardColor,
                 amount: "\$128K",
                 growthPercentage: "2.7%",
                 isPositiveGrowth: false,

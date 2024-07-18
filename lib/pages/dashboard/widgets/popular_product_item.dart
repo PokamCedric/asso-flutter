@@ -49,7 +49,7 @@ class _PopularProductItemState extends State<PopularProductItem> {
                 maxLines: 2,
                 style: Theme.of(context).textTheme.titleSmall!.copyWith(
                     fontWeight: FontWeight.w600,
-                    color: isHovered ? AppColors.primary : null),
+                    color: isHovered ? Theme.of(context).primaryColor : null),
               ),
             ),
             gapW8,
@@ -61,7 +61,7 @@ class _PopularProductItemState extends State<PopularProductItem> {
                   style: Theme.of(context).textTheme.titleSmall!.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 15,
-                      color: isHovered ? AppColors.primary : null),
+                      color: isHovered ? Theme.of(context).primaryColor : null),
                 ),
                 gapH4,
                 Chip(

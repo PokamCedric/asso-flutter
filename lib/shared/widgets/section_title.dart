@@ -1,7 +1,6 @@
 import 'package:core_dashboard/responsive.dart';
 import 'package:flutter/material.dart';
 
-import '../../theme/app_colors.dart';
 import '../constants/defaults.dart';
 import '../constants/ghaps.dart';
 
@@ -9,7 +8,7 @@ class SectionTitle extends StatelessWidget {
   const SectionTitle({
     super.key,
     required this.title,
-    this.color = AppColors.secondaryPeach,
+    required this.color,
   });
 
   final String title;

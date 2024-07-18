@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 
 class AppTextFormFieldTheme {
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
+    contentPadding: const EdgeInsets.only(
+              top: 12,
+              bottom: 12,
+              left: 15,
+              right: 15,
+            ),
     errorMaxLines: 3,
     prefixIconColor: AppColors.textLight,
 
@@ -42,6 +48,12 @@ class AppTextFormFieldTheme {
   );
 
   static InputDecorationTheme darkInputDecorationTheme = InputDecorationTheme(
+    contentPadding: const EdgeInsets.only(
+              top: 12,
+              bottom: 12,
+              left: 15,
+              right: 15,
+            ),
     errorMaxLines: 3,
     prefixIconColor: AppColors.textLight,
     suffixIconColor: AppColors.textLight,

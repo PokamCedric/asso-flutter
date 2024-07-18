@@ -13,16 +13,19 @@ class Overview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(AppDefaults.padding),
-      decoration: const BoxDecoration(
-        color: AppColors.bgSecondayLight,
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
         borderRadius:
-            BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
+            const BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
       ),
       child: Column(
         children: [
           Row(
             children: [
-              const SectionTitle(title: "Overview"),
+              SectionTitle(
+              title: "Overview",
+              color: Theme.of(context).primaryColorLight,
+            ),
               const Spacer(),
               Container(
                 decoration: BoxDecoration(

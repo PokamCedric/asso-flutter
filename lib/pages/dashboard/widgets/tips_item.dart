@@ -15,7 +15,7 @@ class TipsItem extends StatelessWidget {
     required this.time,
     required this.iconSrc,
     this.tagStatus = 'New',
-    this.tagColor = AppColors.secondaryLavender,
+    this.tagColor,
   });
 
   final double height, width;
