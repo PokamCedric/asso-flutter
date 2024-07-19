@@ -26,19 +26,19 @@ class AppTheme {
     ),
     ThemeModel(
       name: "brown",
-      colorSeed: ColorSeed.teal, // Adjust based on your ColorSeed enum values
+      colorSeed: ColorSeed.teal,
     ),
     ThemeModel(
       name: "pink",
-      colorSeed: ColorSeed.pink, // Adjust based on your ColorSeed enum values
+      colorSeed: ColorSeed.pink,
     ),
     ThemeModel(
       name: "orange",
-      colorSeed: ColorSeed.orange, // Adjust based on your ColorSeed enum values
+      colorSeed: ColorSeed.orange,
     ),
     ThemeModel(
       name: "green",
-      colorSeed: ColorSeed.green, // Adjust based on your ColorSeed enum values
+      colorSeed: ColorSeed.green,
     ),
   ];
 

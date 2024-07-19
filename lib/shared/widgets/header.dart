@@ -1,4 +1,5 @@
 import 'package:core_dashboard/responsive.dart';
+import 'package:core_dashboard/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -90,9 +91,8 @@ class Header extends StatelessWidget {
                     IconButton(
                       onPressed: () {},
                       icon: const CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            "https://cdn.create.vista.com/api/media/small/339818716/stock-photo-doubtful-hispanic-man-looking-with-disbelief-expression"),
-                      ),
+                        backgroundImage: NetworkImage(Images.customer),
+                        ),
                     ),
                   TextButton(
                     onPressed: () => context.go('/sign-in'),

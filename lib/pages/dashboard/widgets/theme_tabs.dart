@@ -18,13 +18,15 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
 
   @override
   void initState() {
-    _tabController = TabController(length: 3, vsync: this) // Updated to 3 tabs
-      ..addListener(() {
+    _selectedIndex = AppTheme.darkThemeOption == DarkOption.alwaysOn ? 1 : 0;
+
+    _tabController = TabController(length: 2, vsync: this, initialIndex: _selectedIndex)      ..addListener(() {
         setState(() {
           _selectedIndex = _tabController.index;
           _onTabChanged(_selectedIndex);
         });
       });
+
     super.initState();
   }
 
@@ -36,9 +38,6 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
     } else if (index == 1) {
       // Dark theme tab selected
       _onChangeDarkOption(DarkOption.alwaysOn);
-    } else if (index == 2) {
-      // System theme tab selected
-      _onChangeDarkOption(DarkOption.dynamic);
     }
   }
 
@@ -84,10 +83,6 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
           TabWithIcon(
             isSelected: _selectedIndex == 1,
             iconSrc: 'assets/icons/moon_light.svg',
-          ),
-          TabWithIcon(
-            isSelected: _selectedIndex == 2,
-            iconSrc: 'assets/icons/sun_filled.svg',
           ),
         ],
       ),

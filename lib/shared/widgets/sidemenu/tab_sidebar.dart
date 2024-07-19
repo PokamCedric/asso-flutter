@@ -1,20 +1,36 @@
+import 'package:core_dashboard/configs/theme.dart';
 import 'package:core_dashboard/shared/constants/config.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:core_dashboard/app_bloc.dart';
+import 'package:core_dashboard/blocs/theme/theme_event.dart';
 
 import 'icon_tile.dart';
 import 'theme_icon_tile.dart';
 
-class TabSidebar extends StatelessWidget {
-  const TabSidebar({super.key});
+class TabSidebar extends StatefulWidget {
+  const TabSidebar({Key? key}) : super(key: key);
+
+  @override
+  _TabSidebarState createState() => _TabSidebarState();
+}
+
+class _TabSidebarState extends State<TabSidebar> {
+  bool isDark = AppTheme.darkThemeOption == DarkOption.alwaysOn;
+
+  void _toggleTheme() {
+    setState(() {
+      isDark = !isDark;
+    });
+    AppBloc.themeBloc.add(OnChangeTheme(darkOption: isDark ? DarkOption.alwaysOn : DarkOption.alwaysOff));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Drawer(
       width: 96,
-      color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -29,7 +45,6 @@ class TabSidebar extends StatelessWidget {
             child: SizedBox(
               width: 48,
               child: ListView(
-                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   IconTile(
                     isActive: true,
@@ -95,8 +110,8 @@ class TabSidebar extends StatelessWidget {
               ),
               gapH4,
               ThemeIconTile(
-                isDark: false,
-                onPressed: () {},
+                isDark: isDark,
+                onPressed: _toggleTheme,
               ),
               gapH16,
             ],

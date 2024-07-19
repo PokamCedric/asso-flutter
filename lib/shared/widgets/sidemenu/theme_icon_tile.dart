@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ThemeIconTile extends StatefulWidget {
-  const ThemeIconTile({super.key, this.isDark = false, this.onPressed});
+  const ThemeIconTile({super.key, this.isDark = false, required this.onPressed});
 
   final bool isDark;
-  final Function()? onPressed;
+  final VoidCallback  onPressed;
 
   @override
   State<ThemeIconTile> createState() => _ThemeIconTileState();

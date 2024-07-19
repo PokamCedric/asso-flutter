@@ -35,7 +35,7 @@ class EntryPoint extends StatelessWidget {
                             horizontal: AppDefaults.padding *
                                 (Responsive.isMobile(context) ? 1 : 1.5),
                           ),
-                          child: SafeArea(child: DashboardPage()),
+                          child: const SafeArea(child: DashboardPage()),
                         ),
                       ],
                     ),

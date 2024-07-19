@@ -3,6 +3,7 @@ import 'package:core_dashboard/responsive.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/sidemenu/customer_info.dart';
+import 'package:core_dashboard/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -137,11 +138,10 @@ class Sidebar extends StatelessWidget {
                 children: [
                   if (Responsive.isMobile(context))
                     const CustomerInfo(
-                      name: 'Tran Mau Tri Tam',
-                      designation: 'Visual Designer',
-                      imageSrc:
-                          'https://cdn.create.vista.com/api/media/small/339818716/stock-photo-doubtful-hispanic-man-looking-with-disbelief-expression',
-                    ),
+                      name: 'Cédric Joel',
+                      designation: 'Software Developer',
+                      imageSrc: Images.customer
+                      ),
                   gapH8,
                   const Divider(),
                   gapH8,
