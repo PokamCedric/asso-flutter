@@ -1,3 +1,4 @@
+import 'package:core_dashboard/services/auth_services.dart';
 import 'package:core_dashboard/shared/constants/config.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/extensions.dart';
@@ -5,12 +6,20 @@ import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 import 'widgets/social_login_button.dart';
 
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
+
+  @override
+  _SignInPageState createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  final TextEditingController _emailController = TextEditingController(text: 'cedric@asso.com');
+  final TextEditingController _passwordController = TextEditingController(text: '1234567');
 
   @override
   Widget build(BuildContext context) {
@@ -67,6 +76,7 @@ class SignInPage extends StatelessWidget {
 
                     /// EMAIL TEXT FIELD
                     TextFormField(
+                      controller: _emailController,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         prefixIcon: SvgPicture.asset(
@@ -89,6 +99,7 @@ class SignInPage extends StatelessWidget {
 
                     /// PASSWORD TEXT FIELD
                     TextFormField(
+                      controller: _passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       obscureText: true,
                       decoration: InputDecoration(
@@ -107,7 +118,35 @@ class SignInPage extends StatelessWidget {
                     SizedBox(
                       width: 296,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          final email = _emailController.text;
+                          final password = _passwordController.text;
+
+                          // Perform sign-in
+                          final errors = await AuthService.loginUserModel({
+                            'email': email,
+                            'password': password,
+                          });
+
+                          if (errors == null) {
+                            Get.offAllNamed('/dashboard'); // Navigate to dashboard on success
+                          } else {
+                            // Handle error display
+                            showDialog(
+                              context: context,
+                              builder: (context) => AlertDialog(
+                                title: const Text('Sign-In Error'),
+                                content: Text(errors.values.join(', ')),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () => Navigator.of(context).pop(),
+                                    child: const Text('OK'),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }
+                        },
                         child: const Text('Sign in'),
                       ),
                     ),
@@ -136,7 +175,7 @@ class SignInPage extends StatelessWidget {
                               color: AppColors.titleLight,
                             ),
                           ),
-                          onPressed: () => context.go('/register'),
+                          onPressed: () => Get.toNamed('/register'),
                           child: const Text('Sign up'),
                         ),
                       ],

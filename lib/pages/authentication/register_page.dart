@@ -4,7 +4,7 @@ import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/get.dart';
 
 import 'widgets/signup_benefits.dart';
 import 'widgets/signup_form.dart';
@@ -83,7 +83,7 @@ class RegisterPage extends StatelessWidget {
                                   color: AppColors.titleLight,
                                 ),
                               ),
-                              onPressed: () => context.go('/sign-in'),
+                              onPressed: () => Get.toNamed('/sign-in'),
                               child: const Text('Sign in'),
                             ),
                           ],

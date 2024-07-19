@@ -86,7 +86,7 @@ class PaginationControl extends StatelessWidget {
                         icon: Icon(Icons.chevron_right, color: currentPage < totalPages ? Theme.of(context).primaryColor : Theme.of(context).canvasColor),
                         onPressed: currentPage < totalPages ? () => onPageChanged(currentPage + 1) : null,
                       )
-                      )
+                    )
                   ],
             ),
           ),

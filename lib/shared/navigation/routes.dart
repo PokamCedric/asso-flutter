@@ -1,93 +1,38 @@
+import 'package:flutter/material.dart';
 import 'package:core_dashboard/pages/authentication/register_page.dart';
 import 'package:core_dashboard/pages/authentication/sign_in_page.dart';
 import 'package:core_dashboard/pages/dashboard/dashboard_page.dart';
 import 'package:core_dashboard/pages/jobs/job_page.dart';
-import 'package:go_router/go_router.dart';
+import 'package:core_dashboard/services/auth_services.dart';
+import 'package:get/get.dart';
 
-final routerConfig = GoRouter(
-  initialLocation: '/',
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const JobListingPage(),
-      // builder: (context, state) => const DashboardPage(),
-    ),
-    GoRoute(
-      path: '/sign-in',
-      builder: (context, state) => const SignInPage(),
-    ),
-    GoRoute(
-      path: '/register',
-      builder: (context, state) => const RegisterPage(),
-    ),
-    // GoRoute(
-    //   path: '/entry-point',
-    //   builder: (context, state) => const EntryPoint(),
-    // ),
+class AuthMiddleware extends GetMiddleware {
+  @override
+  RouteSettings? redirect(String? route) {
+    return AuthService.isLoggedIn
+        ? null
+        : const RouteSettings(name: '/sign-in');
+  }
+}
 
-    // GoRoute(
-    //   path: '/forgot-password',
-    //   builder: (context, state) => const ForgotPasswordScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/password-confirmation/:email',
-    //   builder: (context, state) {
-    //     final email = state.pathParameters['email'];
-    //     if (email == null) {
-    //       throw Exception('Recipe ID is missing');
-    //     }
-    //     return PasswordConfirmationForm(email: email);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/resend-email-verification',
-    //   builder: (context, state) => const EmailResendScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/user-confirmation/:email',
-    //   builder: (context, state) {
-    //     final email = state.pathParameters['email'];
-    //     if (email == null) {
-    //       throw Exception('Recipe ID is missing');
-    //     }
-    //     return UserConfirmationForm(email: email);
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/favorite',
-    //   builder: (context, state) => const FavoriteScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/recipe/:id',
-    //   builder: (context, state) {
-    //     final id = state.pathParameters['id'];
-    //     if (id == null) {
-    //       throw Exception('Recipe ID or Favorite state is missing');
-    //     }
-    //     return RecipeDetailsScreen(
-    //       id: id,
-    //     );
-    //   },
-    // ),
-    // GoRoute(
-    //   path: '/profile',
-    //   builder: (context, state) => const ProfileScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/edit-profile',
-    //   builder: (context, state) => const EditProfileScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/all-recipes',
-    //   builder: (context, state) => const AllRecipesScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/search-recipes',
-    //   builder: (context, state) => const SearchScreen(),
-    // ),
-    // GoRoute(
-    //   path: '/notifications',
-    //   builder: (context, state) => const NotificationsScreen(),
-    // ),
-  ],
-);
+List<GetPage> getPageRoute() {
+  return [
+    GetPage(
+      name: '/',
+      page: () => const DashboardPage(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: '/dashboard',
+      page: () => const DashboardPage(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: '/jobs',
+      page: () => const JobListingPage(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(name: '/sign-in', page: () => SignInPage()),
+    GetPage(name: '/register', page: () => const RegisterPage()),
+  ];
+}
