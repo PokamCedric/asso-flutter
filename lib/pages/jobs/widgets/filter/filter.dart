@@ -1,4 +1,5 @@
 import 'package:core_dashboard/models/model_dropdown_filter.dart';
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/pages/jobs/widgets/filter/custom_dropdown.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:flutter/material.dart';
@@ -44,8 +45,8 @@ class _FilterWidgetState extends State<Filter> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: filterBoxDecoration(color: Theme.of(context).primaryColor),
+    return CardLayout(
+      paddingFactor: 0.75,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -125,7 +126,7 @@ class _FilterWidgetState extends State<Filter> {
     }
 
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         TextFormField(
                   // style: Theme.of(context).textTheme.labelLarge,

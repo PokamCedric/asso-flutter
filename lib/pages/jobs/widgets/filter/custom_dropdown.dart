@@ -30,13 +30,13 @@ class CustomDropdown extends StatelessWidget {
             value: value,
             isExpanded: true,
             underline: const SizedBox(),
-            dropdownColor: Colors.white, // TODO
+            dropdownColor: Theme.of(context).cardColor,
             items: items.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(
                     value,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black), // Set text color
+                    style: Theme.of(context).textTheme.bodyLarge!,
                   ),
               );
             }).toList(),

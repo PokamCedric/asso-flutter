@@ -5,7 +5,7 @@ import 'package:core_dashboard/models/model_filter.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/data_table.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/pagination_control.dart';
-import 'package:core_dashboard/pages/jobs/widgets/filter/filter_widget.dart';
+import 'package:core_dashboard/pages/jobs/widgets/filter/filter.dart';
 import 'package:core_dashboard/pages/layout.dart';
 import 'package:core_dashboard/responsive.dart';
 import 'package:flutter/material.dart';
@@ -100,17 +100,19 @@ class JobListingPage extends StatelessWidget {
 }
 
 
-  Widget _filterLayout(JobListingsState state,
+Widget _filterLayout(
+  JobListingsState state,
     { int filtersPerLine = 1,}) {
-    return FilterWidget(
+
+    return Filter(
       totalItems: state.filteredJobs.length,
       filtersPerLine: filtersPerLine,
       filters: getDropdownFilterModels(),
       onFilterChanged: (filters) => AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(filters))),
     );
-  }
+}
 
-  List<ColumnConfig> getTableColumns() {
+List<ColumnConfig> getTableColumns() {
     return [
       ColumnConfig(
         label: 'Job Title',

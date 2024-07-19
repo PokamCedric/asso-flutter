@@ -33,13 +33,14 @@ class PaginationControl extends StatelessWidget {
               const Text('Hits per page: '),
               Container(
                 decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey )),
+                    color: Theme.of(context).canvasColor,
+                    ),
                 child: DropdownButton<int>(
                   value: rowsPerPage,
                   alignment: AlignmentDirectional.centerStart,
                   underline: const SizedBox(), // Remove the underline
                   padding: const EdgeInsets.only(left: 50.0),
-                  dropdownColor: Colors.white, // Set the background color of the dropdown list
+                  dropdownColor: Theme.of(context).cardColor, // Set the background color of the dropdown list
                   items: availableRowsPerPage.map((int value) {
                     return DropdownMenuItem<int>(
                       value: value,
@@ -64,9 +65,9 @@ class PaginationControl extends StatelessWidget {
                   children: [
                     Container(
                       width: 10,
-                      decoration: roundedBox(true),
+                      decoration: roundedBox(context, true),
                       child: IconButton(
-                          icon: Icon(Icons.chevron_left, color: currentPage > 1 ? Theme.of(context).primaryColor : Colors.grey),
+                          icon: Icon(Icons.chevron_left, color: currentPage > 1 ? Theme.of(context).primaryColor : Theme.of(context).canvasColor),
                           onPressed: currentPage > 1 ? () => onPageChanged(currentPage - 1) : null
                           ),
                     ),
@@ -74,18 +75,15 @@ class PaginationControl extends StatelessWidget {
                       alignment: Alignment.center,
                       width: 10 ,
                       decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      border: const Border.symmetric(horizontal: BorderSide(color: Colors.grey,))),
+                      color: Theme.of(context).canvasColor,
+                      border: Border.symmetric(horizontal: BorderSide(color: Theme.of(context).scaffoldBackgroundColor,))),
 
-                      child: Text(
-                        '$currentPage',
-                        style: TextStyle(color: Theme.of(context).indicatorColor),
-                      )
+                      child: Text('$currentPage',)
                       ),
                     Container(width: 10,
-                      decoration: roundedBox(false),
+                      decoration: roundedBox(context, false),
                       child: IconButton(
-                        icon: Icon(Icons.chevron_right, color: currentPage < totalPages ? Theme.of(context).primaryColor : Colors.grey),
+                        icon: Icon(Icons.chevron_right, color: currentPage < totalPages ? Theme.of(context).primaryColor : Theme.of(context).canvasColor),
                         onPressed: currentPage < totalPages ? () => onPageChanged(currentPage + 1) : null,
                       )
                       )
@@ -97,12 +95,12 @@ class PaginationControl extends StatelessWidget {
     );
   }
 
-  BoxDecoration roundedBox(bool isLeft) {
+  BoxDecoration roundedBox(BuildContext context, bool isLeft) {
     final  double left = isLeft? 20.0 : 0;
     final  double right = isLeft? 0 : 20.0;
     return BoxDecoration(
                       color: Colors.white,
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: Theme.of(context).scaffoldBackgroundColor),
                       borderRadius:
                       BorderRadius.only(
                         topLeft: Radius.circular(left),
