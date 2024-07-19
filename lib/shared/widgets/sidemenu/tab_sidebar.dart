@@ -11,10 +11,10 @@ import 'icon_tile.dart';
 import 'theme_icon_tile.dart';
 
 class TabSidebar extends StatefulWidget {
-  const TabSidebar({Key? key}) : super(key: key);
+  const TabSidebar({super.key});
 
   @override
-  _TabSidebarState createState() => _TabSidebarState();
+  State<TabSidebar> createState() => _TabSidebarState();
 }
 
 class _TabSidebarState extends State<TabSidebar> {

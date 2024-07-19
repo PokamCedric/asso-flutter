@@ -9,7 +9,7 @@ class Layout extends StatelessWidget {
   final Widget child;
   final GlobalKey<ScaffoldState> drawerKey = GlobalKey();
 
-  Layout({Key? key, required this.child}) : super(key: key);
+  Layout({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
