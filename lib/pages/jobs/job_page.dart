@@ -77,7 +77,6 @@ class JobListingPage extends StatelessWidget {
     { int filtersPerLine = 1,}) {
     return FilterWidget(
       totalItems: state.filteredJobs.length,
-      filterWidth: 200.0,
       filtersPerLine: filtersPerLine,
       filters: getDropdownFilterModels(),
       onFilterChanged: (filters) => AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(filters))),

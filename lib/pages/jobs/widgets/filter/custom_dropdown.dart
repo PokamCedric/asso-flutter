@@ -4,7 +4,6 @@ class CustomDropdown extends StatelessWidget {
   final String label;
   final String value;
   final List<String> items;
-  final double width;
   final BoxDecoration filterBoxDecoration;
   final ValueChanged<String?> onChanged;
 
@@ -12,7 +11,6 @@ class CustomDropdown extends StatelessWidget {
     super.key,
     required this.label,
     required this.items,
-    required this.width,
     required this.filterBoxDecoration,
     required this.onChanged,
     required this.value,
@@ -26,7 +24,6 @@ class CustomDropdown extends StatelessWidget {
         Text(label),
         const SizedBox(height: 6.0),
         Container(
-          width: width,
           padding: const EdgeInsets.symmetric(horizontal: 10.0),
           decoration: filterBoxDecoration,
           child: DropdownButton<String>(

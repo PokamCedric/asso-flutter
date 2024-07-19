@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class Filter extends StatefulWidget {
   final List<DropdownFilterModel> filters;
   final int totalItems;
-  final double filterWidth;
   final int filtersPerLine;
   final ValueChanged<Map<String, dynamic>> onFilterChanged;
 
@@ -14,7 +13,6 @@ class Filter extends StatefulWidget {
     required this.filters,
     required this.onFilterChanged,
     required this.totalItems,
-    required this.filterWidth,
     this.filtersPerLine = 1,
   });
 
@@ -46,7 +44,6 @@ class _FilterWidgetState extends State<Filter> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: widget.filterWidth,
       decoration: filterBoxDecoration(color: Theme.of(context).primaryColor),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -93,21 +90,21 @@ class _FilterWidgetState extends State<Filter> {
 
     for (int i = 0; i < widget.filters.length; i++) {
       var filter = widget.filters[i];
-      final dropdownWidth = ((widget.filterWidth - (_containerPadding * 2)) / widget.filtersPerLine) - 6.0 ;
 
       rowChildren.add(
-        CustomDropdown(
-          label: filter.propertyName,
-          items: filter.items,
-          value: _selectedFilters[filter.propertyName]!,
-          width: dropdownWidth, // Adjust width
-          filterBoxDecoration: filterBoxDecoration(),
-          onChanged: (value) {
-            setState(() {
-              _selectedFilters[filter.propertyName] = value!;
-            });
-            widget.onFilterChanged(_selectedFilters);
-          },
+        Expanded(
+          child: CustomDropdown(
+            label: filter.propertyName,
+            items: filter.items,
+            value: _selectedFilters[filter.propertyName]!,
+            filterBoxDecoration: filterBoxDecoration(),
+            onChanged: (value) {
+              setState(() {
+                _selectedFilters[filter.propertyName] = value!;
+              });
+              widget.onFilterChanged(_selectedFilters);
+            },
+          ),
         ),
       );
 

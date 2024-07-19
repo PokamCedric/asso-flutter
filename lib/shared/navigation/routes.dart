@@ -9,7 +9,7 @@ final routerConfig = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const DashboardPage(),
+      builder: (context, state) => const JobListingPage(),
     ),
     GoRoute(
       path: '/sign-in',

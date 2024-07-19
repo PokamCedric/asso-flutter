@@ -5,7 +5,6 @@ import 'filter.dart';
 
 class FilterWidget extends StatelessWidget {
   final int totalItems;
-  final double filterWidth;
   final int filtersPerLine;
   final List<DropdownFilterModel> filters;
   final Function(Map<String, dynamic>) onFilterChanged;
@@ -15,7 +14,6 @@ class FilterWidget extends StatelessWidget {
     required this.totalItems,
     required this.filters,
     required this.onFilterChanged,
-    this.filterWidth = 300.0,
     this.filtersPerLine = 1,
   });
 
@@ -23,7 +21,6 @@ class FilterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Filter(
         totalItems: totalItems,
-        filterWidth: filterWidth,
         filtersPerLine: filtersPerLine,
         filters: filters,
         onFilterChanged: onFilterChanged,
