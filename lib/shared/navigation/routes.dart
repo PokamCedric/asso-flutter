@@ -1,6 +1,6 @@
 import 'package:core_dashboard/pages/authentication/register_page.dart';
 import 'package:core_dashboard/pages/authentication/sign_in_page.dart';
-import 'package:core_dashboard/pages/entry_point.dart';
+import 'package:core_dashboard/pages/dashboard/dashboard_page.dart';
 import 'package:go_router/go_router.dart';
 
 final routerConfig = GoRouter(
@@ -8,7 +8,7 @@ final routerConfig = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const EntryPoint(),
+      builder: (context, state) => const DashboardPage(),
     ),
     GoRoute(
       path: '/sign-in',

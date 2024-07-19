@@ -21,11 +21,11 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
     _selectedIndex = AppTheme.darkThemeOption == DarkOption.alwaysOn ? 1 : 0;
 
     _tabController = TabController(length: 2, vsync: this, initialIndex: _selectedIndex)      ..addListener(() {
-        setState(() {
-          _selectedIndex = _tabController.index;
-          _onTabChanged(_selectedIndex);
-        });
+    setState(() {
+        _selectedIndex = _tabController.index;
+        _onTabChanged(_selectedIndex);
       });
+    });
 
     super.initState();
   }

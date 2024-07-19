@@ -3,19 +3,18 @@ import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/widgets/sidemenu/sidebar.dart';
 import 'package:core_dashboard/shared/widgets/sidemenu/tab_sidebar.dart';
 import 'package:flutter/material.dart';
-
 import '../shared/widgets/header.dart';
-import 'dashboard/dashboard_page.dart';
 
-final GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+class Layout extends StatelessWidget {
+  final Widget child;
+  final GlobalKey<ScaffoldState> drawerKey = GlobalKey();
 
-class EntryPoint extends StatelessWidget {
-  const EntryPoint({super.key});
+  Layout({Key? key, required this.child}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _drawerKey,
+      key: drawerKey,
       drawer: Responsive.isMobile(context) ? const Sidebar() : null,
       body: Row(
         children: [
@@ -24,7 +23,7 @@ class EntryPoint extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                Header(drawerKey: _drawerKey),
+                Header(drawerKey: drawerKey),
                 Expanded(
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxWidth: 1360),
@@ -35,7 +34,7 @@ class EntryPoint extends StatelessWidget {
                             horizontal: AppDefaults.padding *
                                 (Responsive.isMobile(context) ? 1 : 1.5),
                           ),
-                          child: const SafeArea(child: DashboardPage()),
+                          child: SafeArea(child: child),
                         ),
                       ],
                     ),

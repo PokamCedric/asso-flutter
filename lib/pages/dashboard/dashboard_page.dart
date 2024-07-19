@@ -1,5 +1,6 @@
 import 'package:core_dashboard/pages/dashboard/widgets/overview.dart';
 import 'package:core_dashboard/pages/dashboard/widgets/product_overview.dart';
+import 'package:core_dashboard/pages/layout.dart';
 import 'package:core_dashboard/responsive.dart';
 import 'package:flutter/material.dart';
 
@@ -15,65 +16,62 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (!Responsive.isMobile(context)) gapH24,
-        Text(
-          "Dashboard",
-          style: Theme.of(context)
-              .textTheme
-              .headlineLarge!
-              .copyWith(fontWeight: FontWeight.w600),
-        ),
-        gapH20,
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              flex: 5,
-              child: Column(
-                children: [
-                  const Overview(),
-                  gapH16,
-                  const ProductOverviews(),
-                  gapH16,
-                  const ProTips(),
-                  gapH16,
-                  const GetMoreCustomers(),
-                  if (Responsive.isMobile(context))
-                    const Column(
-                      children: [
-                        gapH16,
-                        PopularProducts(),
-                        gapH16,
-                        Comments(),
-                        gapH16,
-                        RefundRequest(newRefund: 8, totalRefund: 52),
-                        gapH8,
-                      ],
-                    ),
-                ],
-              ),
-            ),
-            if (!Responsive.isMobile(context)) gapW16,
-            if (!Responsive.isMobile(context))
-              const Expanded(
-                flex: 2,
+    return Layout(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (!Responsive.isMobile(context)) gapH24,
+          Text(
+            "Dashboard",
+            style: Theme.of(context)
+                .textTheme
+                .headlineLarge!
+                .copyWith(fontWeight: FontWeight.w600),
+          ),
+          gapH20,
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 5,
                 child: Column(
                   children: [
-                    PopularProducts(),
+                    const Overview(),
                     gapH16,
-                    Comments(),
+                    const ProductOverviews(),
                     gapH16,
-                    RefundRequest(newRefund: 8, totalRefund: 52),
-                    gapH8,
+                    const ProTips(),
+                    gapH16,
+                    const GetMoreCustomers(),
+                    if (Responsive.isMobile(context))
+                      complementPanel(),
                   ],
                 ),
               ),
-          ],
-        )
-      ],
+              if (!Responsive.isMobile(context)) gapW16,
+              if (!Responsive.isMobile(context))
+                Expanded(
+                  flex: 2,
+                  child: complementPanel(),
+                ),
+            ],
+          )
+        ],
+      ),
     );
+  }
+
+  Widget complementPanel() {
+    return const Column(
+                    children: [
+                      gapH16,
+                      PopularProducts(),
+                      gapH16,
+                      Comments(),
+                      gapH16,
+                      RefundRequest(newRefund: 8, totalRefund: 52),
+                      gapH8,
+                    ],
+                  );
   }
 }
