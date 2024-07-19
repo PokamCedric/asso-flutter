@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/responsive.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +15,7 @@ class ProductOverviews extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDefaults.padding),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius:
-            const BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
-      ),
+    return CardLayout(
       child: Column(
         children: [
           Row(

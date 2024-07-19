@@ -1,5 +1,5 @@
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:core_dashboard/shared/widgets/section_title.dart';
 import 'package:flutter/material.dart';
@@ -10,14 +10,7 @@ class GetMoreCustomers extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDefaults.padding * 1.25),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(AppDefaults.borderRadius),
-        ),
-      ),
+    return CardLayout(
       child: Column(
         children: [
           SectionTitle(

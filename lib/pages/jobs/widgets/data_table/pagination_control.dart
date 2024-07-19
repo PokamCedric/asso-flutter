@@ -1,3 +1,4 @@
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:flutter/material.dart';
 
 class PaginationControl extends StatelessWidget {
@@ -22,8 +23,7 @@ class PaginationControl extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40.0,
+    return CardLayout(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

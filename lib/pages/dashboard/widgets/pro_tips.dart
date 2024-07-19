@@ -1,3 +1,4 @@
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/pages/dashboard/widgets/tips_item.dart';
 import 'package:core_dashboard/responsive.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
@@ -44,14 +45,7 @@ class ProTips extends StatelessWidget {
   const ProTips({super.key});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDefaults.padding),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(AppDefaults.borderRadius),
-        ),
-      ),
+    return CardLayout(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

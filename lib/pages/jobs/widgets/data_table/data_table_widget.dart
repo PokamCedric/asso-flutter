@@ -1,5 +1,6 @@
 import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/pagination_control.dart';
+import 'package:core_dashboard/shared/constants/ghaps.dart';
 import 'package:flutter/material.dart';
 import 'data_table.dart';
 
@@ -32,21 +33,22 @@ class DataTableWidget extends StatelessWidget {
     return Column(
       children: [
         paginationControl(),
+        gapH16,
         Datatable(
           data: data,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,
           columns: columns,
         ),
+        gapH16,
         paginationControl(),
+
       ],
     );
   }
 
   Widget paginationControl() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
-      child: PaginationControl(
+    return PaginationControl(
         totalPages: totalPages,
         totalHits: totalHits,
         rowsPerPage: rowsPerPage,
@@ -54,7 +56,6 @@ class DataTableWidget extends StatelessWidget {
         onRowsPerPageChanged: onRowsPerPageChanged,
         currentPage: currentPage,
         onPageChanged: onPageChanged,
-      ),
     );
   }
 }

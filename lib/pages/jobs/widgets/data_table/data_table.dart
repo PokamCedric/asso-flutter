@@ -1,3 +1,4 @@
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/text_cell.dart';
 import 'package:flutter/material.dart';
@@ -31,10 +32,8 @@ class Datatable extends StatelessWidget {
             ))
         .toList();
 
-    return SizedBox(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
+    return CardLayout(
+      child: DataTable(
           columnSpacing: 10, // Adjust spacing between columns as needed
           columns: visibleColumns,
           rows: displayedJobs
@@ -55,7 +54,6 @@ class Datatable extends StatelessWidget {
               )
               .toList(),
         ),
-      ),
     );
   }
 }

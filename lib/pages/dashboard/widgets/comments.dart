@@ -1,3 +1,4 @@
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/pages/dashboard/widgets/comment_item.dart';
 import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:core_dashboard/shared/constants/ghaps.dart';
@@ -9,20 +10,14 @@ class Comments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(AppDefaults.borderRadius),
-        ),
-      ),
-      padding: const EdgeInsets.all(AppDefaults.padding * 0.75),
+    return CardLayout(
+      paddingFactor: 0.75,
       child: Column(
         children: [
           gapH8,
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: AppDefaults.padding * 0.5,
+              horizontal: AppDefaults.padding * 0.75,
             ),
             child: SectionTitle(
               title: "Comments",

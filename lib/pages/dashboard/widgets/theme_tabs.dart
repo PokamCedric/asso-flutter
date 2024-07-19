@@ -29,6 +29,11 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
 
     super.initState();
   }
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   /// On Change Theme based on tab selection
   void _onTabChanged(int index) {

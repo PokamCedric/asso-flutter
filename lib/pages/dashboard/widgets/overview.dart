@@ -1,3 +1,4 @@
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/constants/defaults.dart';
@@ -10,13 +11,7 @@ class Overview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDefaults.padding),
-      decoration: BoxDecoration(
-        color: Theme.of(context).cardColor,
-        borderRadius:
-            const BorderRadius.all(Radius.circular(AppDefaults.borderRadius)),
-      ),
+    return CardLayout(
       child: Column(
         children: [
           Row(
