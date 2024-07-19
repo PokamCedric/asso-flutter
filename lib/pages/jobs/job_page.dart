@@ -86,11 +86,9 @@ class JobListingPage extends StatelessWidget {
 
   Widget _dataTableLayout(JobListingsState state,
     DataTableState dataTableState) {
-    const double containerWidth = 800.0;
     final totalPages = (state.totalHits / dataTableState.rowsPerPage).ceil();
     return DataTableWidget(
       data: state.filteredJobs.map((job) => job.toJson()).toList(),
-      containerWidth: containerWidth,
       rowsPerPage: dataTableState.rowsPerPage,
       currentPage: dataTableState.currentPage,
       totalPages: totalPages,
@@ -98,12 +96,11 @@ class JobListingPage extends StatelessWidget {
       availableRowsPerPage: const [5, 10, 25, 50],
       onPageChanged: (newPage) => AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
       onRowsPerPageChanged: (newRowsPerPage) => AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
-      columns: getTableColumns(containerWidth),
+      columns: getTableColumns(),
     );
   }
 
-  List<ColumnConfig> getTableColumns(double containerWidth) {
-    const double defaultSpace = 50.0;
+  List<ColumnConfig> getTableColumns() {
     return [
       ColumnConfig(
         label: 'Job Title',
@@ -114,18 +111,18 @@ class JobListingPage extends StatelessWidget {
       ColumnConfig(
         label: 'Type of Function',
         propertyName: 'type',
-        isVisible: containerWidth - defaultSpace > 300.0,
+        isVisible: true,
         width: 150.0,
       ),
       ColumnConfig(
         label: 'Country',
         propertyName: 'country',
-        isVisible: containerWidth - defaultSpace > 300.0 + 150.0,
+        isVisible: true,
       ),
       ColumnConfig(
         label: 'Field',
         propertyName: 'field',
-        isVisible: containerWidth - defaultSpace > 300.0 + 150.0 + 100.0,
+        isVisible: true,
         width: 200.0,
       ),
     ];

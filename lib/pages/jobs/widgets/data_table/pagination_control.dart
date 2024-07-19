@@ -8,7 +8,6 @@ class PaginationControl extends StatelessWidget {
   final int currentPage;
   final int totalPages;
   final ValueChanged<int> onPageChanged;
-  final double containerWidth;
 
   const PaginationControl({
     required this.totalHits,
@@ -18,14 +17,12 @@ class PaginationControl extends StatelessWidget {
     required this.currentPage,
     required this.totalPages,
     required this.onPageChanged,
-    required this.containerWidth,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: containerWidth,
       height: 40.0,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

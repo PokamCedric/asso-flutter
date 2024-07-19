@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 class Datatable extends StatelessWidget {
   final List<Map<String, dynamic>> data;
-  final double containerWidth;
   final int rowsPerPage;
   final int currentPage;
   final List<ColumnConfig> columns; // List of column configurations
@@ -12,7 +11,6 @@ class Datatable extends StatelessWidget {
   const Datatable({
     super.key,
     required this.data,
-    required this.containerWidth,
     required this.rowsPerPage,
     required this.currentPage,
     required this.columns, // Added list of columns
@@ -34,7 +32,6 @@ class Datatable extends StatelessWidget {
         .toList();
 
     return SizedBox(
-      width: containerWidth,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: DataTable(

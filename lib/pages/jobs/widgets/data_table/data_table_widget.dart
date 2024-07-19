@@ -5,7 +5,6 @@ import 'data_table.dart';
 
 class DataTableWidget extends StatelessWidget {
   final List<Map<String, dynamic>> data;
-  final double containerWidth;
   final int rowsPerPage;
   final int currentPage;
   final int totalPages;
@@ -18,7 +17,6 @@ class DataTableWidget extends StatelessWidget {
   const DataTableWidget({
     super.key,
     required this.data,
-    required this.containerWidth,
     required this.rowsPerPage,
     required this.currentPage,
     required this.totalPages,
@@ -36,7 +34,6 @@ class DataTableWidget extends StatelessWidget {
         paginationControl(),
         Datatable(
           data: data,
-          containerWidth: containerWidth,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,
           columns: columns,
@@ -51,7 +48,6 @@ class DataTableWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: PaginationControl(
         totalPages: totalPages,
-        containerWidth: containerWidth,
         totalHits: totalHits,
         rowsPerPage: rowsPerPage,
         availableRowsPerPage: availableRowsPerPage,
