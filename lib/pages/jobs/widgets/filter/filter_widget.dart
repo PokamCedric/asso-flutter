@@ -1,5 +1,6 @@
 // filter_widget.dart
 import 'package:core_dashboard/models/model_dropdown_filter.dart';
+import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:flutter/material.dart';
 import 'filter.dart';
 
@@ -19,11 +20,14 @@ class FilterWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Filter(
-        totalItems: totalItems,
-        filtersPerLine: filtersPerLine,
-        filters: filters,
-        onFilterChanged: onFilterChanged,
+    return CardLayout(
+      paddingFactor: 0.75,
+      child: Filter(
+          totalItems: totalItems,
+          filtersPerLine: filtersPerLine,
+          filters: filters,
+          onFilterChanged: onFilterChanged,
+      ),
     );
   }
 }

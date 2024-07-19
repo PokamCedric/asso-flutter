@@ -1,5 +1,6 @@
 import 'package:core_dashboard/models/model_dropdown_filter.dart';
 import 'package:core_dashboard/pages/jobs/widgets/filter/custom_dropdown.dart';
+import 'package:core_dashboard/shared/constants/defaults.dart';
 import 'package:flutter/material.dart';
 
 class Filter extends StatefulWidget {
@@ -105,7 +106,7 @@ class _FilterWidgetState extends State<Filter> {
               widget.onFilterChanged(_selectedFilters);
             },
           ),
-        ),
+        )
       );
 
       // Add row of filters to column if row is full or it's the last item
@@ -126,21 +127,16 @@ class _FilterWidgetState extends State<Filter> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          decoration: filterBoxDecoration(),
-          child: TextField(
-            decoration: const InputDecoration(
-              hintText: 'Search',
-              border: InputBorder.none,
-            ),
-            onChanged: (value) {
-              setState(() {
-                _selectedFilters['query'] = value;
-              });
-              widget.onFilterChanged(_selectedFilters);
-            },
-          ),
-        ),
+        TextFormField(
+                  // style: Theme.of(context).textTheme.labelLarge,
+                  decoration: InputDecoration(
+                    hintText: "Search...",
+                    filled: true,
+                    fillColor: Theme.of(context).scaffoldBackgroundColor,
+                    border: AppDefaults.outlineInputBorder,
+                    focusedBorder: AppDefaults.focusedOutlineInputBorder,
+                  ),
+                ),
         const SizedBox(height: 20.0),
         ...filterWidgets,
         const SizedBox(height: 10),

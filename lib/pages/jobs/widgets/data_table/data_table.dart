@@ -1,6 +1,5 @@
 import 'package:core_dashboard/pages/card_layout.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
-import 'package:core_dashboard/pages/jobs/widgets/data_table/text_cell.dart';
 import 'package:flutter/material.dart';
 
 class Datatable extends StatelessWidget {
@@ -34,7 +33,6 @@ class Datatable extends StatelessWidget {
 
     return CardLayout(
       child: DataTable(
-          columnSpacing: 10, // Adjust spacing between columns as needed
           columns: visibleColumns,
           rows: displayedJobs
               .map(
@@ -43,9 +41,10 @@ class Datatable extends StatelessWidget {
                       .where((column) => column.isVisible)
                       .map(
                         (column) => DataCell(
-                          PaddedTextCell(
-                            text: job[column.propertyName] ?? "",
-                            width: column.width,
+                          Text(
+                            job[column.propertyName] ?? "",
+                            softWrap: true, // Enable text wrapping
+                            overflow: TextOverflow.clip, // Clip overflowing text
                           ),
                         ),
                       )

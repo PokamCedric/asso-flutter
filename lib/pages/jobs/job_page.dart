@@ -3,7 +3,8 @@ import 'package:core_dashboard/blocs/job/job_bloc.dart';
 import 'package:core_dashboard/models/model_dropdown_filter.dart';
 import 'package:core_dashboard/models/model_filter.dart';
 import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
-import 'package:core_dashboard/pages/jobs/widgets/data_table/data_table_widget.dart';
+import 'package:core_dashboard/pages/jobs/widgets/data_table/data_table.dart';
+import 'package:core_dashboard/pages/jobs/widgets/data_table/pagination_control.dart';
 import 'package:core_dashboard/pages/jobs/widgets/filter/filter_widget.dart';
 import 'package:core_dashboard/pages/layout.dart';
 import 'package:core_dashboard/responsive.dart';
@@ -48,9 +49,19 @@ class JobListingPage extends StatelessWidget {
                 flex: 5,
                 child: Column(
                   children: [
-                    _dataTableLayout(state, dataTableState),
+                    paginationControl(state, dataTableState),
+                      gapH16,
+                      Datatable(
+                        data: state.filteredJobs.map((job) => job.toJson()).toList(),
+                        rowsPerPage: dataTableState.rowsPerPage,
+                        currentPage: dataTableState.currentPage,
+                        columns: getTableColumns(),
+                      ),
+                      gapH16,
+                    paginationControl(state, dataTableState),
+                    gapH16,
                     if (Responsive.isMobile(context))
-                      _filterLayout(state),
+                      _filterLayout(state, filtersPerLine: 2),
                   ],
                 ),
               ),
@@ -70,7 +81,23 @@ class JobListingPage extends StatelessWidget {
     );
   }
 
+
+  Widget paginationControl(JobListingsState state,
+    DataTableState dataTableState) {
+    final totalPages = (state.totalHits / dataTableState.rowsPerPage).ceil();
+
+    return PaginationControl(
+        totalPages: totalPages,
+        totalHits: state.totalHits,
+        rowsPerPage: dataTableState.rowsPerPage,
+        availableRowsPerPage: const [5, 10, 25, 50],
+        onRowsPerPageChanged: (newRowsPerPage) => AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
+        currentPage: dataTableState.currentPage,
+        onPageChanged: (newPage) => AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
+    );
   }
+
+}
 
 
   Widget _filterLayout(JobListingsState state,
@@ -80,22 +107,6 @@ class JobListingPage extends StatelessWidget {
       filtersPerLine: filtersPerLine,
       filters: getDropdownFilterModels(),
       onFilterChanged: (filters) => AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(filters))),
-    );
-  }
-
-  Widget _dataTableLayout(JobListingsState state,
-    DataTableState dataTableState) {
-    final totalPages = (state.totalHits / dataTableState.rowsPerPage).ceil();
-    return DataTableWidget(
-      data: state.filteredJobs.map((job) => job.toJson()).toList(),
-      rowsPerPage: dataTableState.rowsPerPage,
-      currentPage: dataTableState.currentPage,
-      totalPages: totalPages,
-      totalHits: state.totalHits,
-      availableRowsPerPage: const [5, 10, 25, 50],
-      onPageChanged: (newPage) => AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
-      onRowsPerPageChanged: (newRowsPerPage) => AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
-      columns: getTableColumns(),
     );
   }
 
