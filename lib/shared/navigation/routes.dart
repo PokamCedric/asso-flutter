@@ -32,7 +32,7 @@ List<GetPage> getPageRoute() {
       page: () => const JobListingPage(),
       middlewares: [AuthMiddleware()],
     ),
-    GetPage(name: '/sign-in', page: () => SignInPage()),
+    GetPage(name: '/sign-in', page: () => const SignInPage()),
     GetPage(name: '/register', page: () => const RegisterPage()),
   ];
 }

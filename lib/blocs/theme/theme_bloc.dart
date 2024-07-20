@@ -1,3 +1,4 @@
+import 'package:core_dashboard/utils/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:core_dashboard/blocs/theme/theme_event.dart';
@@ -23,6 +24,8 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
     if (event.darkOption != null) {
       AppTheme.darkThemeOption = event.darkOption!;
     }
+
+    LocalStorage.setDarkOption(AppTheme.darkThemeOption);
 
     Brightness lightBrightness = Brightness.light;
     Brightness darkbrightness = Brightness.dark;
@@ -55,6 +58,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
           font: AppTheme.currentFont,
           brightness: darkbrightness,
     );
+
 
     // Notify UI
     emit(ThemeUpdated());

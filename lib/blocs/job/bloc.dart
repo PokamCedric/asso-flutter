@@ -1,3 +1,4 @@
+// job_listings_bloc.dart
 import 'package:bloc/bloc.dart';
 import 'package:core_dashboard/data/data_job.dart';
 import 'event.dart';
@@ -10,18 +11,27 @@ class JobListingsBloc extends Bloc<JobListingsEvent, JobListingsState> {
   }
 
   Future<void> _onLoadJobs(LoadJobsEvent event, Emitter<JobListingsState> emit) async {
-    final jobs = await loadJobs();
-    emit(state.copyWith(
-      allJobs: jobs,
-      filteredJobs: jobs,
-      totalHits: jobs.length,
-    ));
+    emit(state.copyWith(status: JobListingsStatus.loading));
+    try {
+      final jobs = await loadJobs();
+      emit(state.copyWith(
+        status: JobListingsStatus.success,
+        allJobs: jobs,
+        filteredJobs: jobs,
+        totalHits: jobs.length,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: JobListingsStatus.error,
+        errorMessage: e.toString(),
+      ));
+    }
   }
 
   void _onFilterJobs(FilterJobsEvent event, Emitter<JobListingsState> emit) {
     final filteredJobs = state.allJobs.where((job) {
       final filter = event.filter;
-      bool matchesSearch = filter.query== null ||
+      bool matchesSearch = filter.query == null ||
           filter.query!.isEmpty ||
           job.title.toLowerCase().contains(filter.query!.toLowerCase()) ||
           job.type.toLowerCase().contains(filter.query!.toLowerCase()) ||
@@ -34,8 +44,8 @@ class JobListingsBloc extends Bloc<JobListingsEvent, JobListingsState> {
       bool matchesFunction = filter.type == 'All types of function' ||
           job.type == filter.type;
 
-      bool matchesCountry = filter.country== 'All countries' ||
-          job.country== filter.country;
+      bool matchesCountry = filter.country == 'All countries' ||
+          job.country == filter.country;
 
       return matchesSearch && matchesField && matchesFunction && matchesCountry;
     }).toList();

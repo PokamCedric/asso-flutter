@@ -4,6 +4,32 @@ import 'package:flutter/material.dart';
 
 enum DarkOption { dynamic, alwaysOn, alwaysOff }
 
+  // Convert DarkOption to a string
+  String darkOptionToString(DarkOption option) {
+    switch (option) {
+      case DarkOption.alwaysOn:
+        return 'alwaysOn';
+      case DarkOption.alwaysOff:
+        return 'alwaysOff';
+      case DarkOption.dynamic:
+      default:
+        return 'dynamic';
+    }
+  }
+
+  // Convert a string to DarkOption
+  DarkOption darkOptionFromString(String option) {
+    switch (option) {
+      case 'alwaysOn':
+        return DarkOption.alwaysOn;
+      case 'alwaysOff':
+        return DarkOption.alwaysOff;
+      case 'dynamic':
+      default:
+        return DarkOption.dynamic;
+    }
+  }
+
 class AppTheme {
 
   /// Default font

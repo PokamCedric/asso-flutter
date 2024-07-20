@@ -1,48 +1,48 @@
-import 'package:core_dashboard/services/auth_services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:core_dashboard/configs/theme.dart';
+import 'package:core_dashboard/utils/preferences.dart';
+
 
 class LocalStorage {
-  static const String _loggedInUserKey = "user";
-  // static const String _themeCustomizerKey = "theme_customizer";
-  static const String _languageKey = "lang_code";
-
-  static SharedPreferences? _preferencesInstance;
-
-  static SharedPreferences get preferences {
-    if (_preferencesInstance == null) {
-      throw ("Call LocalStorage.init() to initialize local storage");
-    }
-    return _preferencesInstance!;
-  }
-
-  static Future<void> init() async {
-    _preferencesInstance = await SharedPreferences.getInstance();
-    await initData();
-  }
-
-  static Future<void> initData() async {
-    SharedPreferences preferences = await SharedPreferences.getInstance();
-    AuthService.isLoggedIn = preferences.getBool(_loggedInUserKey) ?? false;
-    // ThemeCustomizer.fromJSON(preferences.getString(_themeCustomizerKey));
-  }
+  static String _loggedInUserKey = 'user';
+  static String _darkOptionKey = 'darkOption';
+  static String _languageKey = 'lang_code';
 
   static Future<bool> setLoggedInUser(bool loggedIn) async {
-    return preferences.setBool(_loggedInUserKey, loggedIn);
+    return UtilPreferences.setBool(_loggedInUserKey, loggedIn);
   }
 
-  // static Future<bool> setCustomizer(ThemeCustomizer themeCustomizer) {
-  //   return preferences.setString(_themeCustomizerKey, themeCustomizer.toJSON());
-  // }
-
-  // static Future<bool> setLanguage(Language language) {
-  //   return preferences.setString(_languageKey, language.locale.languageCode);
-  // }
-
-  static String? getLanguage() {
-    return preferences.getString(_languageKey);
+  static Future<bool?> getLoggedInUser() async {
+    return UtilPreferences.getBool(_loggedInUserKey);
   }
 
   static Future<bool> removeLoggedInUser() async {
-    return preferences.remove(_loggedInUserKey);
+    return UtilPreferences.remove(_loggedInUserKey);
   }
+
+  static Future<bool> setDarkOption(DarkOption darkOption) async {
+    print("darkoption set");
+    print(darkOptionToString(darkOption));
+    return UtilPreferences.setString(_darkOptionKey, darkOptionToString(darkOption));
+  }
+
+  static Future<DarkOption> getDarkOption() async {
+    final String? darkOptionString = UtilPreferences.getString(_darkOptionKey);
+
+    print("darkoption get");
+    print(darkOptionString);
+
+    if (darkOptionString != null) {
+      return darkOptionFromString(darkOptionString);
+    } else {
+      return DarkOption.dynamic; // Default option if none is set
+    }
+  }
+
+  static String? getLanguage() {
+    return UtilPreferences.getString(_languageKey);
+  }
+
+  // static Future<bool> setLanguage(Language language) {
+  //   return UtilPreferences.setString(_languageKey, language.locale.languageCode);
+  // }
 }

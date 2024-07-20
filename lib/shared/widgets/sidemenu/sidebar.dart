@@ -6,6 +6,7 @@ import 'package:core_dashboard/shared/widgets/sidemenu/customer_info.dart';
 import 'package:core_dashboard/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../constants/config.dart';
 import 'menu_tile.dart';
@@ -76,7 +77,7 @@ class Sidebar extends StatelessWidget {
                         MenuTile(
                           isActive: true,
                           title: "Dashboard",
-                          onPressed: () {},
+                          onPressed: () => Get.toNamed('/dashboard'),
                         ),
                         MenuTile(
                           isSubmenu: true,
@@ -97,7 +98,7 @@ class Sidebar extends StatelessWidget {
                       leading: SvgPicture.asset(
                           "assets/icons/profile_circled_light.svg"),
                       title: Text(
-                        "Customers",
+                        "Jobs",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                           color: Theme.of(context).textTheme.bodyMedium!.color,
@@ -106,18 +107,13 @@ class Sidebar extends StatelessWidget {
                       children: [
                         MenuTile(
                           isSubmenu: true,
-                          title: "Dashboard",
-                          onPressed: () {},
-                        ),
-                        MenuTile(
-                          isSubmenu: true,
-                          title: "Products",
+                          title: "Overview",
                           count: 16,
-                          onPressed: () {},
+                          onPressed: () => Get.toNamed('/jobs')
                         ),
                         MenuTile(
                           isSubmenu: true,
-                          title: "Add Product",
+                          title: "Add Job",
                           onPressed: () {},
                         ),
                       ],
