@@ -3,9 +3,9 @@ import 'package:core_dashboard/utils/preferences.dart';
 
 
 class LocalStorage {
-  static String _loggedInUserKey = 'user';
-  static String _darkOptionKey = 'darkOption';
-  static String _languageKey = 'lang_code';
+  static const String _loggedInUserKey = 'user';
+  static const String _darkOptionKey = 'darkOption';
+  static const String _languageKey = 'lang_code';
 
   static Future<bool> setLoggedInUser(bool loggedIn) async {
     return UtilPreferences.setBool(_loggedInUserKey, loggedIn);
@@ -20,16 +20,11 @@ class LocalStorage {
   }
 
   static Future<bool> setDarkOption(DarkOption darkOption) async {
-    print("darkoption set");
-    print(darkOptionToString(darkOption));
     return UtilPreferences.setString(_darkOptionKey, darkOptionToString(darkOption));
   }
 
   static Future<DarkOption> getDarkOption() async {
     final String? darkOptionString = UtilPreferences.getString(_darkOptionKey);
-
-    print("darkoption get");
-    print(darkOptionString);
 
     if (darkOptionString != null) {
       return darkOptionFromString(darkOptionString);
