@@ -1,4 +1,4 @@
-import 'package:core_dashboard/app.dart';
+import 'package:african_windows/app.dart';
 import 'package:flutter/material.dart';
 
 

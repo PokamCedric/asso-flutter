@@ -1,13 +1,13 @@
-import 'package:core_dashboard/app_bloc.dart';
-import 'package:core_dashboard/blocs/job/job_bloc.dart';
-import 'package:core_dashboard/models/model_dropdown_filter.dart';
-import 'package:core_dashboard/models/model_filter.dart';
-import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
-import 'package:core_dashboard/pages/jobs/widgets/data_table/data_table.dart';
-import 'package:core_dashboard/pages/jobs/widgets/data_table/pagination_control.dart';
-import 'package:core_dashboard/pages/jobs/widgets/filter/filter.dart';
-import 'package:core_dashboard/pages/layout.dart';
-import 'package:core_dashboard/responsive.dart';
+import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/blocs/job/job_bloc.dart';
+import 'package:african_windows/models/model_dropdown_filter.dart';
+import 'package:african_windows/models/model_filter.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/colum_config.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/data_table.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/pagination_control.dart';
+import 'package:african_windows/pages/jobs/widgets/filter/filter.dart';
+import 'package:african_windows/pages/layout.dart';
+import 'package:african_windows/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

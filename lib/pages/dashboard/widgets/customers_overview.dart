@@ -1,5 +1,5 @@
-import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/shared/widgets/avatar/customer_avaatar.dart';
+import 'package:african_windows/responsive.dart';
+import 'package:african_windows/shared/widgets/avatar/customer_avaatar.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/constants/ghaps.dart';

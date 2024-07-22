@@ -1,5 +1,5 @@
-import 'package:core_dashboard/models/model_theme.dart'; // Adjust import as per your project structure
-import 'package:core_dashboard/configs/app_theme.dart'; // Adjust import as per your project structure
+import 'package:african_windows/models/model_theme.dart'; // Adjust import as per your project structure
+import 'package:african_windows/configs/app_theme.dart'; // Adjust import as per your project structure
 import 'package:flutter/material.dart';
 
 enum DarkOption { dynamic, alwaysOn, alwaysOff }

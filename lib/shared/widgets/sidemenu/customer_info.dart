@@ -1,6 +1,6 @@
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/shared/constants/ghaps.dart';
-import 'package:core_dashboard/shared/widgets/avatar/customer_rounded_avatar.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/widgets/avatar/customer_rounded_avatar.dart';
 import 'package:flutter/material.dart';
 
 class CustomerInfo extends StatelessWidget {

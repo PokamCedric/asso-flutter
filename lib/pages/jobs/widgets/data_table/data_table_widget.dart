@@ -1,6 +1,6 @@
-import 'package:core_dashboard/pages/jobs/widgets/data_table/colum_config.dart';
-import 'package:core_dashboard/pages/jobs/widgets/data_table/pagination_control.dart';
-import 'package:core_dashboard/shared/constants/ghaps.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/colum_config.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/pagination_control.dart';
+import 'package:african_windows/shared/constants/ghaps.dart';
 import 'package:flutter/material.dart';
 import 'data_table.dart';
 

@@ -1,13 +1,13 @@
 // main.dart
-import 'package:core_dashboard/blocs/application/application_bloc.dart';
+import 'package:african_windows/blocs/application/application_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:core_dashboard/blocs/theme/theme_state.dart';
-import 'package:core_dashboard/pages/errors/not_found.dart';
-import 'package:core_dashboard/app_bloc.dart';
-import 'package:core_dashboard/configs/theme.dart';
-import 'package:core_dashboard/shared/navigation/routes.dart';
-import 'package:core_dashboard/blocs/theme/theme_bloc.dart';
+import 'package:african_windows/blocs/theme/theme_state.dart';
+import 'package:african_windows/pages/errors/not_found.dart';
+import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/shared/navigation/routes.dart';
+import 'package:african_windows/blocs/theme/theme_bloc.dart';
 import 'package:get/get.dart';
 
 class MainApp extends StatefulWidget {

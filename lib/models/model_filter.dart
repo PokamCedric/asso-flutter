@@ -1,6 +1,6 @@
 // filter_model.dart
 
-import 'package:core_dashboard/models/model_job.dart';
+import 'package:african_windows/models/model_job.dart';
 
 class FilterModel extends JobModel {
   String? query;

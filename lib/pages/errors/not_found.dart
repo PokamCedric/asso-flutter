@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import 'package:core_dashboard/shared/constants/config.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/constants/config.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/constants/ghaps.dart';
 
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key});

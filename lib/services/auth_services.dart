@@ -1,6 +1,6 @@
 
-import 'package:core_dashboard/models/model_user.dart';
-import 'package:core_dashboard/utils/local_storage.dart';
+import 'package:african_windows/models/model_user.dart';
+import 'package:african_windows/utils/local_storage.dart';
 
 class AuthService {
   static bool isLoggedIn = false;

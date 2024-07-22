@@ -1,7 +1,7 @@
-import 'package:core_dashboard/pages/card_layout.dart';
-import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/shared/constants/ghaps.dart';
-import 'package:core_dashboard/shared/widgets/section_title.dart';
+import 'package:african_windows/pages/card_layout.dart';
+import 'package:african_windows/responsive.dart';
+import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

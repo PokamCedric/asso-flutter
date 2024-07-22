@@ -1,4 +1,4 @@
-import 'package:core_dashboard/configs/app_theme.dart';
+import 'package:african_windows/configs/app_theme.dart';
 
 class ThemeModel {
   final String? name;

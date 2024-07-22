@@ -1,4 +1,4 @@
-import 'package:core_dashboard/configs/app_text_form_field_theme.dart';
+import 'package:african_windows/configs/app_text_form_field_theme.dart';
 import 'package:flutter/material.dart';
 
 enum ColorSeed {

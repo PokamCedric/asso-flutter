@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:core_dashboard/pages/authentication/register_page.dart';
-import 'package:core_dashboard/pages/authentication/sign_in_page.dart';
-import 'package:core_dashboard/pages/dashboard/dashboard_page.dart';
-import 'package:core_dashboard/pages/jobs/job_page.dart';
-import 'package:core_dashboard/services/auth_services.dart';
+import 'package:african_windows/pages/authentication/register_page.dart';
+import 'package:african_windows/pages/authentication/sign_in_page.dart';
+import 'package:african_windows/pages/dashboard/dashboard_page.dart';
+import 'package:african_windows/pages/jobs/job_page.dart';
+import 'package:african_windows/services/auth_services.dart';
 import 'package:get/get.dart';
 
 class AuthMiddleware extends GetMiddleware {

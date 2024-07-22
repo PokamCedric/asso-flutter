@@ -1,7 +1,7 @@
-import 'package:core_dashboard/pages/dashboard/widgets/overview.dart';
-import 'package:core_dashboard/pages/dashboard/widgets/product_overview.dart';
-import 'package:core_dashboard/pages/layout.dart';
-import 'package:core_dashboard/responsive.dart';
+import 'package:african_windows/pages/dashboard/widgets/overview.dart';
+import 'package:african_windows/pages/dashboard/widgets/product_overview.dart';
+import 'package:african_windows/pages/layout.dart';
+import 'package:african_windows/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../../shared/constants/ghaps.dart';

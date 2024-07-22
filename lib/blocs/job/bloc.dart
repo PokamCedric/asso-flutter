@@ -1,6 +1,6 @@
 // job_listings_bloc.dart
 import 'package:bloc/bloc.dart';
-import 'package:core_dashboard/data/data_job.dart';
+import 'package:african_windows/data/data_job.dart';
 import 'event.dart';
 import 'state.dart';
 

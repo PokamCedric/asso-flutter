@@ -1,7 +1,7 @@
-import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/shared/widgets/sidemenu/sidebar.dart';
-import 'package:core_dashboard/shared/widgets/sidemenu/tab_sidebar.dart';
+import 'package:african_windows/responsive.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/widgets/sidemenu/sidebar.dart';
+import 'package:african_windows/shared/widgets/sidemenu/tab_sidebar.dart';
 import 'package:flutter/material.dart';
 import '../shared/widgets/header.dart';
 

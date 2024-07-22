@@ -1,11 +1,11 @@
-import 'package:core_dashboard/configs/theme.dart';
-import 'package:core_dashboard/shared/constants/config.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/shared/constants/ghaps.dart';
+import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/shared/constants/config.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/constants/ghaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:core_dashboard/app_bloc.dart';
-import 'package:core_dashboard/blocs/theme/theme_event.dart';
+import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/blocs/theme/theme_event.dart';
 
 import 'icon_tile.dart';
 import 'theme_icon_tile.dart';

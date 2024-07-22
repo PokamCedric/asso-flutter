@@ -1,5 +1,5 @@
-import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/utils/images.dart';
+import 'package:african_windows/responsive.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

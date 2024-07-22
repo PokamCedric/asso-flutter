@@ -1,7 +1,7 @@
-import 'package:core_dashboard/models/model_dropdown_filter.dart';
-import 'package:core_dashboard/pages/card_layout.dart';
-import 'package:core_dashboard/pages/jobs/widgets/filter/custom_dropdown.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
+import 'package:african_windows/models/model_dropdown_filter.dart';
+import 'package:african_windows/pages/card_layout.dart';
+import 'package:african_windows/pages/jobs/widgets/filter/custom_dropdown.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:flutter/material.dart';
 
 class Filter extends StatefulWidget {

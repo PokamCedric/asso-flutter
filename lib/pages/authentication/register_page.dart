@@ -1,7 +1,7 @@
-import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/shared/constants/config.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
+import 'package:african_windows/responsive.dart';
+import 'package:african_windows/shared/constants/config.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';

@@ -1,4 +1,4 @@
-import 'package:core_dashboard/pages/card_layout.dart';
+import 'package:african_windows/pages/card_layout.dart';
 import 'package:flutter/material.dart';
 
 class PaginationControl extends StatelessWidget {

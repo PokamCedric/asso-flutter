@@ -1,4 +1,4 @@
-import 'package:core_dashboard/models/model_identifier.dart';
+import 'package:african_windows/models/model_identifier.dart';
 
 
 class UserModel extends IdentifierModel {

@@ -1,4 +1,4 @@
-import 'package:core_dashboard/shared/constants/defaults.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:flutter/cupertino.dart';
 
 class CustomerRoundedAvatar extends StatelessWidget {

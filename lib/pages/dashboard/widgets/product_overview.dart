@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:core_dashboard/pages/card_layout.dart';
-import 'package:core_dashboard/responsive.dart';
+import 'package:african_windows/pages/card_layout.dart';
+import 'package:african_windows/responsive.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 

@@ -1,6 +1,6 @@
 // state.dart
 import 'package:equatable/equatable.dart';
-import 'package:core_dashboard/models/model_job.dart';
+import 'package:african_windows/models/model_job.dart';
 
 enum JobListingsStatus { initial, loading, success, error }
 

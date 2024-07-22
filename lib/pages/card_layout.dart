@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
 
 class CardLayout extends StatelessWidget {
   final Widget child;

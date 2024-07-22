@@ -1,10 +1,10 @@
-import 'package:core_dashboard/utils/local_storage.dart';
+import 'package:african_windows/utils/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
-import 'package:core_dashboard/blocs/theme/theme_event.dart';
-import 'package:core_dashboard/blocs/theme/theme_state.dart';
-import 'package:core_dashboard/configs/app_theme.dart';
-import 'package:core_dashboard/configs/theme.dart';
+import 'package:african_windows/blocs/theme/theme_event.dart';
+import 'package:african_windows/blocs/theme/theme_state.dart';
+import 'package:african_windows/configs/app_theme.dart';
+import 'package:african_windows/configs/theme.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeBloc() : super(InitialThemeState()) {

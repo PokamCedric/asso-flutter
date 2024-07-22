@@ -1,5 +1,5 @@
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/theme/app_colors.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTextFormFieldTheme {

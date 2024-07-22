@@ -1,4 +1,4 @@
-import 'package:core_dashboard/responsive.dart';
+import 'package:african_windows/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/defaults.dart';

@@ -1,4 +1,4 @@
-import 'package:core_dashboard/models/model_user.dart';
+import 'package:african_windows/models/model_user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Application {

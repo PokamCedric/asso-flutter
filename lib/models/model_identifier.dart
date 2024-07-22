@@ -1,5 +1,5 @@
 
-import 'package:core_dashboard/models/model.dart';
+import 'package:african_windows/models/model.dart';
 
 abstract class IdentifierModel<T> extends Model {
   final int id;

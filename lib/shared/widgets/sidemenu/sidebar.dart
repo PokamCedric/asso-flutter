@@ -1,9 +1,9 @@
-import 'package:core_dashboard/pages/dashboard/widgets/theme_tabs.dart';
-import 'package:core_dashboard/responsive.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/shared/constants/ghaps.dart';
-import 'package:core_dashboard/shared/widgets/sidemenu/customer_info.dart';
-import 'package:core_dashboard/utils/images.dart';
+import 'package:african_windows/pages/dashboard/widgets/theme_tabs.dart';
+import 'package:african_windows/responsive.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/widgets/sidemenu/customer_info.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';

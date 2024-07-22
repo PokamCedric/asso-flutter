@@ -1,4 +1,4 @@
-package com.example.core_dashboard
+package com.example.african_windows
 
 import io.flutter.embedding.android.FlutterActivity
 

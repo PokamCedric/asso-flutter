@@ -1,10 +1,10 @@
 // application_bloc.dart
 import 'package:bloc/bloc.dart';
-import 'package:core_dashboard/app_bloc.dart';
-import 'package:core_dashboard/blocs/bloc.dart';
-import 'package:core_dashboard/configs/application.dart';
-import 'package:core_dashboard/configs/theme.dart';
-import 'package:core_dashboard/utils/local_storage.dart';
+import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/blocs/bloc.dart';
+import 'package:african_windows/configs/application.dart';
+import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/utils/local_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'event.dart';
 import 'state.dart';

@@ -1,9 +1,9 @@
-import 'package:core_dashboard/app_bloc.dart';
-import 'package:core_dashboard/blocs/theme/theme_event.dart';
+import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/blocs/theme/theme_event.dart';
 import 'package:flutter/material.dart';
-import 'package:core_dashboard/configs/theme.dart';
-import 'package:core_dashboard/shared/constants/defaults.dart';
-import 'package:core_dashboard/shared/widgets/tabs/tab_with_icon.dart';
+import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/widgets/tabs/tab_with_icon.dart';
 
 class ThemeTabs extends StatefulWidget {
   const ThemeTabs({super.key});
