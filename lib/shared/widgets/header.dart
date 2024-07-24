@@ -1,8 +1,10 @@
+import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/responsive.dart';
+import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../constants/defaults.dart';
 import '../constants/ghaps.dart';
@@ -14,6 +16,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
     return Container(
       padding: const EdgeInsets.symmetric(
           horizontal: AppDefaults.padding, vertical: AppDefaults.padding),
@@ -95,7 +98,7 @@ class Header extends StatelessWidget {
                         ),
                     ),
                   TextButton(
-                    onPressed: () => Get.toNamed('/sign-in'),
+                    onPressed: () => nav.navigateTo(Routes.signin),
                     style: TextButton.styleFrom(
                       foregroundColor:
                           Theme.of(context).textTheme.titleLarge!.color,
@@ -113,7 +116,7 @@ class Header extends StatelessWidget {
                   ),
                   gapW16,
                   ElevatedButton(
-                    onPressed: () => Get.toNamed('/register'),
+                    onPressed: () => nav.navigateTo(Routes.register),
                     child: const Text("Sign Up"),
                   ),
                 ],

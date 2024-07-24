@@ -1,12 +1,14 @@
+import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/services/auth_services.dart';
 import 'package:african_windows/shared/constants/config.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/extensions.dart';
 import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import 'widgets/social_login_button.dart';
 
@@ -23,6 +25,7 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -129,7 +132,7 @@ class _SignInPageState extends State<SignInPage> {
                           });
 
                           if (errors == null) {
-                            Get.offAllNamed('/dashboard'); // Navigate to dashboard on success
+                            nav.navigateTo(Routes.dashboard); // Navigate to dashboard on success
                           } else {
                             // Handle error display
                             showDialog(
@@ -175,7 +178,7 @@ class _SignInPageState extends State<SignInPage> {
                               color: AppColors.titleLight,
                             ),
                           ),
-                          onPressed: () => Get.toNamed('/register'),
+                          onPressed: () => nav.navigateTo(Routes.register),
                           child: const Text('Sign up'),
                         ),
                       ],

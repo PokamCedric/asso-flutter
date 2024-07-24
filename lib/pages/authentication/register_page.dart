@@ -1,10 +1,12 @@
+import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/responsive.dart';
 import 'package:african_windows/shared/constants/config.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
+import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import 'widgets/signup_benefits.dart';
 import 'widgets/signup_form.dart';
@@ -14,6 +16,7 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -83,7 +86,7 @@ class RegisterPage extends StatelessWidget {
                                   color: AppColors.titleLight,
                                 ),
                               ),
-                              onPressed: () => Get.toNamed('/sign-in'),
+                              onPressed: () => nav.navigateTo(Routes.signin),
                               child: const Text('Sign in'),
                             ),
                           ],

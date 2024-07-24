@@ -1,14 +1,14 @@
 // main.dart
 import 'package:african_windows/blocs/application/application_bloc.dart';
+import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:african_windows/blocs/theme/theme_state.dart';
-import 'package:african_windows/pages/errors/not_found.dart';
 import 'package:african_windows/app_bloc.dart';
 import 'package:african_windows/configs/theme.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/blocs/theme/theme_bloc.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -32,6 +32,7 @@ class _AppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(
       providers: AppBloc.providers,
       child: BlocBuilder<ThemeBloc, ThemeState>(
@@ -65,15 +66,21 @@ class _AppState extends State<MainApp> {
   }
 
   Widget _buildMainApp(ThemeState themeState) {
-    return GetMaterialApp(
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      initialRoute: '/',
-      getPages: getPageRoute(),
-      unknownRoute: GetPage(
-        name: '/not-found',
-        page: () => const NotFoundPage(),
+    final route = Routes();
+    final navigationController = NavigationController();
+
+    return MultiProvider(
+      providers: [
+        Provider<NavigationController>.value(value: navigationController),
+      ],
+      child: MaterialApp(
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
+        navigatorKey: navigationController.navigatorKey,
+        initialRoute: Routes.initial,
+        onGenerateRoute: route.generateRoute,
+
       ),
     );
   }

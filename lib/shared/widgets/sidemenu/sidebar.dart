@@ -1,12 +1,14 @@
+import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/pages/dashboard/widgets/theme_tabs.dart';
 import 'package:african_windows/responsive.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/shared/widgets/sidemenu/customer_info.dart';
 import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants/config.dart';
 import 'menu_tile.dart';
@@ -16,6 +18,8 @@ class Sidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
+
     return Drawer(
       // width: Responsive.isMobile(context) ? double.infinity : null,
       // width: MediaQuery.of(context).size.width < 1300 ? 260 : null,
@@ -77,7 +81,7 @@ class Sidebar extends StatelessWidget {
                         MenuTile(
                           isActive: true,
                           title: "Dashboard",
-                          onPressed: () => Get.toNamed('/dashboard'),
+                          onPressed: () => nav.navigateTo(Routes.dashboard),
                         ),
                         MenuTile(
                           isSubmenu: true,
@@ -109,7 +113,7 @@ class Sidebar extends StatelessWidget {
                           isSubmenu: true,
                           title: "Overview",
                           count: 16,
-                          onPressed: () => Get.toNamed('/jobs')
+                          onPressed: () => nav.navigateTo(Routes.jobslist)
                         ),
                         MenuTile(
                           isSubmenu: true,
