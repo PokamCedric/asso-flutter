@@ -46,7 +46,7 @@ class RefundRequest extends StatelessWidget {
                     height: 24,
                     width: 24,
                     colorFilter: ColorFilter.mode(
-                      Theme.of(context).errorColor,
+                      Theme.of(context).colorScheme.error,
                       BlendMode.srcIn,
                     ),
                   ),
