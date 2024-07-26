@@ -1,5 +1,5 @@
 import 'package:african_windows/configs/theme.dart';
-import 'package:african_windows/utils/preferences.dart';
+import 'package:african_windows/utils/local_storage/preferences.dart';
 
 
 class LocalStorage {

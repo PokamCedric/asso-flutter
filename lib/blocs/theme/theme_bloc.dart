@@ -1,4 +1,4 @@
-import 'package:african_windows/utils/local_storage.dart';
+import 'package:african_windows/utils/local_storage/local_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:african_windows/blocs/theme/theme_event.dart';

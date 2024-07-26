@@ -1,12 +1,12 @@
 import 'package:african_windows/models/model_user.dart';
-import 'package:african_windows/utils/local_storage.dart';
+import 'package:african_windows/utils/local_storage/local_storage.dart';
 
 class AuthService {
   static bool isLoggedIn = false;
   static UserModel currentUser = dummyUserModel;
 
   static UserModel get dummyUserModel =>
-      UserModel(-1, "cedric@asso.com", "Cedric", "Pokam", "admin"); // Default role as "user"
+      UserModel(-1, "cedric@asso.com", "Cedric", "Pokam", UserRole.admin);
 
   // Example method for logging in a user and setting their role
   static Future<Map<String, String>?> loginUserModel(Map<String, dynamic> data) async {
@@ -23,7 +23,7 @@ class AuthService {
     return null;
   }
 
-  static bool get isAdmin => currentUser.role == 'admin';
+  static bool get isAdmin => currentUser.role == UserRole.admin;
 
   static void logout() {
     isLoggedIn = false;

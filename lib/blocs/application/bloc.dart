@@ -4,7 +4,8 @@ import 'package:african_windows/app_bloc.dart';
 import 'package:african_windows/blocs/bloc.dart';
 import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/configs/theme.dart';
-import 'package:african_windows/utils/local_storage.dart';
+import 'package:african_windows/utils/local_storage/local_storage.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'event.dart';
 import 'state.dart';
@@ -18,8 +19,9 @@ class ApplicationsBloc extends Bloc<ApplicationsEvent, ApplicationsState> {
     emit(state.copyWith(status: ApplicationsStatus.loading));
     try {
 
-    ///Setup SharedPreferences
     Application.preferences = await SharedPreferences.getInstance();
+
+    Application.secureStorage = const FlutterSecureStorage();
 
 
     AppTheme.darkThemeOption = await LocalStorage.getDarkOption();
