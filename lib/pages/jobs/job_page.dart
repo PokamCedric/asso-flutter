@@ -14,130 +14,125 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../blocs/data_table/data_table_bloc.dart';
 import '../../shared/constants/ghaps.dart';
 
-
 class JobListingPage extends StatelessWidget {
   const JobListingPage({super.key});
 
- @override
+  @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: BlocBuilder<JobListingsBloc, JobListingsState>(
+    return Layout(child: BlocBuilder<JobListingsBloc, JobListingsState>(
         builder: (jobContext, state) {
-          // if (state is Loading) {
-          //   return const Center(child: CircularProgressIndicator());
-          // }
+      // if (state is Loading) {
+      //   return const Center(child: CircularProgressIndicator());
+      // }
 
-          return BlocBuilder<DataTableBloc, DataTableState>(
-            builder: (ataTableContext, dataTableState) {
-
-              return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (!Responsive.isMobile(context)) gapH24,
-          Text(
-            "Job Listing",
-            style: Theme.of(context)
-                .textTheme
-                .headlineLarge!
-                .copyWith(fontWeight: FontWeight.w600),
-          ),
-          gapH20,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 5,
-                child: Column(
-                  children: [
-                    paginationControl(state, dataTableState),
+      return BlocBuilder<DataTableBloc, DataTableState>(
+          builder: (ataTableContext, dataTableState) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (!Responsive.isMobile(context)) gapH24,
+            Text(
+              "Job Listing",
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge!
+                  .copyWith(fontWeight: FontWeight.w600),
+            ),
+            gapH20,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 5,
+                  child: Column(
+                    children: [
+                      paginationControl(state, dataTableState),
                       gapH16,
                       Datatable(
-                        data: state.filteredJobs.map((job) => job.toJson()).toList(),
+                        data: state.filteredJobs
+                            .map((job) => job.toJson())
+                            .toList(),
                         rowsPerPage: dataTableState.rowsPerPage,
                         currentPage: dataTableState.currentPage,
                         columns: getTableColumns(),
                       ),
                       gapH16,
-                    paginationControl(state, dataTableState),
-                    gapH16,
-                    if (Responsive.isMobile(context))
-                      _filterLayout(state, filtersPerLine: 2),
-                  ],
+                      paginationControl(state, dataTableState),
+                      gapH16,
+                      if (Responsive.isMobile(context))
+                        _filterLayout(state, filtersPerLine: 2),
+                    ],
+                  ),
                 ),
-              ),
-              if (!Responsive.isMobile(context)) gapW16,
-              if (!Responsive.isMobile(context))
-                Expanded(
-                  flex: 2,
-                  child: _filterLayout(state),
-                ),
-            ],
-          )
-        ],
-      );
-            });
-        }
-    )
-    );
+                if (!Responsive.isMobile(context)) gapW16,
+                if (!Responsive.isMobile(context))
+                  Expanded(
+                    flex: 2,
+                    child: _filterLayout(state),
+                  ),
+              ],
+            )
+          ],
+        );
+      });
+    }));
   }
 
-
-  Widget paginationControl(JobListingsState state,
-    DataTableState dataTableState) {
+  Widget paginationControl(
+      JobListingsState state, DataTableState dataTableState) {
     final totalPages = (state.totalHits / dataTableState.rowsPerPage).ceil();
 
     return PaginationControl(
-        totalPages: totalPages,
-        totalHits: state.totalHits,
-        rowsPerPage: dataTableState.rowsPerPage,
-        availableRowsPerPage: const [5, 10, 25, 50],
-        onRowsPerPageChanged: (newRowsPerPage) => AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
-        currentPage: dataTableState.currentPage,
-        onPageChanged: (newPage) => AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
+      totalPages: totalPages,
+      totalHits: state.totalHits,
+      rowsPerPage: dataTableState.rowsPerPage,
+      availableRowsPerPage: const [5, 10, 25, 50],
+      onRowsPerPageChanged: (newRowsPerPage) =>
+          AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
+      currentPage: dataTableState.currentPage,
+      onPageChanged: (newPage) =>
+          AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
     );
   }
-
 }
 
-
 Widget _filterLayout(
-  JobListingsState state,
-    { int filtersPerLine = 1,}) {
-
-    return Filter(
-      totalItems: state.filteredJobs.length,
-      filtersPerLine: filtersPerLine,
-      filters: getDropdownFilterModels(),
-      onFilterChanged: (filters) => AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(filters))),
-    );
+  JobListingsState state, {
+  int filtersPerLine = 1,
+}) {
+  return Filter(
+    totalItems: state.filteredJobs.length,
+    filtersPerLine: filtersPerLine,
+    filters: getDropdownFilterModels(),
+    onFilterChanged: (filters) => AppBloc.jobListingsBloc
+        .add(FilterJobsEvent(FilterModel.fromJson(filters))),
+  );
 }
 
 List<ColumnConfig> getTableColumns() {
-    return [
-      ColumnConfig(
-        label: 'Job Title',
-        propertyName: 'title',
-        isVisible: true,
-        width: 300.0,
-      ),
-      ColumnConfig(
-        label: 'Type of Function',
-        propertyName: 'type',
-        isVisible: true,
-        width: 150.0,
-      ),
-      ColumnConfig(
-        label: 'Country',
-        propertyName: 'country',
-        isVisible: true,
-      ),
-      ColumnConfig(
-        label: 'Field',
-        propertyName: 'field',
-        isVisible: true,
-        width: 200.0,
-      ),
-    ];
+  return [
+    ColumnConfig(
+      label: 'Job Title',
+      propertyName: 'title',
+      isVisible: true,
+      width: 300.0,
+    ),
+    ColumnConfig(
+      label: 'Type of Function',
+      propertyName: 'type',
+      isVisible: true,
+      width: 150.0,
+    ),
+    ColumnConfig(
+      label: 'Country',
+      propertyName: 'country',
+      isVisible: true,
+    ),
+    ColumnConfig(
+      label: 'Field',
+      propertyName: 'field',
+      isVisible: true,
+      width: 200.0,
+    ),
+  ];
 }
-
-

@@ -1,8 +1,8 @@
 import 'package:african_windows/app_bloc.dart';
-import 'package:african_windows/blocs/job/job_bloc.dart';
+import 'package:african_windows/blocs/happi/happi_bloc.dart'; // Importez le bloc Happi
 import 'package:african_windows/models/model_dropdown_filter.dart';
 import 'package:african_windows/models/model_filter.dart';
-import 'package:african_windows/pages/happi/widgets/data_table/colum_config.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/colum_config.dart';
 import 'package:african_windows/pages/happi/widgets/data_table/data_table.dart';
 import 'package:african_windows/pages/happi/widgets/data_table/pagination_control.dart';
 import 'package:african_windows/pages/happi/widgets/filter/filter.dart';
@@ -20,8 +20,8 @@ class HappiDashboardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout(
-      child: BlocBuilder<JobListingsBloc, JobListingsState>(
-        builder: (jobContext, state) {
+      child: BlocBuilder<HappiListingsBloc, HappiListingsState>(
+        builder: (happiContext, state) {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
               return Column(
@@ -44,8 +44,8 @@ class HappiDashboardPage extends StatelessWidget {
                             paginationControl(state, dataTableState),
                             gapH16,
                             Datatable(
-                              data: state.filteredJobs
-                                  .map((job) => job.toJson())
+                              data: state.filteredHappi
+                                  .map((happi) => happi.toJson())
                                   .toList(),
                               rowsPerPage: dataTableState.rowsPerPage,
                               currentPage: dataTableState.currentPage,
@@ -77,7 +77,7 @@ class HappiDashboardPage extends StatelessWidget {
   }
 
   Widget paginationControl(
-      JobListingsState state, DataTableState dataTableState) {
+      HappiListingsState state, DataTableState dataTableState) {
     final totalPages = (state.totalHits / dataTableState.rowsPerPage).ceil();
 
     return PaginationControl(
@@ -95,15 +95,15 @@ class HappiDashboardPage extends StatelessWidget {
 }
 
 Widget _filterLayout(
-  JobListingsState state, {
+  HappiListingsState state, {
   int filtersPerLine = 1,
 }) {
   return Filter(
-    totalItems: state.filteredJobs.length,
+    totalItems: state.filteredHappi.length,
     filtersPerLine: filtersPerLine,
     filters: getDropdownFilterModels(),
-    onFilterChanged: (filters) => AppBloc.jobListingsBloc
-        .add(FilterJobsEvent(FilterModel.fromJson(filters))),
+    onFilterChanged: (filters) => AppBloc.happiListingsBloc
+        .add(FilterHappiEvent(FilterModel.fromJson(filters))),
   );
 }
 

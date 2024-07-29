@@ -8,7 +8,7 @@ abstract class JobListingsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoadJobsEvent extends JobListingsEvent {}
+class loadJobsEvent extends JobListingsEvent {}
 
 class FilterJobsEvent extends JobListingsEvent {
   final FilterModel filter;

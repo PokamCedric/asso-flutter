@@ -40,5 +40,6 @@ class JobListingsState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [status, allJobs, filteredJobs, totalHits, currentPage, errorMessage];
+  List<Object?> get props =>
+      [status, allJobs, filteredJobs, totalHits, currentPage, errorMessage];
 }

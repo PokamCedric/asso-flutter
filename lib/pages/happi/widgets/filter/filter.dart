@@ -1,6 +1,6 @@
 import 'package:african_windows/models/model_dropdown_filter.dart';
 import 'package:african_windows/pages/card_layout.dart';
-import 'package:african_windows/pages/happi/widgets/filter/custom_dropdown.dart';
+import 'package:african_windows/pages/jobs/widgets/filter/custom_dropdown.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:flutter/material.dart';
 
@@ -38,11 +38,10 @@ class _FilterWidgetState extends State<Filter> {
     }
   }
 
-  BoxDecoration filterBoxDecoration({Color color = Colors.grey}) =>
-      BoxDecoration(
-        border: Border.all(color: color),
-        borderRadius: BorderRadius.zero,
-      );
+  BoxDecoration filterBoxDecoration({Color color = Colors.grey}) => BoxDecoration(
+    border: Border.all(color: color),
+    borderRadius: BorderRadius.zero,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -66,9 +65,7 @@ class _FilterWidgetState extends State<Filter> {
                     'SEARCH AGAIN',
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  Icon(_isExpanded
-                      ? Icons.keyboard_arrow_up
-                      : Icons.keyboard_arrow_down),
+                  Icon(_isExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down),
                 ],
               ),
             ),
@@ -78,9 +75,8 @@ class _FilterWidgetState extends State<Filter> {
             padding: EdgeInsets.all(_containerPadding),
             child: AnimatedCrossFade(
               duration: const Duration(milliseconds: 300),
-              crossFadeState: _isExpanded
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
+              crossFadeState:
+                  _isExpanded ? CrossFadeState.showFirst : CrossFadeState.showSecond,
               firstChild: buildFilters(context),
               secondChild: Container(), // Empty container when collapsed
             ),
@@ -97,24 +93,25 @@ class _FilterWidgetState extends State<Filter> {
     for (int i = 0; i < widget.filters.length; i++) {
       var filter = widget.filters[i];
 
-      rowChildren.add(Expanded(
-        child: CustomDropdown(
-          label: filter.propertyName,
-          items: filter.items,
-          value: _selectedFilters[filter.propertyName]!,
-          filterBoxDecoration: filterBoxDecoration(),
-          onChanged: (value) {
-            setState(() {
-              _selectedFilters[filter.propertyName] = value!;
-            });
-            widget.onFilterChanged(_selectedFilters);
-          },
-        ),
-      ));
+      rowChildren.add(
+        Expanded(
+          child: CustomDropdown(
+            label: filter.propertyName,
+            items: filter.items,
+            value: _selectedFilters[filter.propertyName]!,
+            filterBoxDecoration: filterBoxDecoration(),
+            onChanged: (value) {
+              setState(() {
+                _selectedFilters[filter.propertyName] = value!;
+              });
+              widget.onFilterChanged(_selectedFilters);
+            },
+          ),
+        )
+      );
 
       // Add row of filters to column if row is full or it's the last item
-      if (rowChildren.length == widget.filtersPerLine ||
-          i == widget.filters.length - 1) {
+      if (rowChildren.length == widget.filtersPerLine || i == widget.filters.length - 1) {
         filterWidgets.add(
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5.0),
@@ -132,15 +129,15 @@ class _FilterWidgetState extends State<Filter> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         TextFormField(
-          // style: Theme.of(context).textTheme.labelLarge,
-          decoration: InputDecoration(
-            hintText: "Search...",
-            filled: true,
-            fillColor: Theme.of(context).scaffoldBackgroundColor,
-            border: AppDefaults.outlineInputBorder,
-            focusedBorder: AppDefaults.focusedOutlineInputBorder,
-          ),
-        ),
+                  // style: Theme.of(context).textTheme.labelLarge,
+                  decoration: InputDecoration(
+                    hintText: "Search...",
+                    filled: true,
+                    fillColor: Theme.of(context).scaffoldBackgroundColor,
+                    border: AppDefaults.outlineInputBorder,
+                    focusedBorder: AppDefaults.focusedOutlineInputBorder,
+                  ),
+                ),
         const SizedBox(height: 20.0),
         ...filterWidgets,
         const SizedBox(height: 10),
@@ -148,8 +145,7 @@ class _FilterWidgetState extends State<Filter> {
           width: double.infinity,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor:
-                  Theme.of(context).primaryColor, // Background color
+              backgroundColor: Theme.of(context).primaryColor, // Background color
               foregroundColor: Theme.of(context).indicatorColor, // Text color
             ),
             onPressed: () {

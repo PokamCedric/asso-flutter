@@ -1,5 +1,5 @@
 import 'package:african_windows/pages/card_layout.dart';
-import 'package:african_windows/pages/happi/widgets/data_table/colum_config.dart';
+import 'package:african_windows/pages/jobs/widgets/data_table/colum_config.dart';
 import 'package:flutter/material.dart';
 
 class Datatable extends StatelessWidget {
@@ -33,26 +33,26 @@ class Datatable extends StatelessWidget {
 
     return CardLayout(
       child: DataTable(
-        columns: visibleColumns,
-        rows: displayedJobs
-            .map(
-              (job) => DataRow(
-                cells: columns
-                    .where((column) => column.isVisible)
-                    .map(
-                      (column) => DataCell(
-                        Text(
-                          job[column.propertyName] ?? "",
-                          softWrap: true, // Enable text wrapping
-                          overflow: TextOverflow.clip, // Clip overflowing text
+          columns: visibleColumns,
+          rows: displayedJobs
+              .map(
+                (job) => DataRow(
+                  cells: columns
+                      .where((column) => column.isVisible)
+                      .map(
+                        (column) => DataCell(
+                          Text(
+                            job[column.propertyName] ?? "",
+                            softWrap: true, // Enable text wrapping
+                            overflow: TextOverflow.clip, // Clip overflowing text
+                          ),
                         ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            )
-            .toList(),
-      ),
+                      )
+                      .toList(),
+                ),
+              )
+              .toList(),
+        ),
     );
   }
 }

@@ -1,5 +1,3 @@
-
-
 // Model class to represent a column configuration
 import 'package:flutter/material.dart';
 
@@ -26,4 +24,3 @@ Widget columnTitle(String title, Color color) {
     style: TextStyle(color: color, fontWeight: FontWeight.bold),
   );
 }
-
