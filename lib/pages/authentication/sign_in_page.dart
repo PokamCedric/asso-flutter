@@ -20,8 +20,10 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
-  final TextEditingController _emailController = TextEditingController(text: 'cedric@asso.com');
-  final TextEditingController _passwordController = TextEditingController(text: '1234567');
+  final TextEditingController _emailController =
+      TextEditingController(text: 'cedric@asso.com');
+  final TextEditingController _passwordController =
+      TextEditingController(text: '1234567');
 
   @override
   Widget build(BuildContext context) {
@@ -129,10 +131,10 @@ class _SignInPageState extends State<SignInPage> {
                           final errors = await AuthService.loginUserModel({
                             'email': email,
                             'password': password,
-                          });
+                          }, context); // Pass BuildContext
 
                           if (errors == null) {
-                            nav.navigateTo(Routes.dashboard); // Navigate to dashboard on success
+                            // Redirection déjà gérée dans loginUserModel
                           } else {
                             // Handle error display
                             showDialog(
@@ -142,7 +144,8 @@ class _SignInPageState extends State<SignInPage> {
                                 content: Text(errors.values.join(', ')),
                                 actions: [
                                   TextButton(
-                                    onPressed: () => Navigator.of(context).pop(),
+                                    onPressed: () =>
+                                        Navigator.of(context).pop(),
                                     child: const Text('OK'),
                                   ),
                                 ],
