@@ -1,80 +1,80 @@
 [
   {
-    "title": "Senior Advisor for Climate Change Adaptation",
-    "type": "Integrated Expert",
-    "country": "Tanzania",
-    "field": "Environmental protection and sustainable use of natural resources"
+    "title": "Conseiller Sénior pour l'Adaptation au Changement Climatique",
+    "type": "Expert Intégré",
+    "country": "Tanzanie",
+    "field": "Protection de l'environnement et utilisation durable des ressources naturelles"
   },
   {
-    "title": "Lead Scientist in Agricultural Innovations",
-    "type": "Integrated Expert",
-    "country": "Nigeria",
-    "field": "Food security, agriculture"
+    "title": "Scientifique Principal en Innovations Agricoles",
+    "type": "Expert Intégré",
+    "country": "Nigéria",
+    "field": "Sécurité alimentaire, agriculture"
   },
   {
-    "title": "Specialist - Renewable Energy Development",
-    "type": "Integrated Expert",
+    "title": "Spécialiste en Développement des Énergies Renouvelables",
+    "type": "Expert Intégré",
     "country": "Ghana",
-    "field": "Infrastructure, ICT"
+    "field": "Infrastructure, TIC"
   },
   {
-    "title": "Project Manager for Water Resource Management",
-    "type": "Integrated Expert",
-    "country": "Uganda",
-    "field": "Environmental protection and sustainable use of natural resources"
+    "title": "Chef de Projet pour la Gestion des Ressources en Eau",
+    "type": "Expert Intégré",
+    "country": "Ouganda",
+    "field": "Protection de l'environnement et utilisation durable des ressources naturelles"
   },
   {
-    "title": "Consultant - Urban Development and Planning",
-    "type": "Integrated Expert",
-    "country": "Ethiopia",
-    "field": "Infrastructure, ICT"
+    "title": "Consultant en Développement Urbain et Planification",
+    "type": "Expert Intégré",
+    "country": "Éthiopie",
+    "field": "Infrastructure, TIC"
   },
   {
-    "title": "Senior Researcher on Conflict Resolution",
-    "type": "Integrated Expert",
+    "title": "Chercheur Sénior en Résolution de Conflits",
+    "type": "Expert Intégré",
     "country": "Rwanda",
-    "field": "Peace-building and crisis prevention"
+    "field": "Construction de la paix et prévention des crises"
   },
   {
-    "title": "Expert in Public Health and Sanitation",
-    "type": "Integrated Expert",
-    "country": "Cameroon",
-    "field": "Health"
+    "title": "Expert en Santé Publique et Assainissement",
+    "type": "Expert Intégré",
+    "country": "Cameroun",
+    "field": "Santé"
   },
   {
-    "title": "Advisor on Digital Education Strategies",
-    "type": "Integrated Expert",
-    "country": "South Africa",
-    "field": "Education"
+    "title": "Conseiller en Stratégies d'Éducation Numérique",
+    "type": "Expert Intégré",
+    "country": "Afrique du Sud",
+    "field": "Éducation"
   },
   {
-    "title": "Consultant - Coastal Ecosystem Management",
-    "type": "Integrated Expert",
+    "title": "Consultant en Gestion des Écosystèmes Côtiers",
+    "type": "Expert Intégré",
     "country": "Mozambique",
-    "field": "Environmental protection and sustainable use of natural resources"
+    "field": "Protection de l'environnement et utilisation durable des ressources naturelles"
   },
   {
-    "title": "Expert in Renewable Energy Policy",
-    "type": "Integrated Expert",
-    "country": "Namibia",
-    "field": "Infrastructure, ICT"
+    "title": "Expert en Politique des Énergies Renouvelables",
+    "type": "Expert Intégré",
+    "country": "Namibie",
+    "field": "Infrastructure, TIC"
   },
   {
-    "title": "Senior Specialist in Agroforestry Systems",
-    "type": "Integrated Expert",
+    "title": "Spécialiste Sénior en Systèmes Agroforestiers",
+    "type": "Expert Intégré",
     "country": "Zimbabwe",
-    "field": "Food security, agriculture"
+    "field": "Sécurité alimentaire, agriculture"
   },
   {
-    "title": "Lead Advisor for Youth Employment Programs",
-    "type": "Integrated Expert",
+    "title": "Conseiller Principal pour les Programmes d'Emploi des Jeunes",
+    "type": "Expert Intégré",
     "country": "Botswana",
-    "field": "Democracy, civil society and public administration"
+    "field": "Démocratie, société civile et administration publique"
   },
   {
-    "title": "Consultant in Sustainable Tourism Development",
-    "type": "Integrated Expert",
-    "country": "Tanzania",
-    "field": "Democracy, civil society and public administration"
+    "title": "Consultant en Développement du Tourisme Durable",
+    "type": "Expert Intégré",
+    "country": "Tanzanie",
+    "field": "Démocratie, société civile et administration publique"
   }
 ]

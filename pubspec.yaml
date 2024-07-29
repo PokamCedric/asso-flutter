@@ -33,6 +33,7 @@ flutter:
     - assets/images/illustration/
     - assets/logo/
     - assets/apps/jobs/jobs.json
+    - assets/apps/happi/happi.json
 
   fonts:
     - family: Raleway
