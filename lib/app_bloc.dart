@@ -1,8 +1,8 @@
-import 'package:african_windows/blocs/application/bloc.dart';
-import 'package:african_windows/blocs/data_table/bloc.dart';
+import 'package:african_windows/core/blocs/application/bloc.dart';
+import 'package:african_windows/core/blocs/data_table/bloc.dart';
 import 'package:african_windows/apps/job/bloc/bloc.dart';
 import 'package:african_windows/apps/job/bloc/event.dart';
-import 'package:african_windows/blocs/theme/bloc.dart';
+import 'package:african_windows/core/blocs/theme/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 

@@ -1,5 +1,5 @@
-import 'package:african_windows/models/model_user.dart';
-import 'package:african_windows/utils/local_storage/local_storage.dart';
+import 'package:african_windows/core/models/model_user.dart';
+import 'package:african_windows/core/utils/local_storage/local_storage.dart';
 
 class AuthService {
   static bool isLoggedIn = false;
