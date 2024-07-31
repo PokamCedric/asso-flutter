@@ -8,7 +8,6 @@ class AppConfig {
   static SharedPreferences? preferences;
   static FlutterSecureStorage? secureStorage;
   static UserModel? user;
-  static const String logo = "assets/logo/Logo.svg";
 
   ///Singleton factory
   static final AppConfig _instance = AppConfig._internal();

@@ -2,6 +2,7 @@ import 'package:african_windows/pages/card_layout.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/shared/widgets/section_title.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -42,7 +43,7 @@ class RefundRequest extends StatelessWidget {
                   radius: 24,
                   backgroundColor: Theme.of(context).splashColor,
                   child: SvgPicture.asset(
-                    'assets/icons/basket_light.svg',
+                    Images.basketLight,
                     height: 24,
                     width: 24,
                     colorFilter: ColorFilter.mode(

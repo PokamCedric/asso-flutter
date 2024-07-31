@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:african_windows/configs/application.dart';
+import 'package:african_windows/configs/app_config.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UtilPreferences {

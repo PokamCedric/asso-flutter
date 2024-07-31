@@ -1,6 +1,7 @@
 import 'package:african_windows/shared/constants/extensions.dart';
 import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -56,13 +57,13 @@ class SignupForm extends StatelessWidget {
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   prefixIcon: SvgPicture.asset(
-                    'assets/icons/mail_light.svg',
+                    Images.iconMailLight,
                     height: 16,
                     width: 20,
                     fit: BoxFit.none,
                   ),
                   suffixIcon: SvgPicture.asset(
-                    'assets/icons/check_filled.svg',
+                    Images.iconCheckFilled,
                     width: 17,
                     height: 11,
                     fit: BoxFit.none,

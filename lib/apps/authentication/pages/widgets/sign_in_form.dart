@@ -1,6 +1,6 @@
-import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/gaps.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -21,7 +21,7 @@ class SignInForm extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               vertical: AppDefaults.padding * 1.5,
             ),
-            child: SvgPicture.asset(AppConfig.logo),
+            child: SvgPicture.asset(Images.logo),
           ),
           Text(
             'Sign In',

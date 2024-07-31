@@ -1,6 +1,7 @@
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/extensions.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,7 +10,7 @@ class BenefitText extends StatelessWidget {
     super.key,
     this.isTitle = false,
     required this.title,
-    this.icon = 'assets/icons/check_circled_light.svg',
+    this.icon = Images.iconCheckCircledLight,
   });
 
   final bool isTitle;

@@ -1,9 +1,10 @@
 import 'package:african_windows/app_bloc.dart';
 import 'package:african_windows/blocs/theme/theme_event.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:african_windows/configs/theme/theme.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
-import 'package:african_windows/shared/widgets/tabs/tab_with_icon.dart';
+import 'package:african_windows/shared/widgets/sidemenu/tab_with_icon.dart';
 
 class ThemeTabs extends StatefulWidget {
   const ThemeTabs({super.key});
@@ -83,11 +84,11 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
         tabs: [
           TabWithIcon(
             isSelected: _selectedIndex == 0,
-            iconSrc: 'assets/icons/sun_filled.svg',
+            iconSrc: Images.sunFilled,
           ),
           TabWithIcon(
             isSelected: _selectedIndex == 1,
-            iconSrc: 'assets/icons/moon_light.svg',
+            iconSrc: Images.moonLight,
           ),
         ],
       ),

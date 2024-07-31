@@ -4,6 +4,7 @@ import 'package:african_windows/responsive.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/shared/widgets/section_title.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 
 List<TipsItem> proTipsDummyData(BuildContext context)
@@ -11,33 +12,33 @@ List<TipsItem> proTipsDummyData(BuildContext context)
   const TipsItem(
     title: 'Early access',
     time: '3 mins read',
-    iconSrc: 'assets/icons/schedule_light.svg',
+    iconSrc: Images.scheduleLight,
   ),
   TipsItem(
     title: 'Asset use guidelines',
     time: 'Time',
-    iconSrc: 'assets/icons/arrow_forward_light.svg',
+    iconSrc: Images.arrowForwardLight,
     backgroundColor: Theme.of(context).splashColor,
   ),
   const TipsItem(
     title: 'Exclusive downloads',
     time: '2 mins read',
-    iconSrc: 'assets/icons/design_light.svg',
+    iconSrc: Images.designLight,
   ),
   const TipsItem(
     title: 'Behind the scenes',
     time: '3 mins read',
-    iconSrc: 'assets/icons/video_recorder_light.svg',
+    iconSrc: Images.videoRecorderLight,
   ),
   const TipsItem(
     title: 'Asset use guidelines',
     time: '1 mins read',
-    iconSrc: 'assets/icons/phone_call_incoming_light.svg',
+    iconSrc: Images.phoneCallIncomingLight,
   ),
   const TipsItem(
     title: 'Life & work updates',
     time: '3 mins read',
-    iconSrc: 'assets/icons/multiselect_light.svg',
+    iconSrc: Images.multiselectLight,
   ),
 ];
 

@@ -1,10 +1,11 @@
 import 'package:african_windows/responsive.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../configs/theme/app_colors.dart';
-import '../../constants/defaults.dart';
-import '../../constants/gaps.dart';
+import '../../../shared/constants/defaults.dart';
+import '../../../shared/constants/gaps.dart';
 
 class TabWithGrowth extends StatelessWidget {
   const TabWithGrowth({
@@ -12,7 +13,7 @@ class TabWithGrowth extends StatelessWidget {
     required this.title,
     required this.amount,
     required this.growthPercentage,
-    this.iconSrc = "assets/icons/shopping_bag_light.svg",
+    this.iconSrc = Images.shoppingBagLight,
     this.isPositiveGrowth = true,
     required this.iconBgColor,
   });

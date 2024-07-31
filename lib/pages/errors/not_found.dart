@@ -1,6 +1,6 @@
-import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -32,7 +32,7 @@ class NotFoundPage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(
                         vertical: AppDefaults.padding * 1.5,
                       ),
-                      child: SvgPicture.asset(AppConfig.logo),
+                      child: SvgPicture.asset(Images.logo),
                     ),
                     Text(
                       'Page Not Found',

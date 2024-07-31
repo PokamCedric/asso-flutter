@@ -1,4 +1,5 @@
 import 'package:african_windows/shared/constants/gaps.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,7 +21,7 @@ class SocialLoginButton extends StatelessWidget {
           onPressed: onGoogleLoginPressed,
           child: Row(
             children: [
-              SvgPicture.asset('assets/icons/google_filled.svg'),
+              SvgPicture.asset(Images.iconGoogleFilled),
               gapW8,
               const Text('Google')
             ],
@@ -31,7 +32,7 @@ class SocialLoginButton extends StatelessWidget {
           onPressed: onAppleLoginPressed,
           child: Row(
             children: [
-              SvgPicture.asset('assets/icons/apple_ic.svg'),
+              SvgPicture.asset(Images.iconAppleIc),
               gapW8,
               const Text('Apple ID')
             ],

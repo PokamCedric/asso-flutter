@@ -1,6 +1,7 @@
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -166,7 +167,7 @@ class _CommentItemState extends State<CommentItem> {
                           iconSize: 15,
                           padding: EdgeInsets.zero,
                           icon: SvgPicture.asset(
-                            'assets/icons/message_light.svg',
+                            Images.messageLight,
                             height: 20,
                             width: 20,
                             colorFilter: const ColorFilter.mode(
@@ -180,7 +181,7 @@ class _CommentItemState extends State<CommentItem> {
                           iconSize: 15,
                           padding: EdgeInsets.zero,
                           icon: SvgPicture.asset(
-                            'assets/icons/heart_light.svg',
+                            Images.heartLight,
                             height: 20,
                             width: 20,
                             colorFilter: const ColorFilter.mode(
@@ -194,7 +195,7 @@ class _CommentItemState extends State<CommentItem> {
                           iconSize: 15,
                           padding: EdgeInsets.zero,
                           icon: SvgPicture.asset(
-                            'assets/icons/link_light.svg',
+                            Images.linkLight,
                             height: 20,
                             width: 20,
                             colorFilter: const ColorFilter.mode(

@@ -1,8 +1,9 @@
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/constants/defaults.dart';
 import '../../../shared/constants/gaps.dart';
-import '../../../shared/widgets/tabs/tab_with_growth.dart';
+import 'tab_with_growth.dart';
 import 'customers_overview.dart';
 import 'revenue_line_chart.dart';
 
@@ -62,7 +63,7 @@ class _OverviewTabsState extends State<OverviewTabs>
               ),
               TabWithGrowth(
                 title: "Revenue",
-                iconSrc: "assets/icons/activity_light.svg",
+                iconSrc: Images.activityLight,
                 iconBgColor: Theme.of(context).cardColor,
                 amount: "\$128K",
                 growthPercentage: "2.7%",

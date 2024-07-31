@@ -1,4 +1,3 @@
-import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/pages/dashboard/widgets/theme_tabs.dart';
 import 'package:african_windows/responsive.dart';
@@ -39,7 +38,7 @@ class Sidebar extends StatelessWidget {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: SvgPicture.asset('assets/icons/close_filled.svg'),
+                      icon: SvgPicture.asset(Images.closeFilled),
                     ),
                   ),
                 Padding(
@@ -47,7 +46,7 @@ class Sidebar extends StatelessWidget {
                     horizontal: AppDefaults.padding,
                     vertical: AppDefaults.padding * 1.5,
                   ),
-                  child: SvgPicture.asset(AppConfig.logo),
+                  child: SvgPicture.asset(Images.logo),
                 ),
               ],
             ),
@@ -63,13 +62,13 @@ class Sidebar extends StatelessWidget {
                     MenuTile(
                       isActive: true,
                       title: "Home",
-                      activeIconSrc: "assets/icons/home_filled.svg",
-                      inactiveIconSrc: "assets/icons/home_light.svg",
+                      activeIconSrc: Images.homeFilled,
+                      inactiveIconSrc: Images.homeLight,
                       onPressed: () {},
                     ),
                     ExpansionTile(
                       leading:
-                          SvgPicture.asset("assets/icons/diamond_light.svg"),
+                          SvgPicture.asset(Images.diamondLight),
                       title: Text(
                         "Products",
                         style: TextStyle(
@@ -99,8 +98,7 @@ class Sidebar extends StatelessWidget {
 
                     // Customers
                     ExpansionTile(
-                      leading: SvgPicture.asset(
-                          "assets/icons/profile_circled_light.svg"),
+                      leading: SvgPicture.asset(Images.profileCircledLight),
                       title: Text(
                         "Jobs",
                         style: TextStyle(
@@ -124,8 +122,8 @@ class Sidebar extends StatelessWidget {
                     ),
                     MenuTile(
                       title: "Shop",
-                      activeIconSrc: "assets/icons/store_light.svg",
-                      inactiveIconSrc: "assets/icons/store_filled.svg",
+                      activeIconSrc: Images.storeLight,
+                      inactiveIconSrc: Images.storeFilled,
                       onPressed: () {},
                     ),
                   ],
@@ -148,7 +146,7 @@ class Sidebar extends StatelessWidget {
                   Row(
                     children: [
                       SvgPicture.asset(
-                        'assets/icons/help_light.svg',
+                        Images.helpLight,
                         height: 24,
                         width: 24,
                         colorFilter: ColorFilter.mode(

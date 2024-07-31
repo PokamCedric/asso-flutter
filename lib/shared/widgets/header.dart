@@ -33,7 +33,7 @@ class Header extends StatelessWidget {
                 icon: Badge(
                   isLabelVisible: false,
                   child: SvgPicture.asset(
-                    "assets/icons/menu_light.svg",
+                    Images.menuLight,
                   ),
                 ),
               ),
@@ -42,7 +42,7 @@ class Header extends StatelessWidget {
                 onPressed: () {},
                 icon: Badge(
                   isLabelVisible: false,
-                  child: SvgPicture.asset("assets/icons/search_filled.svg"),
+                  child: SvgPicture.asset(Images.searchFilled),
                 ),
               ),
             if (!Responsive.isMobile(context))
@@ -56,7 +56,7 @@ class Header extends StatelessWidget {
                       padding: const EdgeInsets.only(
                           left: AppDefaults.padding,
                           right: AppDefaults.padding / 2),
-                      child: SvgPicture.asset("assets/icons/search_light.svg"),
+                      child: SvgPicture.asset(Images.searchLight),
                     ),
                     filled: true,
                     fillColor: Theme.of(context).scaffoldBackgroundColor,
@@ -76,7 +76,7 @@ class Header extends StatelessWidget {
                       icon: Badge(
                         isLabelVisible: true,
                         child:
-                            SvgPicture.asset("assets/icons/message_light.svg"),
+                            SvgPicture.asset(Images.messageLight),
                       ),
                     ),
                   if (!Responsive.isMobile(context)) gapW16,
@@ -86,7 +86,7 @@ class Header extends StatelessWidget {
                       icon: Badge(
                         isLabelVisible: true,
                         child: SvgPicture.asset(
-                            "assets/icons/notification_light.svg"),
+                            Images.notificationLight),
                       ),
                     ),
                   if (!Responsive.isMobile(context)) gapW16,

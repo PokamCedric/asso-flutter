@@ -2,7 +2,7 @@
 import 'package:african_windows/blocs/theme/theme_event.dart';
 import 'package:bloc/bloc.dart';
 import 'package:african_windows/app_bloc.dart';
-import 'package:african_windows/configs/application.dart';
+import 'package:african_windows/configs/app_config.dart';
 import 'package:african_windows/configs/theme/theme.dart';
 import 'package:african_windows/utils/local_storage/local_storage.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';

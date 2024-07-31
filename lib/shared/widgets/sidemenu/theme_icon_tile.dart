@@ -1,5 +1,6 @@
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -49,8 +50,8 @@ class _ThemeIconTileState extends State<ThemeIconTile> {
           child: Center(
             child: SvgPicture.asset(
               widget.isDark
-                  ? 'assets/icons/moon_filled.svg'
-                  : 'assets/icons/sun_filled.svg',
+                  ? Images.moonLight
+                  : Images.sunFilled,
               height: 24,
               width: 24,
               colorFilter: const ColorFilter.mode(

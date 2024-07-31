@@ -1,4 +1,4 @@
-import 'package:african_windows/configs/application.dart';
+import 'package:african_windows/configs/app_config.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class UtilSecureStorage {

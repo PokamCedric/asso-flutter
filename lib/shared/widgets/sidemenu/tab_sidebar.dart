@@ -1,7 +1,7 @@
-import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/configs/theme/theme.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/gaps.dart';
+import 'package:african_windows/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:african_windows/app_bloc.dart';
@@ -38,7 +38,7 @@ class _TabSidebarState extends State<TabSidebar> {
             padding: const EdgeInsets.symmetric(
                 horizontal: AppDefaults.padding,
                 vertical: AppDefaults.padding * 1.5),
-            child: SvgPicture.asset(AppConfig.logo),
+            child: SvgPicture.asset(Images.logo),
           ),
           gapH16,
           Expanded(
@@ -48,43 +48,43 @@ class _TabSidebarState extends State<TabSidebar> {
                 children: [
                   IconTile(
                     isActive: true,
-                    activeIconSrc: "assets/icons/home_filled.svg",
-                    inactiveIconSrc: "assets/icons/home_light.svg",
+                    activeIconSrc: Images.homeFilled,
+                    inactiveIconSrc: Images.homeLight,
                     onPressed: () {},
                   ),
                   gapH4,
                   IconTile(
                     isActive: false,
-                    activeIconSrc: "assets/icons/diamond_filled.svg",
-                    inactiveIconSrc: "assets/icons/diamond_light.svg",
+                    activeIconSrc: Images.diamondFilled,
+                    inactiveIconSrc: Images.diamondLight,
                     onPressed: () {},
                   ),
                   gapH4,
                   IconTile(
                     isActive: false,
-                    activeIconSrc: "assets/icons/profile_circled_filled.svg",
-                    inactiveIconSrc: "assets/icons/profile_circled_light.svg",
+                    activeIconSrc: Images.profileCircledFilled,
+                    inactiveIconSrc: Images.profileCircledLight,
                     onPressed: () {},
                   ),
                   gapH4,
                   IconTile(
                     isActive: false,
-                    activeIconSrc: "assets/icons/store_light.svg",
-                    inactiveIconSrc: "assets/icons/store_filled.svg",
+                    activeIconSrc: Images.storeFilled,
+                    inactiveIconSrc: Images.storeLight,
                     onPressed: () {},
                   ),
                   gapH4,
                   IconTile(
                     isActive: false,
-                    activeIconSrc: "assets/icons/pie_chart_filled.svg",
-                    inactiveIconSrc: "assets/icons/pie_chart_light.svg",
+                    activeIconSrc: Images.pieChartFilled,
+                    inactiveIconSrc: Images.pieChartLight,
                     onPressed: () {},
                   ),
                   gapH4,
                   IconTile(
                     isActive: false,
-                    activeIconSrc: "assets/icons/promotion_filled.svg",
-                    inactiveIconSrc: "assets/icons/promotion_light.svg",
+                    activeIconSrc: Images.promotionFilled,
+                    inactiveIconSrc: Images.promotionLight,
                     onPressed: () {},
                   ),
                 ],
@@ -95,7 +95,7 @@ class _TabSidebarState extends State<TabSidebar> {
             children: [
               IconTile(
                 isActive: false,
-                activeIconSrc: "assets/icons/arrow_forward_light.svg",
+                activeIconSrc: Images.arrowForwardLight,
                 onPressed: () {},
               ),
               const SizedBox(
@@ -105,7 +105,7 @@ class _TabSidebarState extends State<TabSidebar> {
               gapH4,
               IconTile(
                 isActive: false,
-                activeIconSrc: "assets/icons/help_light.svg",
+                activeIconSrc: Images.helpLight,
                 onPressed: () {},
               ),
               gapH4,
