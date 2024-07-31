@@ -1,8 +1,8 @@
 
 import 'package:african_windows/models_views/model_dropdown_filter.dart';
 
-List<DropdownFilterModel> getDropdownFilterModels() {
-  return [
+List<DropdownFilterModel> getDropdownFilterModels()
+  =>  [
     DropdownFilterModel(
       'Field',
       'field',
@@ -30,4 +30,4 @@ List<DropdownFilterModel> getDropdownFilterModels() {
       'Madagascar'
     ]),
   ];
-}
+

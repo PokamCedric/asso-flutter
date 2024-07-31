@@ -23,9 +23,9 @@ class JobListingPage extends StatelessWidget {
     return Layout(
       child: BlocBuilder<JobListingsBloc, JobListingsState>(
         builder: (jobContext, state) {
-          // if (state is Loading) {
-          //   return const Center(child: CircularProgressIndicator());
-          // }
+          if (JobListingsStatus.loading == state.status) {
+            return const Center(child: CircularProgressIndicator());
+          }
 
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (ataTableContext, dataTableState) {
