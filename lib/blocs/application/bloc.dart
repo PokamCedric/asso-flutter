@@ -19,9 +19,9 @@ class ApplicationsBloc extends Bloc<ApplicationsEvent, ApplicationsState> {
     emit(state.copyWith(status: ApplicationsStatus.loading));
     try {
 
-    Application.preferences = await SharedPreferences.getInstance();
+    AppConfig.preferences = await SharedPreferences.getInstance();
 
-    Application.secureStorage = const FlutterSecureStorage();
+    AppConfig.secureStorage = const FlutterSecureStorage();
 
 
     AppTheme.darkThemeOption = await LocalStorage.getDarkOption();

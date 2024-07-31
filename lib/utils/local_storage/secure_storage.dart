@@ -4,10 +4,10 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 class UtilSecureStorage {
 
   static FlutterSecureStorage get secureStorage {
-    if (Application.secureStorage == null) {
+    if (AppConfig.secureStorage == null) {
       throw ("Call Application Setup to initialize secure_storage");
     }
-    return Application.secureStorage!;
+    return AppConfig.secureStorage!;
   }
 
   static Future<String?> read(String key) {

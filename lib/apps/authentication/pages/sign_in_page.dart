@@ -1,9 +1,9 @@
+import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/controllers/navigation_controller.dart';
-import 'package:african_windows/services/auth_services.dart';
-import 'package:african_windows/shared/constants/config.dart';
+import 'package:african_windows/apps/authentication/services/auth_services.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/extensions.dart';
-import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';

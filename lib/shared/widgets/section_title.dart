@@ -2,7 +2,7 @@ import 'package:african_windows/responsive.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/defaults.dart';
-import '../constants/ghaps.dart';
+import '../constants/gaps.dart';
 
 class SectionTitle extends StatelessWidget {
   const SectionTitle({

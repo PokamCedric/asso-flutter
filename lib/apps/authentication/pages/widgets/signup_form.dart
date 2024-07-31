@@ -1,5 +1,5 @@
 import 'package:african_windows/shared/constants/extensions.dart';
-import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

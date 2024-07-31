@@ -4,7 +4,7 @@ import 'package:african_windows/pages/layout.dart';
 import 'package:african_windows/responsive.dart';
 import 'package:flutter/material.dart';
 
-import '../../shared/constants/ghaps.dart';
+import '../../shared/constants/gaps.dart';
 import 'widgets/comments.dart';
 import 'widgets/get_more_customers.dart';
 import 'widgets/popular_products.dart';

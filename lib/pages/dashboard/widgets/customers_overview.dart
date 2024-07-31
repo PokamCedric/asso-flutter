@@ -2,7 +2,7 @@ import 'package:african_windows/responsive.dart';
 import 'package:african_windows/shared/widgets/avatar/customer_avaatar.dart';
 import 'package:flutter/material.dart';
 
-import '../../../shared/constants/ghaps.dart';
+import '../../../shared/constants/gaps.dart';
 
 class CoustomersOverview extends StatelessWidget {
   const CoustomersOverview({

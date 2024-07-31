@@ -6,10 +6,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UtilPreferences {
 
   static SharedPreferences get preferences {
-    if (Application.preferences == null) {
+    if (AppConfig.preferences == null) {
       throw ("Call Application Setup to initialize shared_preferences");
     }
-    return Application.preferences!;
+    return AppConfig.preferences!;
   }
 
   static Future<bool> clearKey(String key) {

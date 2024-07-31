@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/ghaps.dart';
+import '../../constants/gaps.dart';
 
 class CustomerAvatar extends StatefulWidget {
   const CustomerAvatar({

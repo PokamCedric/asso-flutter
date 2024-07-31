@@ -1,5 +1,5 @@
 import 'package:african_windows/controllers/navigation_controller.dart';
-import 'package:african_windows/services/auth_services.dart';
+import 'package:african_windows/apps/authentication/services/auth_services.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

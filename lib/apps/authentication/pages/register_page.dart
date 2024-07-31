@@ -1,6 +1,6 @@
+import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/responsive.dart';
-import 'package:african_windows/shared/constants/config.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/configs/theme/app_colors.dart';

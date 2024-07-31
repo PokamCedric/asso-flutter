@@ -1,11 +1,11 @@
+import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/controllers/navigation_controller.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:african_windows/shared/constants/config.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
-import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:provider/provider.dart';
 
 class NotFoundPage extends StatelessWidget {

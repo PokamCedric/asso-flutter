@@ -1,7 +1,7 @@
+import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/configs/theme/theme.dart';
-import 'package:african_windows/shared/constants/config.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
-import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:african_windows/app_bloc.dart';

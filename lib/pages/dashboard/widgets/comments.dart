@@ -1,7 +1,7 @@
 import 'package:african_windows/pages/card_layout.dart';
 import 'package:african_windows/pages/dashboard/widgets/comment_item.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
-import 'package:african_windows/shared/constants/ghaps.dart';
+import 'package:african_windows/shared/constants/gaps.dart';
 import 'package:african_windows/shared/widgets/section_title.dart';
 import 'package:flutter/material.dart';
 

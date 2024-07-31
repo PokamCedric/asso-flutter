@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/data_table/data_table_bloc.dart';
-import '../../../shared/constants/ghaps.dart';
+import '../../../shared/constants/gaps.dart';
 
 
 class JobListingPage extends StatelessWidget {

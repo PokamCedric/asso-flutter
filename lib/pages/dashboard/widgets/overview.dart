@@ -2,7 +2,7 @@ import 'package:african_windows/pages/card_layout.dart';
 import 'package:flutter/material.dart';
 
 import '../../../shared/constants/defaults.dart';
-import '../../../shared/constants/ghaps.dart';
+import '../../../shared/constants/gaps.dart';
 import '../../../shared/widgets/section_title.dart';
 import 'overview_tabs.dart';
 
