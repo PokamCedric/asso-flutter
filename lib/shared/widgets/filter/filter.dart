@@ -1,4 +1,4 @@
-import 'package:african_windows/models/model_dropdown_filter.dart';
+import 'package:african_windows/models_views/model_dropdown_filter.dart';
 import 'package:african_windows/pages/card_layout.dart';
 import 'package:african_windows/shared/widgets/filter/custom_dropdown.dart';
 import 'package:african_windows/shared/constants/defaults.dart';

@@ -1,4 +1,4 @@
-import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/configs/theme/theme.dart';
 import 'package:african_windows/shared/constants/config.dart';
 import 'package:african_windows/shared/constants/defaults.dart';
 import 'package:african_windows/shared/constants/ghaps.dart';

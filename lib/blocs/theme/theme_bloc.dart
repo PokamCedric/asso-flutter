@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:african_windows/blocs/theme/theme_event.dart';
 import 'package:african_windows/blocs/theme/theme_state.dart';
-import 'package:african_windows/configs/app_theme.dart';
-import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/configs/theme/app_theme.dart';
+import 'package:african_windows/configs/theme/theme.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   ThemeBloc() : super(InitialThemeState()) {

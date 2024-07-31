@@ -1,11 +1,5 @@
 
-class DropdownFilterModel {
-  final String label;
-  final String propertyName;
-  final List<String> items;
-
-  DropdownFilterModel(this.label, this.propertyName, this.items);
-}
+import 'package:african_windows/models_views/model_dropdown_filter.dart';
 
 List<DropdownFilterModel> getDropdownFilterModels() {
   return [

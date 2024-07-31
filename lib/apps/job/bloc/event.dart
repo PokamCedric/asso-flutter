@@ -1,4 +1,4 @@
-import 'package:african_windows/models/model_filter.dart';
+import 'package:african_windows/models_views/model_filter.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class JobListingsEvent extends Equatable {

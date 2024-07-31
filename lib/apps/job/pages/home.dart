@@ -1,7 +1,7 @@
 import 'package:african_windows/app_bloc.dart';
 import 'package:african_windows/apps/job/bloc/job_bloc.dart';
-import 'package:african_windows/models/model_dropdown_filter.dart';
-import 'package:african_windows/models/model_filter.dart';
+import 'package:african_windows/apps/job/data/filters.dart';
+import 'package:african_windows/models_views/model_filter.dart';
 import 'package:african_windows/shared/widgets/data_table/colum_config.dart';
 import 'package:african_windows/shared/widgets/data_table/data_table.dart';
 import 'package:african_windows/shared/widgets/data_table/pagination_control.dart';

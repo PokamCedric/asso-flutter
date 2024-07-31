@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:african_windows/blocs/theme/theme_state.dart';
 import 'package:african_windows/app_bloc.dart';
-import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/configs/theme/theme.dart';
 import 'package:african_windows/shared/navigation/routes.dart';
 import 'package:african_windows/blocs/theme/theme_bloc.dart';
 import 'package:provider/provider.dart';

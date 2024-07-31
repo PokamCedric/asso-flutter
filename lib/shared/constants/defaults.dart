@@ -1,4 +1,4 @@
-import 'package:african_windows/theme/app_colors.dart';
+import 'package:african_windows/configs/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppDefaults {

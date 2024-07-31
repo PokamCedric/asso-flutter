@@ -1,6 +1,6 @@
-import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/configs/theme/theme.dart';
 import 'package:equatable/equatable.dart';
-import 'package:african_windows/models/model_theme.dart';
+import 'package:african_windows/models_views/model_theme.dart';
 
 abstract class ThemeEvent extends Equatable {
   @override

@@ -1,4 +1,4 @@
-import 'package:african_windows/configs/theme.dart';
+import 'package:african_windows/configs/theme/theme.dart';
 import 'package:african_windows/utils/local_storage/preferences.dart';
 
 
