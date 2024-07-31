@@ -1,6 +1,6 @@
 // jobs.dart
 import 'dart:convert';
-import 'package:african_windows/models/model_job.dart';
+import 'package:african_windows/apps/job/models/model_job.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 Future<List<JobModel>> loadJobs() async {

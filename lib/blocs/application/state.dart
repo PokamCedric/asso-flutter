@@ -1,6 +1,5 @@
 // state.dart
 import 'package:equatable/equatable.dart';
-import 'package:african_windows/models/model_job.dart';
 
 enum ApplicationsStatus { initial, loading, success, error }
 
@@ -16,8 +15,6 @@ class ApplicationsState extends Equatable {
 
   ApplicationsState copyWith({
     ApplicationsStatus? status,
-    List<JobModel>? allJobs,
-    List<JobModel>? filteredJobs,
     int? totalHits,
     int? currentPage,
     String? errorMessage,
