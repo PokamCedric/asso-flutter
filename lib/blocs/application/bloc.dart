@@ -1,7 +1,7 @@
 // application_bloc.dart
+import 'package:african_windows/blocs/theme/theme_event.dart';
 import 'package:bloc/bloc.dart';
 import 'package:african_windows/app_bloc.dart';
-import 'package:african_windows/blocs/bloc.dart';
 import 'package:african_windows/configs/application.dart';
 import 'package:african_windows/configs/theme.dart';
 import 'package:african_windows/utils/local_storage/local_storage.dart';

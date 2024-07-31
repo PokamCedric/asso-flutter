@@ -1,5 +1,5 @@
 import 'package:african_windows/pages/card_layout.dart';
-import 'package:african_windows/pages/jobs/widgets/data_table/colum_config.dart';
+import 'package:african_windows/shared/widgets/data_table/colum_config.dart';
 import 'package:flutter/material.dart';
 
 class Datatable extends StatelessWidget {

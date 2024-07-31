@@ -1,10 +1,10 @@
 import 'package:african_windows/blocs/application/bloc.dart';
 import 'package:african_windows/blocs/data_table/bloc.dart';
-import 'package:african_windows/blocs/job/bloc.dart';
-import 'package:african_windows/blocs/job/event.dart';
+import 'package:african_windows/apps/job/bloc/bloc.dart';
+import 'package:african_windows/apps/job/bloc/event.dart';
+import 'package:african_windows/blocs/theme/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'blocs/bloc.dart';
 
 class AppBloc {
   static final applicationsBloc = ApplicationsBloc();

@@ -2,7 +2,7 @@ import 'package:african_windows/pages/authentication/register_page.dart';
 import 'package:african_windows/pages/authentication/sign_in_page.dart';
 import 'package:african_windows/pages/dashboard/dashboard_page.dart';
 import 'package:african_windows/pages/errors/not_found.dart';
-import 'package:african_windows/pages/jobs/job_page.dart';
+import 'package:african_windows/apps/job/pages/home.dart';
 import 'package:african_windows/utils/authenticate_route.dart';
 import 'package:flutter/material.dart';
 

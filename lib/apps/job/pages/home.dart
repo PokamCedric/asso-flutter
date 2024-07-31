@@ -1,18 +1,18 @@
 import 'package:african_windows/app_bloc.dart';
-import 'package:african_windows/blocs/job/job_bloc.dart';
+import 'package:african_windows/apps/job/bloc/job_bloc.dart';
 import 'package:african_windows/models/model_dropdown_filter.dart';
 import 'package:african_windows/models/model_filter.dart';
-import 'package:african_windows/pages/jobs/widgets/data_table/colum_config.dart';
-import 'package:african_windows/pages/jobs/widgets/data_table/data_table.dart';
-import 'package:african_windows/pages/jobs/widgets/data_table/pagination_control.dart';
-import 'package:african_windows/pages/jobs/widgets/filter/filter.dart';
+import 'package:african_windows/shared/widgets/data_table/colum_config.dart';
+import 'package:african_windows/shared/widgets/data_table/data_table.dart';
+import 'package:african_windows/shared/widgets/data_table/pagination_control.dart';
+import 'package:african_windows/shared/widgets/filter/filter.dart';
 import 'package:african_windows/pages/layout.dart';
 import 'package:african_windows/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../blocs/data_table/data_table_bloc.dart';
-import '../../shared/constants/ghaps.dart';
+import '../../../blocs/data_table/data_table_bloc.dart';
+import '../../../shared/constants/ghaps.dart';
 
 
 class JobListingPage extends StatelessWidget {
