@@ -10,40 +10,38 @@ import 'package:african_windows/core/widgets/filter/filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class JobListingPage extends StatelessWidget {
   const JobListingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<JobListingsBloc, JobListingsState>(
-          builder: (jobContext, jobState) {
-            if (jobState.status == JobListingsStatus.loading) {
-              return const Center(child: CircularProgressIndicator());
-            }
+      builder: (jobContext, jobState) {
+        if (jobState.status == JobListingsStatus.loading) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-            return BlocBuilder<DataTableBloc, DataTableState>(
-              builder: (dataTableContext, dataTableState) {
-                return ResponsiveLayout(
-                  title: 'Job Listing',
-                  mainContent: DataTableWithPagination(
-                    jobState: jobState,
-                    dataTableState: dataTableState,
-                    columns: _getTableColumns(),
-                    onPageChanged: (newPage) {
-                      AppBloc.dataTableBloc.add(ChangePageEvent(newPage));
-                    },
-                    onRowsPerPageChanged: (newRowsPerPage) {
-                      AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!));
-                    },
-                  ),
-                  filterContent: _filterLayout(jobState.filteredJobs.length),
-                );
-              },
+        return BlocBuilder<DataTableBloc, DataTableState>(
+          builder: (dataTableContext, dataTableState) {
+            return ResponsiveLayout(
+              title: 'Job Listing',
+              mainContent: DataTableWithPagination(
+                data: jobState.filteredJobs.map((job) => job.toJson()).toList(),
+                rowsPerPage: dataTableState.rowsPerPage,
+                currentPage: dataTableState.currentPage,
+                availableRowsPerPage: const [5, 10, 25, 50],
+                columns: _getTableColumns(),
+                onPageChanged: (newPage) =>
+                    AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
+                onRowsPerPageChanged: (newRowsPerPage) =>
+                    AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
+              ),
+              filterContent: _filterLayout(jobState.filteredJobs.length),
             );
-          }
-          );
+          },
+        );
+      },
+    );
   }
 
   Widget _filterLayout(int dataLength) {
@@ -55,8 +53,6 @@ class JobListingPage extends StatelessWidget {
       },
     );
   }
-}
-
 
   List<ColumnConfig> _getTableColumns() {
     return [
@@ -84,4 +80,5 @@ class JobListingPage extends StatelessWidget {
         width: 200.0,
       ),
     ];
+  }
 }

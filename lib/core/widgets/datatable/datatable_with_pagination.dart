@@ -1,38 +1,36 @@
-import 'package:african_windows/core/widgets/datatable/colum_config.dart';
-import 'package:african_windows/core/widgets/datatable/pagination_control.dart';
 import 'package:african_windows/core/constants/gaps.dart';
+import 'package:african_windows/core/widgets/datatable/colum_config.dart';
+import 'package:african_windows/core/widgets/datatable/datatable.dart';
+import 'package:african_windows/core/widgets/datatable/pagination.dart';
 import 'package:flutter/material.dart';
-import 'datatable.dart';
 
-class DataTableWidget extends StatelessWidget {
+class DataTableWithPagination extends StatelessWidget {
   final List<Map<String, dynamic>> data;
   final int rowsPerPage;
   final int currentPage;
-  final int totalPages;
-  final int totalHits;
   final List<int> availableRowsPerPage;
-  final ValueChanged<int> onPageChanged;
-  final ValueChanged<int?> onRowsPerPageChanged;
   final List<ColumnConfig> columns;
+  final void Function(int newPage) onPageChanged;
+  final void Function(int? newRowsPerPage) onRowsPerPageChanged;
 
-  const DataTableWidget({
+  const DataTableWithPagination({
     super.key,
     required this.data,
     required this.rowsPerPage,
     required this.currentPage,
-    required this.totalPages,
-    required this.totalHits,
     required this.availableRowsPerPage,
+    required this.columns,
     required this.onPageChanged,
     required this.onRowsPerPageChanged,
-    required this.columns,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        paginationControl(),
+        _paginationControl(),
         gapH16,
         CustomDataTable(
           data: data,
@@ -41,20 +39,20 @@ class DataTableWidget extends StatelessWidget {
           columns: columns,
         ),
         gapH16,
-        paginationControl(),
-
+        _paginationControl(),
       ],
     );
   }
 
-  Widget paginationControl() {
-    return PaginationControl(
-        totalPages: totalPages,
-        totalHits: totalHits,
+
+  Widget _paginationControl() {
+
+    return Pagination(
+        totalHits: data.length,
         rowsPerPage: rowsPerPage,
+        currentPage: currentPage,
         availableRowsPerPage: availableRowsPerPage,
         onRowsPerPageChanged: onRowsPerPageChanged,
-        currentPage: currentPage,
         onPageChanged: onPageChanged,
     );
   }

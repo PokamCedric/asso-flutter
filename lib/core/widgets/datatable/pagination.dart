@@ -1,28 +1,28 @@
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:flutter/material.dart';
 
-class PaginationControl extends StatelessWidget {
+class Pagination extends StatelessWidget {
   final int totalHits;
   final int rowsPerPage;
+  final int currentPage;
   final List<int> availableRowsPerPage;
   final ValueChanged<int?> onRowsPerPageChanged;
-  final int currentPage;
-  final int totalPages;
   final ValueChanged<int> onPageChanged;
 
-  const PaginationControl({
+  const Pagination({
     required this.totalHits,
     required this.rowsPerPage,
+    required this.currentPage,
     required this.availableRowsPerPage,
     required this.onRowsPerPageChanged,
-    required this.currentPage,
-    required this.totalPages,
     required this.onPageChanged,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final totalPages = (totalHits / rowsPerPage).ceil();
+
     return CardLayout(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
