@@ -1,5 +1,4 @@
 import 'package:african_windows/core/constants/gaps.dart';
-import 'package:african_windows/core/widgets/datatable/colum_config.dart';
 import 'package:african_windows/core/widgets/datatable/datatable.dart';
 import 'package:african_windows/core/widgets/datatable/pagination.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,6 @@ class DataTableWithPagination extends StatelessWidget {
   final int rowsPerPage;
   final int currentPage;
   final List<int> availableRowsPerPage;
-  final List<ColumnConfig> columns;
   final void Function(int newPage) onPageChanged;
   final void Function(int? newRowsPerPage) onRowsPerPageChanged;
 
@@ -19,7 +17,6 @@ class DataTableWithPagination extends StatelessWidget {
     required this.rowsPerPage,
     required this.currentPage,
     required this.availableRowsPerPage,
-    required this.columns,
     required this.onPageChanged,
     required this.onRowsPerPageChanged,
   });
@@ -36,7 +33,6 @@ class DataTableWithPagination extends StatelessWidget {
           data: data,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,
-          columns: columns,
         ),
         gapH16,
         _paginationControl(),
