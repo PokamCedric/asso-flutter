@@ -1,5 +1,5 @@
 import 'package:african_windows/core/blocs/application/bloc.dart';
-import 'package:african_windows/core/blocs/data_table/bloc.dart';
+import 'package:african_windows/core/blocs/datatable/bloc.dart';
 import 'package:african_windows/apps/job/bloc/bloc.dart';
 import 'package:african_windows/apps/job/bloc/event.dart';
 import 'package:african_windows/core/blocs/theme/bloc.dart';

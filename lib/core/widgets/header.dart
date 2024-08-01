@@ -1,5 +1,5 @@
 import 'package:african_windows/core/services/navigation_service.dart';
-import 'package:african_windows/core/pages/responsive.dart';
+import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/utils/images.dart';
 import 'package:flutter/material.dart';

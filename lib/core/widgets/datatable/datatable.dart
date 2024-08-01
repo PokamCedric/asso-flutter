@@ -1,14 +1,14 @@
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
-import 'package:african_windows/core/widgets/data_table/colum_config.dart';
+import 'package:african_windows/core/widgets/datatable/colum_config.dart';
 import 'package:flutter/material.dart';
 
-class Datatable extends StatelessWidget {
+class CustomDataTable extends StatelessWidget {
   final List<Map<String, dynamic>> data;
   final int rowsPerPage;
   final int currentPage;
   final List<ColumnConfig> columns; // List of column configurations
 
-  const Datatable({
+  const CustomDataTable({
     super.key,
     required this.data,
     required this.rowsPerPage,

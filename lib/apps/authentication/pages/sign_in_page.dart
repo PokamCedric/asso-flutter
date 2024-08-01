@@ -27,7 +27,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgLight,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

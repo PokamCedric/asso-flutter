@@ -1,4 +1,4 @@
-import 'package:african_windows/core/pages/responsive.dart';
+import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/widgets/avatar/customer_avaatar.dart';
 import 'package:flutter/material.dart';
 

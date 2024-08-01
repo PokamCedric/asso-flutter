@@ -1,5 +1,5 @@
 import 'package:african_windows/core/services/navigation_service.dart';
-import 'package:african_windows/core/pages/responsive.dart';
+import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/constants/defaults.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/configs/theme/app_colors.dart';
@@ -18,7 +18,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgLight,
       body: SafeArea(
         child: Row(
           children: [

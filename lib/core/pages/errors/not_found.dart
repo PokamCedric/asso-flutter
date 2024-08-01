@@ -1,3 +1,4 @@
+import 'package:african_windows/core/configs/theme/app_colors.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/utils/images.dart';
@@ -16,7 +17,7 @@ class NotFoundPage extends StatelessWidget {
     final nav = Provider.of<NavigationController>(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.bgLight,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

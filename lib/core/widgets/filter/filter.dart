@@ -1,3 +1,4 @@
+import 'package:african_windows/core/configs/theme/app_colors.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:african_windows/core/widgets/filter/custom_dropdown.dart';
@@ -38,7 +39,7 @@ class _FilterWidgetState extends State<Filter> {
     }
   }
 
-  BoxDecoration filterBoxDecoration({Color color = Colors.grey}) => BoxDecoration(
+  BoxDecoration filterBoxDecoration({Color color = AppColors.iconGrey}) => BoxDecoration(
     border: Border.all(color: color),
     borderRadius: BorderRadius.zero,
   );

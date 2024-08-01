@@ -1,4 +1,4 @@
-import 'package:african_windows/core/pages/responsive.dart';
+import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/constants/defaults.dart';
 import 'package:african_windows/core/widgets/sidemenu/sidebar.dart';
 import 'package:african_windows/core/widgets/sidemenu/tab_sidebar.dart';

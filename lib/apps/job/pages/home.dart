@@ -2,117 +2,63 @@ import 'package:african_windows/app_bloc.dart';
 import 'package:african_windows/apps/job/bloc/job_bloc.dart';
 import 'package:african_windows/apps/job/data/filters.dart';
 import 'package:african_windows/apps/job/models_views/model_filter.dart';
-import 'package:african_windows/core/widgets/data_table/colum_config.dart';
-import 'package:african_windows/core/widgets/data_table/data_table.dart';
-import 'package:african_windows/core/widgets/data_table/pagination_control.dart';
+import 'package:african_windows/apps/job/pages/widgets/datatable_with_pagination.dart';
+import 'package:african_windows/core/blocs/datatable/datatable_bloc.dart';
+import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
+import 'package:african_windows/core/widgets/datatable/colum_config.dart';
 import 'package:african_windows/core/widgets/filter/filter.dart';
-import 'package:african_windows/core/pages/layouts/layout.dart';
-import 'package:african_windows/core/pages/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../core/blocs/data_table/data_table_bloc.dart';
-import '../../../core/constants/gaps.dart';
 
 
 class JobListingPage extends StatelessWidget {
   const JobListingPage({super.key});
 
- @override
+  @override
   Widget build(BuildContext context) {
-    return Layout(
-      child: BlocBuilder<JobListingsBloc, JobListingsState>(
-        builder: (jobContext, state) {
-          if (JobListingsStatus.loading == state.status) {
-            return const Center(child: CircularProgressIndicator());
+
+    return BlocBuilder<JobListingsBloc, JobListingsState>(
+          builder: (jobContext, jobState) {
+            if (jobState.status == JobListingsStatus.loading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            return BlocBuilder<DataTableBloc, DataTableState>(
+              builder: (dataTableContext, dataTableState) {
+                return ResponsiveLayout(
+                  title: 'Job Listing',
+                  mainContent: DataTableWithPagination(
+                    jobState: jobState,
+                    dataTableState: dataTableState,
+                    columns: _getTableColumns(),
+                    onPageChanged: (newPage) {
+                      AppBloc.dataTableBloc.add(ChangePageEvent(newPage));
+                    },
+                    onRowsPerPageChanged: (newRowsPerPage) {
+                      AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!));
+                    },
+                  ),
+                  filterContent: _filterLayout(jobState.filteredJobs.length),
+                );
+              },
+            );
           }
-
-          return BlocBuilder<DataTableBloc, DataTableState>(
-            builder: (ataTableContext, dataTableState) {
-
-              return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (!Responsive.isMobile(context)) gapH24,
-          Text(
-            "Job Listing",
-            style: Theme.of(context)
-                .textTheme
-                .headlineLarge!
-                .copyWith(fontWeight: FontWeight.w600),
-          ),
-          gapH20,
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 5,
-                child: Column(
-                  children: [
-                    paginationControl(state, dataTableState),
-                      gapH16,
-                      Datatable(
-                        data: state.filteredJobs.map((job) => job.toJson()).toList(),
-                        rowsPerPage: dataTableState.rowsPerPage,
-                        currentPage: dataTableState.currentPage,
-                        columns: getTableColumns(),
-                      ),
-                      gapH16,
-                    paginationControl(state, dataTableState),
-                    gapH16,
-                    if (Responsive.isMobile(context))
-                      _filterLayout(state, filtersPerLine: 2),
-                  ],
-                ),
-              ),
-              if (!Responsive.isMobile(context)) gapW16,
-              if (!Responsive.isMobile(context))
-                Expanded(
-                  flex: 2,
-                  child: _filterLayout(state),
-                ),
-            ],
-          )
-        ],
-      );
-            });
-        }
-    )
-    );
+          );
   }
 
-
-  Widget paginationControl(JobListingsState state,
-    DataTableState dataTableState) {
-    final totalPages = (state.totalHits / dataTableState.rowsPerPage).ceil();
-
-    return PaginationControl(
-        totalPages: totalPages,
-        totalHits: state.totalHits,
-        rowsPerPage: dataTableState.rowsPerPage,
-        availableRowsPerPage: const [5, 10, 25, 50],
-        onRowsPerPageChanged: (newRowsPerPage) => AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
-        currentPage: dataTableState.currentPage,
-        onPageChanged: (newPage) => AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
-    );
-  }
-
-}
-
-
-Widget _filterLayout(
-  JobListingsState state,
-    { int filtersPerLine = 1,}) {
-
+  Widget _filterLayout(int dataLength) {
     return Filter(
-      totalItems: state.filteredJobs.length,
-      filtersPerLine: filtersPerLine,
+      totalItems: dataLength,
       filters: getDropdownFilterModels(),
-      onFilterChanged: (filters) => AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(filters))),
+      onFilterChanged: (filters) {
+        AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(filters)));
+      },
     );
+  }
 }
 
-List<ColumnConfig> getTableColumns() {
+
+  List<ColumnConfig> _getTableColumns() {
     return [
       ColumnConfig(
         label: 'Job Title',
@@ -139,5 +85,3 @@ List<ColumnConfig> getTableColumns() {
       ),
     ];
 }
-
-

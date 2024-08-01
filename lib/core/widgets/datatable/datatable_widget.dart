@@ -1,8 +1,8 @@
-import 'package:african_windows/core/widgets/data_table/colum_config.dart';
-import 'package:african_windows/core/widgets/data_table/pagination_control.dart';
+import 'package:african_windows/core/widgets/datatable/colum_config.dart';
+import 'package:african_windows/core/widgets/datatable/pagination_control.dart';
 import 'package:african_windows/core/constants/gaps.dart';
 import 'package:flutter/material.dart';
-import 'data_table.dart';
+import 'datatable.dart';
 
 class DataTableWidget extends StatelessWidget {
   final List<Map<String, dynamic>> data;
@@ -34,7 +34,7 @@ class DataTableWidget extends StatelessWidget {
       children: [
         paginationControl(),
         gapH16,
-        Datatable(
+        CustomDataTable(
           data: data,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,

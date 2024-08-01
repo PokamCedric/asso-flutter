@@ -1,5 +1,5 @@
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
-import 'package:african_windows/core/pages/responsive.dart';
+import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/constants/gaps.dart';
 import 'package:african_windows/core/widgets/section_title.dart';
 import 'package:african_windows/core/utils/images.dart';

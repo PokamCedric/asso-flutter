@@ -24,7 +24,7 @@ class _ThemeIconTileState extends State<ThemeIconTile> {
       height: 48,
       decoration: BoxDecoration(
         color:
-            _isHover ? Colors.white : AppColors.highlightLight.withOpacity(0.5),
+            _isHover ? AppColors.highlightLight : AppColors.highlightLight.withOpacity(0.5),
         shape: BoxShape.circle,
       ),
       padding: const EdgeInsets.all(AppDefaults.padding * 0.25),
@@ -37,7 +37,7 @@ class _ThemeIconTileState extends State<ThemeIconTile> {
         },
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.highlightLight,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(

@@ -14,40 +14,37 @@ class Routes {
   static const String jobslist = "/jobs-list";
   static const String notFound = "/not-found";
 
-
   Route<dynamic> generateRoute(RouteSettings settings) {
-
     switch (settings.name) {
-          case initial:
-            return AuthenticatedRoute(
-              builder: (context) => const DashboardPage(),
-              adminOnly: false,
-              settings: settings,
-            );
-         case dashboard:
-            return AuthenticatedRoute(
-              builder: (context) => const DashboardPage(),
-              adminOnly: false,
-              settings: settings,
-            );
-          case signin:
-            return MaterialPageRoute(builder: (context) => const SignInPage());
-          case register:
-            return MaterialPageRoute(builder: (context) => const RegisterPage());
-          case notFound:
-            return MaterialPageRoute(builder: (context) => const NotFoundPage());
-          case jobslist:
-            return AuthenticatedRoute(
-              builder: (context) => const JobListingPage(),
-              adminOnly: true,
-              settings: settings,
-            );
-          default:
-            return MaterialPageRoute(builder: (context) => const NotFoundPage());
-        }
+      case initial:
+        return AuthenticatedRoute(
+          builder: (context) => const DashboardPage(),
+          adminOnly: false,
+          settings: settings,
+        );
+      case dashboard:
+        return AuthenticatedRoute(
+          builder: (context) => const DashboardPage(),
+          adminOnly: false,
+          settings: settings,
+        );
+      case signin:
+        return MaterialPageRoute(builder: (context) => const SignInPage());
+      case register:
+        return MaterialPageRoute(builder: (context) => const RegisterPage());
+      case jobslist:
+        return AuthenticatedRoute(
+          builder: (context) => const JobListingPage(),
+          adminOnly: true,
+          settings: settings,
+        );
+      case notFound:
+      default:
+        return MaterialPageRoute(builder: (context) => const NotFoundPage());
+    }
   }
 
-  ///Singleton factory
+  // Singleton factory
   static final Routes _instance = Routes._internal();
 
   factory Routes() {
