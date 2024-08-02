@@ -1,4 +1,5 @@
 // job_listings_bloc.dart
+import 'package:african_windows/apps/job/models/model_job.dart';
 import 'package:bloc/bloc.dart';
 import 'package:african_windows/apps/job/data/jobs.dart';
 import 'event.dart';
@@ -38,13 +39,13 @@ class JobListingsBloc extends Bloc<JobListingsEvent, JobListingsState> {
           job.country.toLowerCase().contains(filter.query!.toLowerCase()) ||
           job.field.toLowerCase().contains(filter.query!.toLowerCase());
 
-      bool matchesField = filter.field == 'All Fields' ||
+      bool matchesField = filter.field == JobModel.defaultModel().field ||
           job.field == filter.field;
 
-      bool matchesFunction = filter.type == 'All types of function' ||
+      bool matchesFunction = filter.type == JobModel.defaultModel().type ||
           job.type == filter.type;
 
-      bool matchesCountry = filter.country == 'All countries' ||
+      bool matchesCountry = filter.country == JobModel.defaultModel().country ||
           job.country == filter.country;
 
       return matchesSearch && matchesField && matchesFunction && matchesCountry;

@@ -29,4 +29,13 @@ class JobModel {
       'field': field,
     };
   }
+
+  factory JobModel.defaultModel() {
+    return JobModel(
+      title: '',
+      type: 'Unselected',
+      country: 'Unselected',
+      field: 'Unselected',
+    );
+  }
 }
