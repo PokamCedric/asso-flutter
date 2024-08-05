@@ -1,14 +1,15 @@
-// main.dart
-import 'package:african_windows/core/blocs/application/application_bloc.dart';
-import 'package:african_windows/core/services/navigation_service.dart';
+// app.dart
+import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:african_windows/core/blocs/application/application_bloc.dart';
+import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/blocs/theme/theme_state.dart';
 import 'package:african_windows/app_bloc.dart';
 import 'package:african_windows/core/configs/theme/theme.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/blocs/theme/theme_bloc.dart';
-import 'package:provider/provider.dart';
 
 class MainApp extends StatefulWidget {
   const MainApp({super.key});
@@ -32,7 +33,6 @@ class _AppState extends State<MainApp> {
 
   @override
   Widget build(BuildContext context) {
-
     return MultiBlocProvider(
       providers: AppBloc.providers,
       child: BlocBuilder<ThemeBloc, ThemeState>(
@@ -72,6 +72,7 @@ class _AppState extends State<MainApp> {
     return MultiProvider(
       providers: [
         Provider<NavigationController>.value(value: navigationController),
+        ChangeNotifierProvider(create: (_) => FilterProvider()),
       ],
       child: MaterialApp(
         theme: AppTheme.lightTheme,
@@ -80,7 +81,6 @@ class _AppState extends State<MainApp> {
         navigatorKey: navigationController.navigatorKey,
         initialRoute: Routes.initial,
         onGenerateRoute: route.generateRoute,
-
       ),
     );
   }
