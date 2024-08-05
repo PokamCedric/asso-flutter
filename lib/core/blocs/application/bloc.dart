@@ -1,7 +1,7 @@
 // application_bloc.dart
 import 'package:african_windows/core/blocs/theme/theme_event.dart';
 import 'package:bloc/bloc.dart';
-import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/configs/app_config.dart';
 import 'package:african_windows/core/configs/theme/theme.dart';
 import 'package:african_windows/core/utils/local_storage/local_storage.dart';
@@ -26,7 +26,7 @@ class ApplicationsBloc extends Bloc<ApplicationsEvent, ApplicationsState> {
 
     AppTheme.darkThemeOption = await LocalStorage.getDarkOption();
 
-    AppBloc.themeBloc.add(OnChangeTheme(darkOption: AppTheme.darkThemeOption));
+    CoreBloc.themeBloc.add(OnChangeTheme(darkOption: AppTheme.darkThemeOption));
 
     emit(state.copyWith(status: ApplicationsStatus.success));
 

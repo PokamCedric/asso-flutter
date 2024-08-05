@@ -1,4 +1,4 @@
-import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/blocs/theme/theme_event.dart';
 import 'package:african_windows/core/utils/images.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +49,7 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
 
   ///On Change Dark Option
   void _onChangeDarkOption(DarkOption darkOption) {
-    AppBloc.themeBloc.add(OnChangeTheme(darkOption: darkOption));
+    CoreBloc.themeBloc.add(OnChangeTheme(darkOption: darkOption));
   }
 
   @override

@@ -1,9 +1,10 @@
+import 'package:african_windows/apps/job/app_bloc.dart';
 import 'package:african_windows/apps/job/models_views/model_filter.dart';
 import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/apps/job/bloc/job_bloc.dart';
 import 'package:african_windows/apps/job/data/filters.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
@@ -27,7 +28,7 @@ class JobListingPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      AppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
+      JobsAppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
       // Request focus on the search field
     }
 
@@ -62,9 +63,9 @@ class JobListingPage extends StatelessWidget {
               currentPage: dataTableState.currentPage,
               availableRowsPerPage: const [5, 10, 25, 50],
               onPageChanged: (newPage) =>
-                  AppBloc.dataTableBloc.add(ChangePageEvent(newPage)),
+                  CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
               onRowsPerPageChanged: (newRowsPerPage) =>
-                  AppBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
+                  CoreBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
             );
           },
         );

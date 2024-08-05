@@ -4,7 +4,7 @@ import 'package:african_windows/core/constants/gaps.dart';
 import 'package:african_windows/core/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/blocs/theme/theme_event.dart';
 
 import 'icon_tile.dart';
@@ -24,7 +24,7 @@ class _TabSidebarState extends State<TabSidebar> {
     setState(() {
       isDark = !isDark;
     });
-    AppBloc.themeBloc.add(OnChangeTheme(darkOption: isDark ? DarkOption.alwaysOn : DarkOption.alwaysOff));
+    CoreBloc.themeBloc.add(OnChangeTheme(darkOption: isDark ? DarkOption.alwaysOn : DarkOption.alwaysOff));
   }
 
   @override

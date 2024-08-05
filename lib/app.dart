@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:african_windows/core/blocs/application/application_bloc.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/blocs/theme/theme_state.dart';
-import 'package:african_windows/app_bloc.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/configs/theme/theme.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/blocs/theme/theme_bloc.dart';
@@ -22,19 +22,19 @@ class _AppState extends State<MainApp> {
   @override
   void initState() {
     super.initState();
-    AppBloc.applicationsBloc.add(SetupApplicationsEvent());
+    CoreBloc.applicationsBloc.add(SetupApplicationsEvent());
   }
 
   @override
   void dispose() {
-    AppBloc.dispose();
+    CoreBloc.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBloc.providers,
+      providers: CoreBloc.providers,
       child: BlocBuilder<ThemeBloc, ThemeState>(
         builder: (context, themeState) {
           return BlocBuilder<ApplicationsBloc, ApplicationsState>(
