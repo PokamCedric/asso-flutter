@@ -27,31 +27,22 @@ class Pagination extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text('Page $currentPage of $totalPages'),
-          Row(
-            children: [
-              const Text('Hits per page: '),
-              Container(
-                decoration: BoxDecoration(
-                    color: Theme.of(context).canvasColor,
-                    ),
-                child: DropdownButton<int>(
-                  value: rowsPerPage,
-                  alignment: AlignmentDirectional.centerStart,
-                  underline: const SizedBox(), // Remove the underline
-                  padding: const EdgeInsets.only(left: 50.0),
-                  dropdownColor: Theme.of(context).cardColor, // Set the background color of the dropdown list
-                  items: availableRowsPerPage.map((int value) {
-                    return DropdownMenuItem<int>(
-                      value: value,
-                      alignment: AlignmentDirectional.center,
-                      child: Text('$value',style: Theme.of(context).textTheme.bodyLarge,),
-                    );
-                  }).toList(),
-                  onChanged: onRowsPerPageChanged,
-                ),
-              ),
-            ],
+          Text('Tot. $totalHits'),
+          Text('P. $currentPage of $totalPages'),
+          DropdownButton<int>(
+            value: rowsPerPage,
+            alignment: AlignmentDirectional.centerStart,
+            underline: const SizedBox(), // Remove the underline
+            padding: const EdgeInsets.only(left: 50.0),
+            dropdownColor: Theme.of(context).cardColor, // Set the background color of the dropdown list
+            items: availableRowsPerPage.map((int value) {
+              return DropdownMenuItem<int>(
+                value: value,
+                alignment: AlignmentDirectional.center,
+                child: Text('$value',style: Theme.of(context).textTheme.bodyLarge,),
+              );
+            }).toList(),
+            onChanged: onRowsPerPageChanged,
           ),
           SizedBox(
             width: 120,
@@ -79,8 +70,9 @@ class Pagination extends StatelessWidget {
                       border: Border.symmetric(horizontal: BorderSide(color: Theme.of(context).scaffoldBackgroundColor,))),
 
                       child: Text('$currentPage',)
-                      ),
-                    Container(width: 10,
+                    ),
+                    Container(
+                      width: 10,
                       decoration: roundedBox(context, false),
                       child: IconButton(
                         icon: Icon(Icons.chevron_right, color: currentPage < totalPages ? Theme.of(context).primaryColor : Theme.of(context).canvasColor),

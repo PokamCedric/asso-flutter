@@ -10,6 +10,11 @@ class AppDefaults {
         Radius.circular(AppDefaults.borderRadius),
       ),
       borderSide: BorderSide.none);
+  static BoxDecoration decoration = BoxDecoration(
+    border: Border.all(color: AppColors.primaryLight),
+    borderRadius: const BorderRadius.all(
+        Radius.circular(AppDefaults.borderRadius),
+      ));
   static OutlineInputBorder focusedOutlineInputBorder = outlineInputBorder
       .copyWith(borderSide: const BorderSide(width: 2, color: AppColors.primaryLight));
 }

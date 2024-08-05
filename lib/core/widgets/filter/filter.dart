@@ -8,7 +8,6 @@ import 'package:african_windows/core/constants/defaults.dart';
 
 class Filter extends StatelessWidget {
   final List<DropdownFilterModel> filters;
-  final int totalItems;
   final int filtersPerLine;
   final ValueChanged<Map<String, String>> onFilterChanged;
   final Map<String, String> selectedFilters;
@@ -17,7 +16,6 @@ class Filter extends StatelessWidget {
     super.key,
     required this.filters,
     required this.onFilterChanged,
-    required this.totalItems,
     this.filtersPerLine = 1,
     this.selectedFilters = const {},
   });
@@ -48,8 +46,6 @@ class Filter extends StatelessWidget {
             onFilterChanged: onFilterChanged,
             filtersPerLine: filtersPerLine,
           ),
-          gapH8,
-          FoundButton(totalItems: totalItems),
           gapH8,
           ResetButton(
             onReset: () {
@@ -97,42 +93,23 @@ class FilterHeader extends StatelessWidget {
   }
 }
 
-class SearchField extends StatefulWidget {
+// ignore: must_be_immutable
+class SearchField extends StatelessWidget {
   final Map<String, String> selectedFilters;
   final ValueChanged<Map<String, String>> onFilterChanged;
+  Timer? _debounce;
 
-  const SearchField({
+  SearchField({
     super.key,
     required this.selectedFilters,
     required this.onFilterChanged,
   });
 
-  @override
-  _SearchFieldState createState() => _SearchFieldState();
-}
-
-class _SearchFieldState extends State<SearchField> {
-  late TextEditingController _controller;
-  Timer? _debounce;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController(text: widget.selectedFilters['query'] ?? '');
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    _debounce?.cancel();
-    super.dispose();
-  }
-
   void _onSearchChanged(String value) {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      widget.selectedFilters['query'] = value;
-      widget.onFilterChanged(Map.from(widget.selectedFilters));
+      selectedFilters['query'] = value;
+      onFilterChanged(Map.from(selectedFilters));
     });
   }
 
@@ -142,7 +119,6 @@ class _SearchFieldState extends State<SearchField> {
       children: [
         Expanded(
           child: TextFormField(
-            controller: _controller,
             onChanged: _onSearchChanged,
             decoration: InputDecoration(
               hintText: "Search...",
@@ -165,6 +141,7 @@ class FilterBody extends StatelessWidget {
   final ValueChanged<Map<String, String>> onFilterChanged;
 
   const FilterBody({
+    super.key,
     required this.filters,
     required this.selectedFilters,
     required this.onFilterChanged,
@@ -203,6 +180,7 @@ class FilterDropdown extends StatelessWidget {
   final ValueChanged<String?> onChanged;
 
   const FilterDropdown({
+    super.key,
     required this.filter,
     required this.selectedValue,
     required this.onChanged,
@@ -216,13 +194,10 @@ class FilterDropdown extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(filter.propertyName),
-          const SizedBox(height: 6.0),
+          gapH8,
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            decoration: BoxDecoration(
-              border: Border.all(color: AppColors.iconGrey),
-              borderRadius: BorderRadius.zero,
-            ),
+            decoration: AppDefaults.decoration,
             child: DropdownButton<String>(
               value: selectedValue,
               isExpanded: true,
@@ -247,37 +222,19 @@ class FilterDropdown extends StatelessWidget {
   }
 }
 
-class FoundButton extends StatelessWidget {
-  final int totalItems;
+class ResetButton extends StatelessWidget {
+  final VoidCallback onReset;
 
-  const FoundButton({super.key, required this.totalItems});
+  const ResetButton({super.key, required this.onReset});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Theme.of(context).primaryColor,
-          foregroundColor: Theme.of(context).indicatorColor,
-        ),
-        onPressed: () {},
-        child: Text('$totalItems found'),
+        onPressed: onReset,
+        child: const Text('Reset'),
       ),
-    );
-  }
-}
-
-class ResetButton extends StatelessWidget {
-  final VoidCallback onReset;
-
-  const ResetButton({required this.onReset});
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onReset,
-      child: const Text('Reset'),
     );
   }
 }
