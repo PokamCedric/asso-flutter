@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 class DataTableWithPagination extends StatelessWidget {
   final List<Map<String, dynamic>> data;
+  final List<int> flexValues;
   final int rowsPerPage;
   final int currentPage;
   final List<int> availableRowsPerPage;
@@ -14,6 +15,7 @@ class DataTableWithPagination extends StatelessWidget {
   const DataTableWithPagination({
     super.key,
     required this.data,
+    required this.flexValues,
     required this.rowsPerPage,
     required this.currentPage,
     required this.availableRowsPerPage,
@@ -31,6 +33,7 @@ class DataTableWithPagination extends StatelessWidget {
         gapH16,
         CustomDataTable(
           data: data,
+          flexValues: flexValues,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,
         ),

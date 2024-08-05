@@ -62,6 +62,8 @@ class JobListingPage extends StatelessWidget {
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
                 data: jobState.filteredJobs.map((job) => job.toJson()).toList(),
+                flexValues: const [3, 1, 1, 1],
+
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],

@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomTableWidget extends StatelessWidget {
   final List<Map<String, dynamic>> data;
+  final List<int?> flexValues;
 
-  const CustomTableWidget({super.key, required this.data});
+  const CustomTableWidget({
+    super.key,
+    required this.data,
+    required this.flexValues,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +33,17 @@ class CustomTableWidget extends StatelessWidget {
 
   Widget _buildHeaderRow(BuildContext context, List<String> headers) {
     return Row(
-      children: headers.map((header) => _buildHeaderCell(context, header)).toList(),
+      children: headers.asMap().entries.map((entry) {
+        int index = entry.key;
+        String header = entry.value;
+        return _buildHeaderCell(context, header, _getFlexValue(index));
+      }).toList(),
     );
   }
 
-  Widget _buildHeaderCell(BuildContext context, String text) {
+  Widget _buildHeaderCell(BuildContext context, String text, int flex) {
     return Expanded(
+      flex: flex,
       child: Container(
         padding: const EdgeInsets.all(8.0),
         color: Theme.of(context).primaryColor,
@@ -51,7 +61,11 @@ class CustomTableWidget extends StatelessWidget {
       return Column(
         children: [
           Row(
-            children: headers.map((header) => _buildDataCell(row[header])).toList(),
+            children: headers.asMap().entries.map((entry) {
+              int index = entry.key;
+              String header = entry.value;
+              return _buildDataCell(_getFlexValue(index), row[header]);
+            }).toList(),
           ),
           const Divider(height: 1),
         ],
@@ -59,8 +73,9 @@ class CustomTableWidget extends StatelessWidget {
     }).toList();
   }
 
-  Widget _buildDataCell(dynamic value) {
+  Widget _buildDataCell(int flex, dynamic value) {
     return Expanded(
+      flex: flex,
       child: Container(
         padding: const EdgeInsets.all(8.0),
         child: Text(
@@ -69,5 +84,9 @@ class CustomTableWidget extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  int _getFlexValue(int index) {
+    return (index < flexValues.length && flexValues[index] != null) ? flexValues[index]! : 1;
   }
 }

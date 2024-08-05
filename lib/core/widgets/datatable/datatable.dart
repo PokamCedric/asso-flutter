@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 
 class CustomDataTable extends StatelessWidget {
   final List<Map<String, dynamic>> data;
+  final List<int> flexValues;
   final int rowsPerPage;
   final int currentPage;
 
   const CustomDataTable({
     super.key,
     required this.data,
+    required this.flexValues,
     required this.rowsPerPage,
     required this.currentPage,
   });
@@ -22,7 +24,10 @@ class CustomDataTable extends StatelessWidget {
 
 
     return CardLayout(
-      child: CustomTableWidget(data: displayedData),
+      child: CustomTableWidget(
+        data: displayedData,
+        flexValues: flexValues,
+        ),
     );
   }
 }

@@ -18,7 +18,7 @@ class JobModel extends IdentifierModel {
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
     return JobModel(
-      id: json['id'] as String,
+      id: json['id'],
       title: json['title'] as String,
       type: json['type'] as String,
       country: json['country'] as String,
