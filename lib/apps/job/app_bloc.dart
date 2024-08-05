@@ -1,5 +1,4 @@
-import 'package:african_windows/apps/job/bloc/bloc.dart';
-import 'package:african_windows/apps/job/bloc/event.dart';
+import 'package:african_windows/apps/job/bloc/job_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 

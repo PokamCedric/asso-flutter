@@ -1,4 +1,4 @@
-import 'package:african_windows/core/models/model_user.dart';
+import 'package:african_windows/apps/user/models/model_user.dart';
 import 'package:african_windows/core/utils/local_storage/local_storage.dart';
 
 class AuthService {
@@ -6,7 +6,13 @@ class AuthService {
   static UserModel currentUser = dummyUserModel;
 
   static UserModel get dummyUserModel =>
-      UserModel(-1, "cedric@asso.com", "Cedric", "Pokam", UserRole.admin);
+      UserModel(
+        id:-1,
+        email: "cedric@asso.com",
+        firstName: "Cedric",
+        lastName: "Pokam",
+        role: UserRole.admin
+      );
 
   // Example method for logging in a user and setting their role
   static Future<Map<String, String>?> loginUserModel(Map<String, dynamic> data) async {

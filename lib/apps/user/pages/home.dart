@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/apps/job/app_bloc.dart';
-import 'package:african_windows/apps/job/models_views/model_filter.dart';
-import 'package:african_windows/apps/job/bloc/job_bloc.dart';
-import 'package:african_windows/apps/job/data/filters.dart';
+import 'package:african_windows/apps/user/app_bloc.dart';
+import 'package:african_windows/apps/user/models_views/model_filter.dart';
+import 'package:african_windows/apps/user/bloc/user_bloc.dart';
+import 'package:african_windows/apps/user/data/filters.dart';
 import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:african_windows/core_bloc.dart';
@@ -14,8 +14,8 @@ import 'package:african_windows/core/blocs/datatable/datatable_bloc.dart';
 import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
 import 'package:african_windows/core/widgets/filter/filter.dart';
 
-class JobListingPage extends StatelessWidget {
-  const JobListingPage({super.key});
+class UserListingPage extends StatelessWidget {
+  const UserListingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +29,12 @@ class JobListingPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      JobsAppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
+      UsersAppBloc.userListingsBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
       // Request focus on the search field
     }
 
     return ResponsiveLayout(
-      title: 'Job Listing',
+      title: 'User Listing',
       mainContent: _buildDataTable(),
       filterContent: Consumer<FilterProvider>(
         builder: (context, filterProvider, child) {
@@ -49,19 +49,19 @@ class JobListingPage extends StatelessWidget {
   }
 
   Widget _buildDataTable() {
-    return BlocBuilder<JobListingsBloc, JobListingsState>(
-      builder: (jobContext, jobState) {
-        if (jobState.status == JobListingsStatus.loading) {
+    return BlocBuilder<UserListingsBloc, UserListingsState>(
+      builder: (userContext, userState) {
+        if (userState.status == UserListingsStatus.loading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (jobState.status == JobListingsStatus.error) {
+        } else if (userState.status == UserListingsStatus.error) {
           return CardLayout(
-            child: Center(child: Text('An error occurred: ${jobState.errorMessage}'))
+            child: Center(child: Text('An error occurred: ${userState.errorMessage}'))
             );
         } else {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
-                data: jobState.filteredJobs.map((job) => job.toJson()).toList(),
+                data: userState.filteredUsers.map((user) => user.toJson()).toList(),
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],

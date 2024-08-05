@@ -1,3 +1,5 @@
+import 'package:african_windows/apps/job/pages/navigation.dart';
+import 'package:african_windows/apps/user/pages/navigation.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/apps/dashboard/pages/widgets/theme_tabs.dart';
 import 'package:african_windows/core/utils/responsive.dart';
@@ -95,31 +97,8 @@ class Sidebar extends StatelessWidget {
                         ),
                       ],
                     ),
-
-                    // Customers
-                    ExpansionTile(
-                      leading: SvgPicture.asset(Images.profileCircledLight),
-                      title: Text(
-                        "Jobs",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).textTheme.bodyMedium!.color,
-                        ),
-                      ),
-                      children: [
-                        MenuTile(
-                          isSubmenu: true,
-                          title: "Overview",
-                          count: 16,
-                          onPressed: () => nav.navigateTo(Routes.jobslist)
-                        ),
-                        MenuTile(
-                          isSubmenu: true,
-                          title: "Add Job",
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
+                    const JobNavigation(),
+                    const UserNavigation(),
                     MenuTile(
                       title: "Shop",
                       activeIconSrc: Images.storeLight,

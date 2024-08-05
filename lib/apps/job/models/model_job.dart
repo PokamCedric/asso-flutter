@@ -1,19 +1,24 @@
 // job_model.dart
-class JobModel {
+import 'package:african_windows/core/models/model_identifier.dart';
+
+class JobModel extends IdentifierModel {
   final String title;
   final String type;
   final String country;
   final String field;
 
-  JobModel({
-    required this.title,
-    required this.type,
-    required this.country,
-    required this.field,
-  });
+  JobModel(
+    {
+      required super.id,
+      required this.title,
+      required this.type,
+      required this.country,
+      required this.field,
+    });
 
   factory JobModel.fromJson(Map<String, dynamic> json) {
     return JobModel(
+      id: json['id'] as String,
       title: json['title'] as String,
       type: json['type'] as String,
       country: json['country'] as String,
@@ -32,6 +37,7 @@ class JobModel {
 
   factory JobModel.defaultModel() {
     return JobModel(
+      id: -1,
       title: '',
       type: 'Unselected',
       country: 'Unselected',

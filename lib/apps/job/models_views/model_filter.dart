@@ -10,7 +10,7 @@ class FilterModel extends JobModel {
     required super.country,
     required super.field,
     this.query,
-  }): super(title: '');
+  }): super(title: '', id: -1);
 
   factory FilterModel.fromJson(Map<String, dynamic> json) {
     return FilterModel(
@@ -21,20 +21,4 @@ class FilterModel extends JobModel {
     );
   }
 
-  @override
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = super.toJson();
-    data['query'] = query;
-    return data;
-  }
-
-  // Default instance method
-  factory FilterModel.defaultInstance() {
-    return FilterModel(
-      type: 'All types of function',
-      country: 'All countries',
-      field: 'All Fields',
-      query: '',
-    );
-  }
 }
