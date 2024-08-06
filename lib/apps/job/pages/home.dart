@@ -37,7 +37,7 @@ class JobListingPage extends StatelessWidget {
     return ResponsiveLayout(
       title: 'Job Listing',
       mainContent: [
-          _buildDataTable(),
+          _buildDataTable(context),
         ],
       filterContent: [
           Consumer<FilterProvider>(
@@ -53,14 +53,17 @@ class JobListingPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDataTable() {
+  Widget _buildDataTable(BuildContext context) {
     return BlocBuilder<JobListingsBloc, JobListingsState>(
       builder: (jobContext, jobState) {
         if (jobState.status == JobListingsStatus.loading) {
           return const Center(child: CircularProgressIndicator());
         } else if (jobState.status == JobListingsStatus.error) {
           return CardLayout(
-            child: Center(child: Text('An error occurred: ${jobState.errorMessage}'))
+            child: Center(
+              child: Text('An error occurred: ${jobState.errorMessage}',
+                style: TextStyle(color: Theme.of(context).colorScheme.error,)
+              ))
             );
         } else {
           return BlocBuilder<DataTableBloc, DataTableState>(

@@ -36,7 +36,7 @@ class UserListingPage extends StatelessWidget {
     return ResponsiveLayout(
       title: 'User Listing',
       mainContent: [
-          _buildDataTable(),
+          _buildDataTable(context),
         ],
       filterContent: [
           Consumer<FilterProvider>(
@@ -52,14 +52,17 @@ class UserListingPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDataTable() {
+  Widget _buildDataTable(BuildContext context) {
     return BlocBuilder<UserListingsBloc, UserListingsState>(
       builder: (userContext, userState) {
         if (userState.status == UserListingsStatus.loading) {
           return const Center(child: CircularProgressIndicator());
         } else if (userState.status == UserListingsStatus.error) {
           return CardLayout(
-            child: Center(child: Text('An error occurred: ${userState.errorMessage}'))
+            child: Center(
+              child: Text('An error occurred: ${userState.errorMessage}',
+                style: TextStyle(color: Theme.of(context).colorScheme.error,)
+              ))
             );
         } else {
           return BlocBuilder<DataTableBloc, DataTableState>(

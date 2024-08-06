@@ -31,9 +31,12 @@ class CustomTableWidget extends StatelessWidget {
 
   Widget _buildHeaderRow(BuildContext context) {
     return Row(
-      children: headers.map((header) {
-        return _buildHeaderCell(context, header.label, header.flex);
-      }).toList(),
+      children: [
+        ...headers.map((header) {
+          return _buildHeaderCell(context, header.label, header.flex);
+        }),
+        _buildMenuCell(context, '', 1),
+      ],
     );
   }
 
@@ -54,14 +57,31 @@ class CustomTableWidget extends StatelessWidget {
     );
   }
 
+  Widget _buildMenuCell(BuildContext context, String text, int flex) {
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      color: Theme.of(context).primaryColor,
+      child: Center(
+        child: Text(
+          text.toUpperCase(),
+          style: const TextStyle(fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
   List<Widget> _buildDataRows() {
     return data.map((row) {
       return Column(
         children: [
           Row(
-            children: headers.map((header) {
-              return _buildDataCell(header.flex, row[header.propertyName]);
-            }).toList(),
+            children: [
+              ...headers.map((header) {
+                return _buildDataCell(header.flex, row[header.propertyName]);
+              }),
+              _buildMenuButtonCell(row),
+            ],
           ),
           const Divider(height: 1),
         ],
@@ -73,10 +93,38 @@ class CustomTableWidget extends StatelessWidget {
     return Expanded(
       flex: flex,
       child: Container(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(4.0),
         child: Text(
           value != null ? value.toString() : '',
           textAlign: TextAlign.left,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMenuButtonCell(Map<String, dynamic> row) {
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: PopupMenuButton<String>(
+          onSelected: (value) {
+            if (value == 'edit') {
+              // Handle edit action
+            } else if (value == 'delete') {
+              // Handle delete action
+            }
+          },
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+            const PopupMenuItem<String>(
+              value: 'edit',
+              child: Text('Edit'),
+            ),
+            const PopupMenuItem<String>(
+              value: 'delete',
+              child: Text('Delete'),
+            ),
+          ],
+          icon: const Icon(Icons.more_vert),
         ),
       ),
     );
