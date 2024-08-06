@@ -4,8 +4,8 @@ import 'package:african_windows/core/utils/responsive.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveLayout extends StatelessWidget {
-  final Widget mainContent;
-  final Widget filterContent;
+  final List<Widget> mainContent;
+  final List<Widget> filterContent;
   final String title;
 
   const ResponsiveLayout({
@@ -25,8 +25,9 @@ class ResponsiveLayout extends StatelessWidget {
           Text(
             title,
             style: Theme.of(context)
-            .textTheme.headlineLarge!
-            .copyWith(fontWeight: FontWeight.w600),
+                .textTheme
+                .headlineLarge!
+                .copyWith(fontWeight: FontWeight.w600),
           ),
           gapH20,
           LayoutBuilder(
@@ -36,9 +37,21 @@ class ResponsiveLayout extends StatelessWidget {
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(flex: 5, child: mainContent),
+                    Expanded(
+                      flex: 5,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: mainContent,
+                      ),
+                    ),
                     gapW16,
-                    Expanded(flex: 2, child: filterContent),
+                    Expanded(
+                      flex: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: filterContent,
+                      ),
+                    ),
                   ],
                 );
               } else {
@@ -46,16 +59,16 @@ class ResponsiveLayout extends StatelessWidget {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    filterContent,
+                    ...filterContent,
                     gapH16,
-                    mainContent,
+                    ...mainContent,
                   ],
                 );
               }
             },
           ),
           gapH20,
-        ]
+        ],
       ),
     );
   }

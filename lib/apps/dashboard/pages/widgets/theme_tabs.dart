@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/blocs/theme/theme_event.dart';
 import 'package:african_windows/core/utils/images.dart';
-import 'package:flutter/material.dart';
 import 'package:african_windows/core/configs/theme/theme.dart';
 import 'package:african_windows/core/constants/defaults.dart';
 import 'package:african_windows/core/widgets/sidemenu/tab_with_icon.dart';

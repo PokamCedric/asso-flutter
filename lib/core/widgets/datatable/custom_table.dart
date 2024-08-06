@@ -41,7 +41,6 @@ class CustomTableWidget extends StatelessWidget {
     return Expanded(
       flex: flex,
       child: Container(
-        height: 50,
         padding: const EdgeInsets.all(8.0),
         color: Theme.of(context).primaryColor,
         child: Center(

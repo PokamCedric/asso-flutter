@@ -1,14 +1,14 @@
-import 'package:african_windows/apps/job/data/jobs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'package:african_windows/apps/job/app_bloc.dart';
-import 'package:african_windows/apps/job/models_views/model_filter.dart';
 import 'package:african_windows/apps/job/bloc/job_bloc.dart';
 import 'package:african_windows/apps/job/data/filters.dart';
+import 'package:african_windows/apps/job/data/jobs.dart';
+import 'package:african_windows/apps/job/models_views/model_filter.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
-import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
 import 'package:african_windows/core/widgets/datatable/datatable_with_pagination.dart';
 import 'package:african_windows/core/blocs/datatable/datatable_bloc.dart';
@@ -36,16 +36,20 @@ class JobListingPage extends StatelessWidget {
 
     return ResponsiveLayout(
       title: 'Job Listing',
-      mainContent: _buildDataTable(),
-      filterContent: Consumer<FilterProvider>(
-        builder: (context, filterProvider, child) {
-          return Filter(
-            filters: filters,
-            selectedFilters: filterProvider.selectedFilters,
-            onFilterChanged: onFilterChanged,
-          );
-        },
-      ),
+      mainContent: [
+          _buildDataTable(),
+        ],
+      filterContent: [
+          Consumer<FilterProvider>(
+            builder: (context, filterProvider, child) {
+              return Filter(
+                filters: filters,
+                selectedFilters: filterProvider.selectedFilters,
+                onFilterChanged: onFilterChanged,
+              );
+            },
+          ),
+      ],
     );
   }
 

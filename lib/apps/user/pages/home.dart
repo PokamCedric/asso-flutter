@@ -35,16 +35,20 @@ class UserListingPage extends StatelessWidget {
 
     return ResponsiveLayout(
       title: 'User Listing',
-      mainContent: _buildDataTable(),
-      filterContent: Consumer<FilterProvider>(
-        builder: (context, filterProvider, child) {
-          return Filter(
-            filters: filters,
-            selectedFilters: filterProvider.selectedFilters,
-            onFilterChanged: onFilterChanged,
-          );
-        },
-      ),
+      mainContent: [
+          _buildDataTable(),
+        ],
+      filterContent: [
+          Consumer<FilterProvider>(
+          builder: (context, filterProvider, child) {
+            return Filter(
+              filters: filters,
+              selectedFilters: filterProvider.selectedFilters,
+              onFilterChanged: onFilterChanged,
+            );
+          },
+        ),
+      ],
     );
   }
 
