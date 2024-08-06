@@ -1,8 +1,7 @@
-import 'package:african_windows/apps/user/data/users.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/apps/user/app_bloc.dart';
+import 'package:african_windows/apps/user/data/users.dart';
 import 'package:african_windows/apps/user/models_views/model_filter.dart';
 import 'package:african_windows/apps/user/bloc/user_bloc.dart';
 import 'package:african_windows/apps/user/data/filters.dart';
@@ -30,7 +29,7 @@ class UserListingPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      UsersAppBloc.userListingsBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
+      CoreBloc.userListingsBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
     }
 
     return ResponsiveLayout(

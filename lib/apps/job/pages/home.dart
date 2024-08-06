@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/apps/job/app_bloc.dart';
 import 'package:african_windows/apps/job/bloc/job_bloc.dart';
 import 'package:african_windows/apps/job/data/filters.dart';
 import 'package:african_windows/apps/job/data/jobs.dart';
@@ -30,8 +29,7 @@ class JobListingPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      JobsAppBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
-      // Request focus on the search field
+      CoreBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
     }
 
     return ResponsiveLayout(
