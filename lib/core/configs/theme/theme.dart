@@ -40,15 +40,15 @@ class AppTheme {
 
   /// Default Theme
   static ThemeModel currentTheme = ThemeModel(
-    name: "default",
-    colorSeed: ColorSeed.pink, // Example default theme using ColorSeed enum
+    name: "green",
+    colorSeed: ColorSeed.green, // Example default theme using ColorSeed enum
   );
 
   /// List Theme Support in Application
   static List<ThemeModel> themeSupport = [
     ThemeModel(
-      name: "default",
-      colorSeed: ColorSeed.indigo, // Example default theme using ColorSeed enum
+      name: "orange",
+      colorSeed: ColorSeed.orange, // Example default theme using ColorSeed enum
     ),
     ThemeModel(
       name: "brown",
@@ -59,8 +59,8 @@ class AppTheme {
       colorSeed: ColorSeed.pink,
     ),
     ThemeModel(
-      name: "orange",
-      colorSeed: ColorSeed.orange,
+      name: "indigo",
+      colorSeed: ColorSeed.indigo,
     ),
     ThemeModel(
       name: "green",
