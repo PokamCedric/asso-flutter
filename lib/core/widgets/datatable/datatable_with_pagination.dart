@@ -1,11 +1,12 @@
 import 'package:african_windows/core/constants/gaps.dart';
+import 'package:african_windows/core/models_views/model_table_header.dart';
 import 'package:african_windows/core/widgets/datatable/datatable.dart';
 import 'package:african_windows/core/widgets/datatable/pagination.dart';
 import 'package:flutter/material.dart';
 
 class DataTableWithPagination extends StatelessWidget {
   final List<Map<String, dynamic>> data;
-  final List<int> flexValues;
+  final List<TableHeader> headers;
   final int rowsPerPage;
   final int currentPage;
   final List<int> availableRowsPerPage;
@@ -15,7 +16,7 @@ class DataTableWithPagination extends StatelessWidget {
   const DataTableWithPagination({
     super.key,
     required this.data,
-    required this.flexValues,
+    required this.headers,
     required this.rowsPerPage,
     required this.currentPage,
     required this.availableRowsPerPage,
@@ -33,7 +34,7 @@ class DataTableWithPagination extends StatelessWidget {
         gapH16,
         CustomDataTable(
           data: data,
-          flexValues: flexValues,
+          headers: headers,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,
         ),

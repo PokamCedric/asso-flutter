@@ -4,37 +4,68 @@ import 'package:african_windows/core/models/model_identifier.dart';
 enum UserRole { normalUser, admin }
 
 class UserModel extends IdentifierModel {
-  final String email;
   final String firstName;
   final String lastName;
   final UserRole role;
+  final String? email;
+  final String? phone;
+  final String? birthday;
+  final String? address;
+  final String? profession;
 
   UserModel(
     {
       required super.id,
-      required this.email,
       required this.firstName,
       required this.lastName,
       required this.role,
+      this.email,
+      this.phone,
+      this.birthday,
+      this.address,
+      this.profession,
     });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
-      email: json['email'] as String,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       role: rolefromString(json['role']),
+      email: json['email'],
+      phone: json['phone'],
+      birthday: json['birthday'],
+      address: json['address'],
+      profession: json['profession'],
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'email': email,
+      'id': id,
       'firstName': firstName,
       'lastName': lastName,
       'role': roleToString(role),
+      'email': email,
+      'phone': phone,
+      'birthday': birthday,
+      'address': address,
+      'profession': profession,
     };
+  }
+
+  factory UserModel.defaultModel() {
+    return UserModel(
+      id: -1,
+      firstName: '',
+      lastName: '',
+      role: UserRole.normalUser,
+      email: '',
+      phone: '',
+      birthday: '',
+      address: '',
+      profession: '',
+    );
   }
 
   static UserRole rolefromString(String role){
@@ -55,15 +86,5 @@ class UserModel extends IdentifierModel {
       default:
         return 'user';
     }
-  }
-
-  factory UserModel.defaultModel() {
-    return UserModel(
-      id: -1,
-      email: '',
-      firstName: 'Unselected',
-      lastName: 'Unselected',
-      role: UserRole.normalUser,
-    );
   }
 }

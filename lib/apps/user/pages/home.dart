@@ -1,3 +1,4 @@
+import 'package:african_windows/apps/user/data/users.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -30,7 +31,6 @@ class UserListingPage extends StatelessWidget {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
       UsersAppBloc.userListingsBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
-      // Request focus on the search field
     }
 
     return ResponsiveLayout(
@@ -62,7 +62,7 @@ class UserListingPage extends StatelessWidget {
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
                 data: userState.filteredUsers.map((user) => user.toJson()).toList(),
-                flexValues: const [3, 1, 1, 1],
+                headers: tableHeaders,
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],

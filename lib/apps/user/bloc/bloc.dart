@@ -35,9 +35,12 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
       bool matchesSearch =
           filter.query == null ||
           filter.query!.isEmpty ||
-          user.email.toLowerCase().contains(filter.query!.toLowerCase()) ||
           user.firstName.toLowerCase().contains(filter.query!.toLowerCase()) ||
           user.lastName.toLowerCase().contains(filter.query!.toLowerCase()) ||
+          user.email!.toLowerCase().contains(filter.query!.toLowerCase()) ||
+          user.phone!.toLowerCase().contains(filter.query!.toLowerCase()) ||
+          user.birthday!.toLowerCase().contains(filter.query!.toLowerCase()) ||
+          user.profession!.toLowerCase().contains(filter.query!.toLowerCase()) ||
           UserModel.roleToString(user.role).toLowerCase().contains(filter.query!.toLowerCase());
 
       bool matchesRole =

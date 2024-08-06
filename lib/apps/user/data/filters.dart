@@ -7,9 +7,9 @@ List<DropdownFilterModel> getDropdownFilterModels()
       'Role',
       'role',
       [
-      'user',
-      'admin',
-    ]),
+        'user',
+        'admin',
+      ]),
 
   ];
 

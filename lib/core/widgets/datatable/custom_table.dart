@@ -1,13 +1,14 @@
+import 'package:african_windows/core/models_views/model_table_header.dart';
 import 'package:flutter/material.dart';
 
 class CustomTableWidget extends StatelessWidget {
   final List<Map<String, dynamic>> data;
-  final List<int?> flexValues;
+  final List<TableHeader> headers;
 
   const CustomTableWidget({
     super.key,
     required this.data,
-    required this.flexValues,
+    required this.headers,
   });
 
   @override
@@ -16,27 +17,22 @@ class CustomTableWidget extends StatelessWidget {
       return const Center(child: Text('No data available'));
     }
 
-    // Extract headers from the first row of data
-    final headers = data.first.keys.toList();
-
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Column(
         children: [
-          _buildHeaderRow(context, headers),
+          _buildHeaderRow(context),
           const Divider(height: 1),
-          ..._buildDataRows(headers),
+          ..._buildDataRows(),
         ],
       ),
     );
   }
 
-  Widget _buildHeaderRow(BuildContext context, List<String> headers) {
+  Widget _buildHeaderRow(BuildContext context) {
     return Row(
-      children: headers.asMap().entries.map((entry) {
-        int index = entry.key;
-        String header = entry.value;
-        return _buildHeaderCell(context, header, _getFlexValue(index));
+      children: headers.map((header) {
+        return _buildHeaderCell(context, header.label, header.flex);
       }).toList(),
     );
   }
@@ -45,26 +41,27 @@ class CustomTableWidget extends StatelessWidget {
     return Expanded(
       flex: flex,
       child: Container(
+        height: 50,
         padding: const EdgeInsets.all(8.0),
         color: Theme.of(context).primaryColor,
-        child: Text(
-          text.toUpperCase(),
-          style: const TextStyle(fontWeight: FontWeight.bold),
-          textAlign: TextAlign.center,
+        child: Center(
+          child: Text(
+            text.toUpperCase(),
+            style: const TextStyle(fontWeight: FontWeight.bold),
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
   }
 
-  List<Widget> _buildDataRows(List<String> headers) {
+  List<Widget> _buildDataRows() {
     return data.map((row) {
       return Column(
         children: [
           Row(
-            children: headers.asMap().entries.map((entry) {
-              int index = entry.key;
-              String header = entry.value;
-              return _buildDataCell(_getFlexValue(index), row[header]);
+            children: headers.map((header) {
+              return _buildDataCell(header.flex, row[header.propertyName]);
             }).toList(),
           ),
           const Divider(height: 1),
@@ -84,9 +81,5 @@ class CustomTableWidget extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  int _getFlexValue(int index) {
-    return (index < flexValues.length && flexValues[index] != null) ? flexValues[index]! : 1;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:african_windows/apps/job/data/jobs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -62,8 +63,7 @@ class JobListingPage extends StatelessWidget {
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
                 data: jobState.filteredJobs.map((job) => job.toJson()).toList(),
-                flexValues: const [3, 1, 1, 1],
-
+                headers: tableHeaders,
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],

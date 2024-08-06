@@ -1,223 +1,226 @@
 [
-    {
+  {
       "_id": 1,
       "firstName": "Aminatou",
       "lastName": "Bello",
       "email": "aminatou.bello@example.com",
-      "phone": 1234567801,
-      "address": "123 Rue de la Paix, Yaoundé, Cameroun",
+      "phone": "696123456",
+      "address": "Akwa, Douala, Cameroun",
       "profession": "Ingénieure",
       "role": "admin",
       "status": "active",
       "avatar": "https://example.com/avatars/1.jpg",
-      "avatarColor": "blue"
-    },
-    {
+      "avatarColor": "blue",
+      "birthday": "15/01/1990"
+  },
+  {
       "_id": 2,
       "firstName": "François",
       "lastName": "Ngassa",
       "email": "francois.ngassa@example.com",
-      "phone": 1234567802,
-      "address": "456 Rue de l'Avenir, Douala, Cameroun",
+      "phone": "677123456",
+      "address": "Bonapriso, Douala, Cameroun",
       "profession": "Designer",
       "role": "user",
       "status": "inactive",
       "avatar": "https://example.com/avatars/2.jpg",
-      "avatarColor": "red"
-    },
-    {
+      "avatarColor": "red",
+      "birthday": "22/03/1985"
+  },
+  {
       "_id": 3,
       "firstName": "Nathalie",
       "lastName": "Ewane",
       "email": "nathalie.ewane@example.com",
-      "phone": 1234567803,
-      "address": "789 Rue des Fleurs, Bafoussam, Cameroun",
+      "phone": "697123456",
+      "address": "Bonanjo, Douala, Cameroun",
       "profession": "Médecin",
       "role": "user",
       "status": "active",
       "avatar": "https://example.com/avatars/3.jpg",
-      "avatarColor": "green"
-    },
-    {
+      "avatarColor": "green",
+      "birthday": "09/07/1978"
+  },
+  {
       "_id": 4,
       "firstName": "Samuel",
       "lastName": "Mbarga",
       "email": "samuel.mbarga@example.com",
-      "phone": 1234567804,
-      "address": "101 Rue des Palmiers, Garoua, Cameroun",
+      "phone": "679123456",
+      "address": "Bonaberi, Douala, Cameroun",
       "profession": "Professeur",
       "role": "user",
       "status": "pending",
       "avatar": "https://example.com/avatars/4.jpg",
-      "avatarColor": "yellow"
-    },
-    {
+      "avatarColor": "yellow",
+      "birthday": "18/12/1992"
+  },
+  {
       "_id": 5,
       "firstName": "Jacqueline",
       "lastName": "Zogo",
       "email": "jacqueline.zogo@example.com",
-      "phone": 1234567805,
-      "address": "102 Rue des Manguiers, Maroua, Cameroun",
+      "phone": "698123456",
+      "address": "Deido, Douala, Cameroun",
       "profession": "Artiste",
       "role": "admin",
       "status": "active",
       "avatar": "https://example.com/avatars/5.jpg",
-      "avatarColor": "purple"
-    },
-    {
+      "avatarColor": "purple",
+      "birthday": "06/05/1983"
+  },
+  {
       "_id": 6,
       "firstName": "Alain",
       "lastName": "Fouda",
       "email": "alain.fouda@example.com",
-      "phone": 1234567806,
-      "address": "103 Rue des Étoiles, Bamenda, Cameroun",
+      "phone": "675123456",
+      "address": "Bali, Douala, Cameroun",
       "profession": "Avocat",
       "role": "user",
       "status": "inactive",
       "avatar": "https://example.com/avatars/6.jpg",
-      "avatarColor": "orange"
-    },
-    {
+      "avatarColor": "orange",
+      "birthday": "24/11/1975"
+  },
+  {
       "_id": 7,
       "firstName": "Berthe",
       "lastName": "Njoya",
       "email": "berthe.njoya@example.com",
-      "phone": 1234567807,
-      "address": "104 Rue des Acacias, Ngaoundéré, Cameroun",
+      "phone": "678123456",
+      "address": "Ndogbong, Douala, Cameroun",
       "profession": "Infirmière",
       "role": "user",
       "status": "active",
       "avatar": "https://example.com/avatars/7.jpg",
-      "avatarColor": "pink"
-    },
-    {
+      "avatarColor": "pink",
+      "birthday": "30/08/1988"
+  },
+  {
       "_id": 8,
       "firstName": "Didier",
       "lastName": "Simo",
       "email": "didier.simo@example.com",
-      "phone": 1234567808,
-      "address": "105 Rue de la Liberté, Ebolowa, Cameroun",
+      "phone": "699123456",
+      "address": "Makepe, Douala, Cameroun",
       "profession": "Scientifique",
       "role": "user",
       "status": "pending",
       "avatar": "https://example.com/avatars/8.jpg",
-      "avatarColor": "cyan"
-    },
-    {
+      "avatarColor": "cyan",
+      "birthday": "14/09/1996"
+  },
+  {
       "_id": 9,
       "firstName": "Clarisse",
       "lastName": "Abena",
       "email": "clarisse.abena@example.com",
-      "phone": 1234567809,
-      "address": "106 Rue des Champs, Bertoua, Cameroun",
+      "phone": "676123456",
+      "address": "Bepanda, Douala, Cameroun",
       "profession": "Ingénieure",
       "role": "admin",
       "status": "active",
       "avatar": "https://example.com/avatars/9.jpg",
-      "avatarColor": "blue"
-    },
-    {
+      "avatarColor": "blue",
+      "birthday": "05/02/1991"
+  },
+  {
       "_id": 10,
       "firstName": "Henri",
       "lastName": "Atangana",
       "email": "henri.atangana@example.com",
-      "phone": 1234567810,
-      "address": "107 Rue des Mimosas, Buea, Cameroun",
+      "phone": "674123456",
+      "address": "Logpom, Douala, Cameroun",
       "profession": "Designer",
       "role": "user",
       "status": "inactive",
       "avatar": "https://example.com/avatars/10.jpg",
-      "avatarColor": "red"
-    },
-    {
+      "avatarColor": "red",
+      "birthday": "29/10/1980"
+  },
+  {
       "_id": 11,
       "firstName": "Josiane",
       "lastName": "Ebang",
       "email": "josiane.ebang@example.com",
-      "phone": 1234567811,
-      "address": "108 Rue des Jacarandas, Kribi, Cameroun",
+      "phone": "672123456",
+      "address": "Logbessou, Douala, Cameroun",
       "profession": "Médecin",
       "role": "user",
       "status": "active",
       "avatar": "https://example.com/avatars/11.jpg",
-      "avatarColor": "green"
-    },
-    {
+      "avatarColor": "green",
+      "birthday": "12/03/1987"
+  },
+  {
       "_id": 12,
       "firstName": "Lionel",
       "lastName": "Biyong",
       "email": "lionel.biyong@example.com",
-      "phone": 1234567812,
-      "address": "109 Rue des Orchidees, Kumba, Cameroun",
+      "phone": "671123456",
+      "address": "Bonamoussadi, Douala, Cameroun",
       "profession": "Professeur",
       "role": "user",
       "status": "pending",
       "avatar": "https://example.com/avatars/12.jpg",
-      "avatarColor": "yellow"
-    },
-    {
+      "avatarColor": "yellow",
+      "birthday": "01/06/1979"
+  },
+  {
       "_id": 13,
       "firstName": "Mireille",
       "lastName": "Djoumessi",
       "email": "mireille.djoumessi@example.com",
-      "phone": 1234567813,
-      "address": "110 Rue des Bougainvilliers, Limbe, Cameroun",
+      "phone": "673123456",
+      "address": "Bonaberi, Douala, Cameroun",
       "profession": "Artiste",
       "role": "admin",
       "status": "active",
       "avatar": "https://example.com/avatars/13.jpg",
-      "avatarColor": "purple"
-    },
-    {
+      "avatarColor": "purple",
+      "birthday": "21/04/1994"
+  },
+  {
       "_id": 14,
       "firstName": "Pascal",
       "lastName": "Tchinda",
       "email": "pascal.tchinda@example.com",
-      "phone": 1234567814,
-      "address": "111 Rue des Pivoines, Dschang, Cameroun",
+      "phone": "670123456",
+      "address": "Makepe, Douala, Cameroun",
       "profession": "Avocat",
       "role": "user",
       "status": "inactive",
       "avatar": "https://example.com/avatars/14.jpg",
-      "avatarColor": "orange"
-    },
-    {
+      "avatarColor": "orange",
+      "birthday": "25/05/1984"
+  },
+  {
       "_id": 15,
       "firstName": "Viviane",
       "lastName": "Mbella",
       "email": "viviane.mbella@example.com",
-      "phone": 1234567815,
-      "address": "112 Rue des Lys, Foumban, Cameroun",
+      "phone": "675654321",
+      "address": "Bonapriso, Douala, Cameroun",
       "profession": "Infirmière",
       "role": "user",
       "status": "active",
       "avatar": "https://example.com/avatars/15.jpg",
-      "avatarColor": "pink"
-    },
-    {
+      "avatarColor": "pink",
+      "birthday": "13/11/1990"
+  },
+  {
       "_id": 16,
       "firstName": "Alphonse",
       "lastName": "Essomba",
       "email": "alphonse.essomba@example.com",
-      "phone": 1234567816,
-      "address": "113 Rue des Hibiscus, Tiko, Cameroun",
+      "phone": "674987654",
+      "address": "Bonanjo, Douala, Cameroun",
       "profession": "Scientifique",
       "role": "user",
       "status": "pending",
       "avatar": "https://example.com/avatars/16.jpg",
-      "avatarColor": "cyan"
-    },
-    {
-      "_id": 17,
-      "firstName": "Edwige",
-      "lastName": "Nde",
-      "email": "edwige.nde@example.com",
-      "phone": 1234567817,
-      "address": "114 Rue des Baobabs, Mbouda, Cameroun",
-      "profession": "Ingénieure",
-      "role": "admin",
-      "status": "active",
-      "avatar": "https://example.com/avatars/17.jpg",
-      "avatarColor": "blue"
-    }
+      "avatarColor": "cyan",
+      "birthday": "20/07/1992"
+  }
 ]

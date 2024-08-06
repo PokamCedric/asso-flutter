@@ -11,8 +11,8 @@ class FilterModel {
 
   factory FilterModel.fromJson(Map<String, dynamic> json) {
     return FilterModel(
-      role: json['role'],
-      query: json['query'] as String?,
+      role: json['role']?? 'user',
+      query: json['query'] ?? '',
     );
   }
 
