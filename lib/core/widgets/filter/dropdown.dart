@@ -1,12 +1,10 @@
-
 import 'package:flutter/material.dart';
-import 'package:african_windows/core/constants/defaults.dart';
-import 'package:african_windows/core/constants/gaps.dart';
+import 'package:african_windows/core/widgets/layout_input_feld.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
 
 class FilterDropdown extends StatelessWidget {
   final DropdownFilterModel filter;
-  final String selectedValue;
+  final String? selectedValue;
   final ValueChanged<String?> onChanged;
 
   const FilterDropdown({
@@ -18,35 +16,29 @@ class FilterDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(filter.propertyName),
-          gapH8,
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            decoration: AppDefaults.decoration,
-            child: DropdownButton<String>(
-              value: selectedValue,
-              isExpanded: true,
-              underline: const SizedBox(),
-              dropdownColor: Theme.of(context).cardColor,
-              items: filter.items.map((String item) {
-                return DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(
-                    item,
-                    style: Theme.of(context).textTheme.bodyLarge!,
-                  ),
-                );
-              }).toList(),
-              onChanged: onChanged,
+    // Ensure the selectedValue is in the list of items
+    String validSelectedValue = selectedValue ?? filter.items.first;
+    if (!filter.items.contains(validSelectedValue)) {
+      validSelectedValue = filter.items.first;
+    }
+
+    return InputFieldLayout(
+      label: filter.label,
+      child: DropdownButton<String>(
+        value: validSelectedValue,
+        isExpanded: true,
+        underline: const SizedBox(),
+        dropdownColor: Theme.of(context).cardColor,
+        items: filter.items.map((String item) {
+          return DropdownMenuItem<String>(
+            value: item,
+            child: Text(
+              item,
+              style: Theme.of(context).textTheme.bodyLarge!,
             ),
-          ),
-          gapH16,
-        ],
+          );
+        }).toList(),
+        onChanged: onChanged,
       ),
     );
   }

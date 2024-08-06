@@ -49,7 +49,7 @@ class Header extends StatelessWidget {
               Expanded(
                 flex: 1,
                 child: TextFormField(
-                  // style: Theme.of(context).textTheme.labelLarge,
+                  style: Theme.of(context).textTheme.labelLarge,
                   decoration: InputDecoration(
                     hintText: "Search...",
                     prefixIcon: Padding(

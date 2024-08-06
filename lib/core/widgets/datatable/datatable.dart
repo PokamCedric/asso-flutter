@@ -8,6 +8,8 @@ class CustomDataTable extends StatelessWidget {
   final List<TableHeader> headers;
   final int rowsPerPage;
   final int currentPage;
+  final void Function()? onEdit;
+  final void Function()? onDelete;
 
   const CustomDataTable({
     super.key,
@@ -15,6 +17,8 @@ class CustomDataTable extends StatelessWidget {
     required this.headers,
     required this.rowsPerPage,
     required this.currentPage,
+    this.onEdit,
+    this.onDelete,
   });
 
   @override
@@ -28,6 +32,8 @@ class CustomDataTable extends StatelessWidget {
       child: CustomTableWidget(
         data: displayedData,
         headers: headers,
+        onEdit: onEdit,
+        onDelete: onDelete,
         ),
     );
   }

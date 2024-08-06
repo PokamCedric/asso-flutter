@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
 import 'package:african_windows/core/widgets/filter/dropdown.dart';

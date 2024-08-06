@@ -1,3 +1,5 @@
+import 'package:african_windows/core/services/navigation_service.dart';
+import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +15,7 @@ import 'package:african_windows/core/widgets/datatable/datatable_with_pagination
 import 'package:african_windows/core/blocs/datatable/datatable_bloc.dart';
 import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
 import 'package:african_windows/core/widgets/filter/filter.dart';
+
 
 class UserListingPage extends StatelessWidget {
   const UserListingPage({super.key});
@@ -35,10 +38,10 @@ class UserListingPage extends StatelessWidget {
     return ResponsiveLayout(
       title: 'User Listing',
       mainContent: [
-          _buildDataTable(context),
-        ],
+        _buildDataTable(context),
+      ],
       filterContent: [
-          Consumer<FilterProvider>(
+        Consumer<FilterProvider>(
           builder: (context, filterProvider, child) {
             return Filter(
               filters: filters,
@@ -52,6 +55,8 @@ class UserListingPage extends StatelessWidget {
   }
 
   Widget _buildDataTable(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
+
     return BlocBuilder<UserListingsBloc, UserListingsState>(
       builder: (userContext, userState) {
         if (userState.status == UserListingsStatus.loading) {
@@ -59,10 +64,14 @@ class UserListingPage extends StatelessWidget {
         } else if (userState.status == UserListingsStatus.error) {
           return CardLayout(
             child: Center(
-              child: Text('An error occurred: ${userState.errorMessage}',
-                style: TextStyle(color: Theme.of(context).colorScheme.error,)
-              ))
-            );
+              child: Text(
+                'An error occurred: ${userState.errorMessage}',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+            ),
+          );
         } else {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
@@ -72,8 +81,9 @@ class UserListingPage extends StatelessWidget {
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],
-                onPageChanged: (newPage) =>
-                    CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
+                onEdit:  () => nav.navigateTo(Routes.userEdit),
+                //onDelete:  () => nav.navigateTo(Routes.userDelete),
+                onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
                 onRowsPerPageChanged: (newRowsPerPage) =>
                     CoreBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
               );

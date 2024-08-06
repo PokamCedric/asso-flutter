@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/apps/job/bloc/job_bloc.dart';
-import 'package:african_windows/apps/job/data/filters.dart';
 import 'package:african_windows/apps/job/data/jobs.dart';
 import 'package:african_windows/apps/job/models_views/model_filter.dart';
-import 'package:african_windows/core_bloc.dart';
+import 'package:african_windows/apps/job/bloc/job_bloc.dart';
+import 'package:african_windows/apps/job/data/filters.dart';
 import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
+import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
 import 'package:african_windows/core/widgets/datatable/datatable_with_pagination.dart';
 import 'package:african_windows/core/blocs/datatable/datatable_bloc.dart';
@@ -35,18 +35,18 @@ class JobListingPage extends StatelessWidget {
     return ResponsiveLayout(
       title: 'Job Listing',
       mainContent: [
-          _buildDataTable(context),
-        ],
+        _buildDataTable(context),
+      ],
       filterContent: [
-          Consumer<FilterProvider>(
-            builder: (context, filterProvider, child) {
-              return Filter(
-                filters: filters,
-                selectedFilters: filterProvider.selectedFilters,
-                onFilterChanged: onFilterChanged,
-              );
-            },
-          ),
+        Consumer<FilterProvider>(
+          builder: (context, filterProvider, child) {
+            return Filter(
+              filters: filters,
+              selectedFilters: filterProvider.selectedFilters,
+              onFilterChanged: onFilterChanged,
+            );
+          },
+        ),
       ],
     );
   }
@@ -59,10 +59,14 @@ class JobListingPage extends StatelessWidget {
         } else if (jobState.status == JobListingsStatus.error) {
           return CardLayout(
             child: Center(
-              child: Text('An error occurred: ${jobState.errorMessage}',
-                style: TextStyle(color: Theme.of(context).colorScheme.error,)
-              ))
-            );
+              child: Text(
+                'An error occurred: ${jobState.errorMessage}',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.error,
+                ),
+              ),
+            ),
+          );
         } else {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
@@ -72,8 +76,7 @@ class JobListingPage extends StatelessWidget {
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],
-                onPageChanged: (newPage) =>
-                    CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
+                onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
                 onRowsPerPageChanged: (newRowsPerPage) =>
                     CoreBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
               );

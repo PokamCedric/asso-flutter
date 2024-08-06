@@ -35,7 +35,7 @@ class UserNavigation extends StatelessWidget {
                         MenuTile(
                           isSubmenu: true,
                           title: "Add User",
-                          onPressed: () {},
+                          onPressed: () => nav.navigateTo(Routes.userEdit),
                         ),
                       ],
                     );

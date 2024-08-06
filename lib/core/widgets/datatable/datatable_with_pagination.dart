@@ -12,6 +12,8 @@ class DataTableWithPagination extends StatelessWidget {
   final List<int> availableRowsPerPage;
   final void Function(int newPage) onPageChanged;
   final void Function(int? newRowsPerPage) onRowsPerPageChanged;
+  final void Function()? onEdit;
+  final void Function()? onDelete;
 
   const DataTableWithPagination({
     super.key,
@@ -22,6 +24,8 @@ class DataTableWithPagination extends StatelessWidget {
     required this.availableRowsPerPage,
     required this.onPageChanged,
     required this.onRowsPerPageChanged,
+    this.onEdit,
+    this.onDelete,
   });
 
   @override
@@ -37,6 +41,8 @@ class DataTableWithPagination extends StatelessWidget {
           headers: headers,
           rowsPerPage: rowsPerPage,
           currentPage: currentPage,
+          onDelete: onDelete,
+          onEdit: onEdit,
         ),
         gapH16,
         _paginationControl(),
