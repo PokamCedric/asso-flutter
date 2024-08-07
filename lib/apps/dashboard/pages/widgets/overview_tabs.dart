@@ -52,7 +52,7 @@ class _OverviewTabsState extends State<OverviewTabs>
               borderRadius: const BorderRadius.all(
                 Radius.circular(AppDefaults.borderRadius),
               ),
-              color: Theme.of(context).canvasColor,
+              color: Theme.of(context).highlightColor,
             ),
             tabs: [
               TabWithGrowth(

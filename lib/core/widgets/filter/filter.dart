@@ -50,7 +50,8 @@ class Filter extends StatelessWidget {
           ),
           gapH8,
           ResetButton(
-            onReset: () {
+            label: 'Reset',
+            onPressed: () {
               final resetFilters = <String, String>{};
               for (var filter in filters) {
                 if (filter.items.isNotEmpty) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:african_windows/apps/user/pages/widgets/edit_body.dart';
 import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
+import 'package:flutter/widgets.dart';
 
 
 class UserEditPage extends StatelessWidget {
@@ -9,13 +10,18 @@ class UserEditPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return const ResponsiveLayout(
+    return ResponsiveLayout(
       title: 'Edit User',
       mainContent: [
-        EditBody(),
+        EditBody(
+          textFirstNameController: TextEditingController(),
+          textLastNameController: TextEditingController(),
+          textEmailController: TextEditingController(),
+          textPhoneController: TextEditingController(),
+          textAddressController: TextEditingController(),
+        ),
       ],
-      filterContent: [
-      ],
+      filterContent: const [],
     );
   }
 }

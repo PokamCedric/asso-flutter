@@ -56,7 +56,7 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Theme.of(context).canvasColor,
+        color: Theme.of(context).highlightColor,
         borderRadius: BorderRadius.circular(AppDefaults.borderRadius * 5),
       ),
       child: TabBar(
@@ -73,12 +73,12 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Theme.of(context).shadowColor.withOpacity(0.3),
               blurRadius: 5,
               spreadRadius: 2,
             ),
           ],
-          color: Theme.of(context).cardColor,
+          color: Theme.of(context).indicatorColor.withOpacity(0.5),
         ),
         indicatorSize: TabBarIndicatorSize.tab,
         tabs: [
