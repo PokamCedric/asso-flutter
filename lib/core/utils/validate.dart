@@ -6,15 +6,15 @@ enum ValidateType {
 }
 
 class Validator {
-  static const String empty = "value_not_empty";
-  static const String range = "value_not_valid_range";
-  static const String email = "value_not_valid_email";
-  static const String phone = "value_not_valid_phone";
-  static const String match = "value_not_match";
+  static const String empty = "empty field";
+  static const String range = "invalid range";
+  static const String email = "invalid email";
+  static const String phone = "invalid phone";
+  static const String match = "no matching value";
 
-  static validate({
+  static String validate({
     required String data,
-    required ValidateType type,
+    ValidateType type = ValidateType.normal,
     int? min,
     int? max,
     bool allowEmpty = false,
@@ -46,7 +46,7 @@ class Validator {
           return email;
         }
 
-        return null;
+        return '';
 
       case ValidateType.phone:
 
@@ -57,10 +57,10 @@ class Validator {
           return phone;
         }
 
-        return null;
+        return '';
 
       default:
-        return null;
+        return '';
     }
   }
 

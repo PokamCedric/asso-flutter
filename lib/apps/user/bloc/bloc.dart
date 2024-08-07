@@ -1,4 +1,3 @@
-// user_listings_bloc.dart
 import 'package:african_windows/apps/user/models/model_user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:african_windows/apps/user/data/users.dart';
@@ -9,6 +8,9 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
   UserListingsBloc() : super(const UserListingsState()) {
     on<LoadUsersEvent>(_onLoadUsers);
     on<FilterUsersEvent>(_onFilterUsers);
+    on<AddUserEvent>(_onAddUser);
+    on<DeleteUserEvent>(_onDeleteUser);
+    on<UpdateUserEvent>(_onUpdateUser);
   }
 
   Future<void> _onLoadUsers(LoadUsersEvent event, Emitter<UserListingsState> emit) async {
@@ -44,8 +46,8 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
           UserModel.roleToString(user.role).toLowerCase().contains(filter.query!.toLowerCase());
 
       bool matchesRole =
-          filter.role  ==  'Unselected' ||
-          user.role == UserModel.rolefromString(filter.role??'') ;
+          filter.role == 'Unselected' ||
+          user.role == UserModel.rolefromString(filter.role ?? '');
 
       return matchesSearch && matchesRole;
     }).toList();
@@ -55,5 +57,61 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
       totalHits: filteredUsers.length,
       currentPage: 1,
     ));
+  }
+
+  Future<void> _onAddUser(AddUserEvent event, Emitter<UserListingsState> emit) async {
+    emit(state.copyWith(status: UserListingsStatus.loading));
+    try {
+      final updatedUsers = List<UserModel>.from(state.allUsers)..add(event.newUser);
+      emit(state.copyWith(
+        status: UserListingsStatus.success,
+        allUsers: updatedUsers,
+        filteredUsers: updatedUsers,
+        totalHits: updatedUsers.length,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: UserListingsStatus.error,
+        errorMessage: e.toString(),
+      ));
+    }
+  }
+
+  Future<void> _onDeleteUser(DeleteUserEvent event, Emitter<UserListingsState> emit) async {
+    emit(state.copyWith(status: UserListingsStatus.loading));
+    try {
+      final updatedUsers = state.allUsers.where((user) => user.id != event.userId).toList();
+      emit(state.copyWith(
+        status: UserListingsStatus.success,
+        allUsers: updatedUsers,
+        filteredUsers: updatedUsers,
+        totalHits: updatedUsers.length,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: UserListingsStatus.error,
+        errorMessage: e.toString(),
+      ));
+    }
+  }
+
+  Future<void> _onUpdateUser(UpdateUserEvent event, Emitter<UserListingsState> emit) async {
+    emit(state.copyWith(status: UserListingsStatus.loading));
+    try {
+      final updatedUsers = state.allUsers.map((user) {
+        return user.id == event.updatedUser.id ? event.updatedUser : user;
+      }).toList();
+      emit(state.copyWith(
+        status: UserListingsStatus.success,
+        allUsers: updatedUsers,
+        filteredUsers: updatedUsers,
+        totalHits: updatedUsers.length,
+      ));
+    } catch (e) {
+      emit(state.copyWith(
+        status: UserListingsStatus.error,
+        errorMessage: e.toString(),
+      ));
+    }
   }
 }

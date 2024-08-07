@@ -14,7 +14,7 @@ class AppTextInput extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
-  final String? errorText;
+  final String errorText;
   final int? maxLines;
 
   const AppTextInput({
@@ -31,19 +31,18 @@ class AppTextInput extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType,
     this.textInputAction,
-    this.errorText,
+    required this.errorText,
     this.maxLines = 1,
   });
 
   Widget _buildErrorLabel(BuildContext context) {
-    if (errorText == null) {
+    if (errorText.isEmpty) {
       return Container();
     }
-
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Text(
-        errorText!,
+        errorText,
         style: Theme.of(context)
             .textTheme
             .bodySmall
@@ -89,7 +88,7 @@ class AppTextInput extends StatelessWidget {
                 border: InputBorder.none,
               ),
             ),
-            _buildErrorLabel(context)
+            _buildErrorLabel(context),
           ],
         ),
       ),

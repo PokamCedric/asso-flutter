@@ -54,6 +54,29 @@ class UserModel extends IdentifierModel {
     };
   }
 
+  UserModel copyWith({
+    id,
+    String? firstName,
+    String? lastName,
+    UserRole? role,
+    String? email,
+    String? phone,
+    String? birthday,
+    String? address,
+    String? profession,
+  }) {
+    return UserModel(
+      id: id ?? this.id,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+      role: role ?? this.role,
+      birthday: birthday ?? this.birthday,
+      address: address ?? this.address,
+      phone: phone ?? this.phone,
+    );
+  }
+
   factory UserModel.defaultModel() {
     return UserModel(
       id: -1,
