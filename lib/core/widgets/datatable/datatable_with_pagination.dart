@@ -12,8 +12,8 @@ class DataTableWithPagination extends StatelessWidget {
   final List<int> availableRowsPerPage;
   final void Function(int newPage) onPageChanged;
   final void Function(int? newRowsPerPage) onRowsPerPageChanged;
-  final void Function()? onEdit;
-  final void Function()? onDelete;
+  final void Function(String)? onEdit;
+  final void Function(String)? onDelete;
 
   const DataTableWithPagination({
     super.key,

@@ -8,8 +8,8 @@ class CustomDataTable extends StatelessWidget {
   final List<TableHeader> headers;
   final int rowsPerPage;
   final int currentPage;
-  final void Function()? onEdit;
-  final void Function()? onDelete;
+  final void Function(String)? onEdit;
+  final void Function(String)? onDelete;
 
   const CustomDataTable({
     super.key,

@@ -1,3 +1,5 @@
+import 'package:african_windows/apps/user/models/model_user.dart';
+import 'package:african_windows/apps/user/pages/add.dart';
 import 'package:african_windows/apps/user/pages/edit.dart';
 import 'package:flutter/material.dart';
 import 'package:african_windows/apps/authentication/pages/register_page.dart';
@@ -16,6 +18,7 @@ class Routes {
   static const String signin = "/sign-in";
   static const String register = "/register";
   static const String users = "/users";
+  static const String userAdd = "/user-add";
   static const String userEdit = "/user-edit";
 
   Route<dynamic> generateRoute(RouteSettings settings) {
@@ -48,9 +51,16 @@ class Routes {
           adminOnly: true,
           settings: settings,
         );
-      case userEdit:
+      case userAdd:
         return AuthenticatedRoute(
-          builder: (context) => const UserEditPage(),
+          builder: (context) => const UserAddPage(),
+          adminOnly: true,
+          settings: settings,
+        );
+      case userEdit:
+        final UserModel user = settings.arguments as UserModel;
+        return AuthenticatedRoute(
+          builder: (context) => UserEditPage(user: user),
           adminOnly: true,
           settings: settings,
         );

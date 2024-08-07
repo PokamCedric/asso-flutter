@@ -4,8 +4,8 @@ class NavigationController {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   // Navigate to the specified route
-  void navigateTo(String routeName) {
-    navigatorKey.currentState?.pushNamed(routeName);
+  void navigateTo(String routeName, {arguments}) {
+    navigatorKey.currentState?.pushNamed(routeName, arguments: arguments);
   }
 
   // Navigate to the specified route and remove all previous routes

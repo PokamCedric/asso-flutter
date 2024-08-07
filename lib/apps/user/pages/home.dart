@@ -81,7 +81,10 @@ class UserListingPage extends StatelessWidget {
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],
-                onEdit:  () => nav.navigateTo(Routes.userEdit),
+                onEdit: (id) {
+                  final selectedUser = userState.filteredUsers.firstWhere((item) => id == item.id);
+                  nav.navigateTo(Routes.userEdit, arguments: selectedUser);
+                },
                 //onDelete:  () => nav.navigateTo(Routes.userDelete),
                 onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
                 onRowsPerPageChanged: (newRowsPerPage) =>

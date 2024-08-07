@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class CustomTableWidget extends StatelessWidget {
   final List<Map<String, dynamic>> data;
   final List<TableHeader> headers;
-  final void Function()? onEdit;
-  final void Function()? onDelete;
+  final void Function(String)? onEdit;
+  final void Function(String)? onDelete;
 
   const CustomTableWidget({
     super.key,
@@ -121,12 +121,12 @@ class CustomTableWidget extends StatelessWidget {
           itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
             PopupMenuItem<String>(
               value: 'edit',
-              onTap: onEdit,
+              onTap: onEdit != null ? () => onEdit!(row['id']) : null,
               child: const Text('Edit'),
             ),
             PopupMenuItem<String>(
               value: 'delete',
-              onTap: onDelete,
+              onTap: onDelete!= null ? () => onDelete!(row['id']) : null,
               child: const Text('Delete'),
             ),
           ],

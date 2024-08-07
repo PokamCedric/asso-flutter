@@ -1,6 +1,7 @@
 import 'package:african_windows/apps/user/bloc/user_bloc.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
+import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/utils/other.dart';
 import 'package:african_windows/core/utils/validate.dart';
 import 'package:african_windows/core/widgets/app_button.dart';
@@ -11,20 +12,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:african_windows/apps/user/models/model_user.dart';
 import 'package:provider/provider.dart';
 
-class UserEditBody extends StatefulWidget {
-  final UserModel user;
-  const UserEditBody({super.key, required this.user});
+class UserAddBody extends StatefulWidget {
+  const UserAddBody({super.key});
 
   @override
-  State<UserEditBody> createState() => _UserEditBodyState();
+  State<UserAddBody> createState() => _UserAddBodyState();
 }
 
-class _UserEditBodyState extends State<UserEditBody> {
-  late TextEditingController _firstNameController;
-  late TextEditingController _lastNameController;
-  late TextEditingController _emailController;
-  late TextEditingController _phoneController;
-  late TextEditingController _addressController;
+class _UserAddBodyState extends State<UserAddBody> {
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   final FocusNode focusFirstName = FocusNode();
   final FocusNode focusLastName = FocusNode();
@@ -37,16 +37,6 @@ class _UserEditBodyState extends State<UserEditBody> {
   String _email = '';
   String _phone = '';
   String _address = '';
-
-  @override
-  void initState() {
-    super.initState();
-    _firstNameController = TextEditingController(text: widget.user.firstName);
-    _lastNameController = TextEditingController(text: widget.user.lastName);
-    _emailController = TextEditingController(text: widget.user.email);
-    _phoneController = TextEditingController(text: widget.user.phone);
-    _addressController = TextEditingController(text: widget.user.address);
-  }
 
   @override
   void dispose() {
@@ -64,15 +54,18 @@ class _UserEditBodyState extends State<UserEditBody> {
   }
 
   void _update() {
+
     if (_isValid()) {
-      final updatedUser = widget.user.copyWith(
+      final newUser = UserModel(
+        id: DateTime.now().millisecondsSinceEpoch, // generate a unique id
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
+        role: UserRole.normalUser, // default role
         email: _emailController.text.trim(),
         phone: _phoneController.text.trim(),
         address: _addressController.text.trim(),
       );
-      CoreBloc.userListingsBloc.add(UpdateUserEvent(updatedUser));
+      CoreBloc.userListingsBloc.add(AddUserEvent(newUser));
     }
   }
 
@@ -104,17 +97,18 @@ class _UserEditBodyState extends State<UserEditBody> {
 
   @override
   Widget build(BuildContext context) {
-
     final nav = Provider.of<NavigationController>(context);
+
     return BlocConsumer<UserListingsBloc, UserListingsState>(
       listener: (context, state) async {
-
         if (state.status == UserListingsStatus.success) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('User updated successfully!')),
+            const SnackBar(content: Text('User added successfully!')),
           );
+          _clearForm();
+
           await Future.delayed(const Duration(seconds: 1));
-          nav.goBack();
+          nav.navigateTo(Routes.users);
         } else if (state.status == UserListingsStatus.error) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage ?? 'An error occurred')),
@@ -204,6 +198,21 @@ class _UserEditBodyState extends State<UserEditBody> {
         );
       },
     );
+  }
+
+  void _clearForm() {
+    _firstNameController.clear();
+    _lastNameController.clear();
+    _emailController.clear();
+    _phoneController.clear();
+    _addressController.clear();
+    setState(() {
+      _firstName = '';
+      _lastName = '';
+      _email = '';
+      _phone = '';
+      _address = '';
+    });
   }
 
   Function(String?)? _getFocus(BuildContext context,

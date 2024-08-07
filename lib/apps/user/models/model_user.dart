@@ -77,6 +77,9 @@ class UserModel extends IdentifierModel {
     );
   }
 
+  @override
+  String toString() => '${lastName.toUpperCase()} $firstName';
+
   factory UserModel.defaultModel() {
     return UserModel(
       id: -1,
