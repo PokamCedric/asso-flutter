@@ -32,7 +32,7 @@ class UserListingPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      CoreBloc.userListingsBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
+      CoreBloc.usersBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
     }
 
     return ResponsiveLayout(
@@ -57,7 +57,7 @@ class UserListingPage extends StatelessWidget {
   Widget _buildDataTable(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocBuilder<UserListingsBloc, UserListingsState>(
+    return BlocBuilder<UsersBloc, UserListingsState>(
       builder: (userContext, userState) {
         if (userState.status == UserListingsStatus.loading) {
           return const Center(child: CircularProgressIndicator());

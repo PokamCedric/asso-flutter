@@ -65,7 +65,7 @@ class _UserAddBodyState extends State<UserAddBody> {
         phone: _phoneController.text.trim(),
         address: _addressController.text.trim(),
       );
-      CoreBloc.userListingsBloc.add(AddUserEvent(newUser));
+      CoreBloc.usersBloc.add(AddUserEvent(newUser));
     }
   }
 
@@ -99,7 +99,7 @@ class _UserAddBodyState extends State<UserAddBody> {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocConsumer<UserListingsBloc, UserListingsState>(
+    return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
         if (state.status == UserListingsStatus.success) {
           ScaffoldMessenger.of(context).showSnackBar(

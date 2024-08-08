@@ -72,7 +72,7 @@ class _UserEditBodyState extends State<UserEditBody> {
         phone: _phoneController.text.trim(),
         address: _addressController.text.trim(),
       );
-      CoreBloc.userListingsBloc.add(UpdateUserEvent(updatedUser));
+      CoreBloc.usersBloc.add(UpdateUserEvent(updatedUser));
     }
   }
 
@@ -106,7 +106,7 @@ class _UserEditBodyState extends State<UserEditBody> {
   Widget build(BuildContext context) {
 
     final nav = Provider.of<NavigationController>(context);
-    return BlocConsumer<UserListingsBloc, UserListingsState>(
+    return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
 
         if (state.status == UserListingsStatus.success) {

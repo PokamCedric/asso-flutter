@@ -5,8 +5,8 @@ import 'package:african_windows/apps/job/data/jobs.dart';
 import 'event.dart';
 import 'state.dart';
 
-class JobListingsBloc extends Bloc<JobListingsEvent, JobListingsState> {
-  JobListingsBloc() : super(const JobListingsState()) {
+class JobsBloc extends Bloc<JobListingsEvent, JobListingsState> {
+  JobsBloc() : super(const JobListingsState()) {
     on<LoadJobsEvent>(_onLoadJobs);
     on<FilterJobsEvent>(_onFilterJobs);
   }
@@ -19,7 +19,6 @@ class JobListingsBloc extends Bloc<JobListingsEvent, JobListingsState> {
         status: JobListingsStatus.success,
         allJobs: jobs,
         filteredJobs: jobs,
-        totalHits: jobs.length,
       ));
     } catch (e) {
       emit(state.copyWith(
@@ -53,8 +52,6 @@ class JobListingsBloc extends Bloc<JobListingsEvent, JobListingsState> {
 
     emit(state.copyWith(
       filteredJobs: filteredJobs,
-      totalHits: filteredJobs.length,
-      currentPage: 1,
     ));
   }
 }

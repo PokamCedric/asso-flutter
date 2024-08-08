@@ -29,7 +29,7 @@ class JobListingPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      CoreBloc.jobListingsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
+      CoreBloc.jobsBloc.add(FilterJobsEvent(FilterModel.fromJson(newFilters)));
     }
 
     return ResponsiveLayout(
@@ -52,7 +52,7 @@ class JobListingPage extends StatelessWidget {
   }
 
   Widget _buildDataTable(BuildContext context) {
-    return BlocBuilder<JobListingsBloc, JobListingsState>(
+    return BlocBuilder<JobsBloc, JobListingsState>(
       builder: (jobContext, jobState) {
         if (jobState.status == JobListingsStatus.loading) {
           return const Center(child: CircularProgressIndicator());

@@ -4,8 +4,8 @@ import 'package:african_windows/apps/user/data/users.dart';
 import 'event.dart';
 import 'state.dart';
 
-class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
-  UserListingsBloc() : super(const UserListingsState()) {
+class UsersBloc extends Bloc<UserListingsEvent, UserListingsState> {
+  UsersBloc() : super(const UserListingsState()) {
     on<LoadUsersEvent>(_onLoadUsers);
     on<FilterUsersEvent>(_onFilterUsers);
     on<AddUserEvent>(_onAddUser);
@@ -21,7 +21,6 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
         status: UserListingsStatus.success,
         allUsers: users,
         filteredUsers: users,
-        totalHits: users.length,
       ));
     } catch (e) {
       emit(state.copyWith(
@@ -54,8 +53,6 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
 
     emit(state.copyWith(
       filteredUsers: filteredUsers,
-      totalHits: filteredUsers.length,
-      currentPage: 1,
     ));
   }
 
@@ -67,7 +64,6 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
         status: UserListingsStatus.success,
         allUsers: updatedUsers,
         filteredUsers: updatedUsers,
-        totalHits: updatedUsers.length,
       ));
     } catch (e) {
       emit(state.copyWith(
@@ -85,7 +81,6 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
         status: UserListingsStatus.success,
         allUsers: updatedUsers,
         filteredUsers: updatedUsers,
-        totalHits: updatedUsers.length,
       ));
     } catch (e) {
       emit(state.copyWith(
@@ -105,7 +100,6 @@ class UserListingsBloc extends Bloc<UserListingsEvent, UserListingsState> {
         status: UserListingsStatus.success,
         allUsers: updatedUsers,
         filteredUsers: updatedUsers,
-        totalHits: updatedUsers.length,
       ));
     } catch (e) {
       emit(state.copyWith(
