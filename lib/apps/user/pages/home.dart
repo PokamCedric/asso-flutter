@@ -18,7 +18,6 @@ import 'package:african_windows/core/blocs/datatable/datatable_bloc.dart';
 import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
 import 'package:african_windows/core/widgets/filter/filter.dart';
 
-
 class UserListingPage extends StatelessWidget {
   const UserListingPage({super.key});
 
@@ -39,7 +38,7 @@ class UserListingPage extends StatelessWidget {
 
     return ResponsiveLayout(
       title: 'User Listing',
-      breadcrumbItems:  const [
+      breadcrumbItems: const [
         AppConfig.breadcrumbItemDefault,
         BreadcrumbItem(name: "Users", route: Routes.users, active: true),
       ],
@@ -65,9 +64,9 @@ class UserListingPage extends StatelessWidget {
 
     return BlocBuilder<UsersBloc, UserListingsState>(
       builder: (userContext, userState) {
-        if (userState.status == UserListingsStatus.loading) {
+        if (userState is UserLoadingState) {
           return const Center(child: CircularProgressIndicator());
-        } else if (userState.status == UserListingsStatus.error) {
+        } else if (userState is UserErrorState) {
           return CardLayout(
             child: Center(
               child: Text(
@@ -78,7 +77,7 @@ class UserListingPage extends StatelessWidget {
               ),
             ),
           );
-        } else {
+        } else if (userState is UserLoadedState) {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
@@ -92,13 +91,15 @@ class UserListingPage extends StatelessWidget {
                   final selectedUser = userState.filteredUsers.firstWhere((item) => id == item.id);
                   nav.navigateTo(Routes.userEdit, arguments: selectedUser);
                 },
-                //onDelete:  () => nav.navigateTo(Routes.userDelete),
                 onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
                 onRowsPerPageChanged: (newRowsPerPage) =>
                     CoreBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),
               );
             },
           );
+        } else {
+          // If no specific state is matched, provide a fallback UI
+          return const Center(child: Text('No data available.'));
         }
       },
     );

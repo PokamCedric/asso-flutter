@@ -77,7 +77,7 @@ class _UserEditBodyState extends State<UserEditBody> {
   }
 
   bool _isValid() {
-      setState(() {
+    setState(() {
       _firstName = Validator.validate(
         data: _firstNameController.text.trim(),
       );
@@ -104,24 +104,25 @@ class _UserEditBodyState extends State<UserEditBody> {
 
   @override
   Widget build(BuildContext context) {
-
     final nav = Provider.of<NavigationController>(context);
+
     return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
-
-        if (state.status == UserListingsStatus.success) {
+        if (state is UserUpdatedState) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('User updated successfully!')),
           );
           await Future.delayed(const Duration(seconds: 1));
           nav.goBack();
-        } else if (state.status == UserListingsStatus.error) {
+        } else if (state is UserErrorState) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage ?? 'An error occurred')),
+            SnackBar(content: Text(state.errorMessage)),
           );
         }
       },
       builder: (context, state) {
+        bool isLoading = state is UserUpdatingState;
+
         return CardLayout(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -132,7 +133,7 @@ class _UserEditBodyState extends State<UserEditBody> {
                 errorText: _firstName,
                 focusNode: focusFirstName,
                 controller: _firstNameController,
-                onSubmitted: _getFocus(context, focusFirstName, focusLastName),
+                onSubmitted: Other.getFocus(context, focusFirstName, focusLastName),
                 icon: const Icon(Icons.clear),
                 onTapIcon: () async {
                   await Future.delayed(const Duration(milliseconds: 100));
@@ -145,7 +146,7 @@ class _UserEditBodyState extends State<UserEditBody> {
                 errorText: _lastName,
                 focusNode: focusLastName,
                 controller: _lastNameController,
-                onSubmitted: _getFocus(context, focusLastName, focusEmail),
+                onSubmitted: Other.getFocus(context, focusLastName, focusEmail),
                 icon: const Icon(Icons.clear),
                 onTapIcon: () async {
                   await Future.delayed(const Duration(milliseconds: 100));
@@ -158,7 +159,7 @@ class _UserEditBodyState extends State<UserEditBody> {
                 errorText: _email,
                 focusNode: focusEmail,
                 controller: _emailController,
-                onSubmitted: _getFocus(context, focusEmail, focusPhone),
+                onSubmitted: Other.getFocus(context, focusEmail, focusPhone),
                 icon: const Icon(Icons.clear),
                 onTapIcon: () async {
                   await Future.delayed(const Duration(milliseconds: 100));
@@ -171,7 +172,7 @@ class _UserEditBodyState extends State<UserEditBody> {
                 errorText: _phone,
                 focusNode: focusPhone,
                 controller: _phoneController,
-                onSubmitted: _getFocus(context, focusPhone, focusAdress),
+                onSubmitted: Other.getFocus(context, focusPhone, focusAdress),
                 icon: const Icon(Icons.clear),
                 onTapIcon: () async {
                   await Future.delayed(const Duration(milliseconds: 100));
@@ -194,8 +195,8 @@ class _UserEditBodyState extends State<UserEditBody> {
                 child: SizedBox(
                   width: 200,
                   child: AppButton(
-                    onPressed: state.status == UserListingsStatus.loading ? null : _update,
-                    text: state.status == UserListingsStatus.loading ? 'Loading...' : 'Submit',
+                    onPressed: isLoading ? null : _update,
+                    text: isLoading ? 'Loading...' : 'Submit',
                   ),
                 ),
               ),
@@ -206,14 +207,4 @@ class _UserEditBodyState extends State<UserEditBody> {
     );
   }
 
-  Function(String?)? _getFocus(BuildContext context,
-      FocusNode? focusNodeStart, FocusNode? focusNodeEnd) {
-    return focusNodeStart != null && focusNodeEnd != null ? (value) {
-      Other.fieldFocusChange(
-        context,
-        focusNodeStart,
-        focusNodeEnd,
-      );
-    } : null;
-  }
 }

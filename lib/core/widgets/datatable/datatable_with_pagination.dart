@@ -1,8 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:african_windows/core/constants/gaps.dart';
 import 'package:african_windows/core/models_views/model_table_header.dart';
 import 'package:african_windows/core/widgets/datatable/datatable.dart';
 import 'package:african_windows/core/widgets/datatable/pagination.dart';
-import 'package:flutter/material.dart';
 
 class DataTableWithPagination extends StatelessWidget {
   final List<Map<String, dynamic>> data;
