@@ -108,20 +108,20 @@ class _UserEditBodyState extends State<UserEditBody> {
 
     return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
-        if (state is UserUpdatedState) {
+        if (UserListingsStatus.updateSuccess == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('User updated successfully!')),
           );
           await Future.delayed(const Duration(seconds: 1));
           nav.goBack();
-        } else if (state is UserErrorState) {
+        } else if (UserListingsStatus.updateError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage)),
+            SnackBar(content: Text(state.errorMessage??'Error')),
           );
         }
       },
       builder: (context, state) {
-        bool isLoading = state is UserUpdatingState;
+        bool isLoading = (UserListingsStatus.updating == state.status);
 
         return CardLayout(
           child: Column(

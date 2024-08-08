@@ -100,7 +100,7 @@ class _UserAddBodyState extends State<UserAddBody> {
 
     return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
-        if (state is UserAddedState) {
+        if (UserListingsStatus.addSuccess == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('User added successfully!')),
           );
@@ -108,14 +108,14 @@ class _UserAddBodyState extends State<UserAddBody> {
 
           await Future.delayed(const Duration(seconds: 1));
           nav.navigateTo(Routes.users);
-        } else if (state is UserErrorState) {
+        } else if (UserListingsStatus.addError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.errorMessage)),
+            SnackBar(content: Text(state.errorMessage??'Error')),
           );
         }
       },
       builder: (context, state) {
-        bool isLoading = state is UserAddingState;
+        bool isLoading = (UserListingsStatus.adding == state.status);
 
         return CardLayout(
           child: Column(

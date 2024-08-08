@@ -1,86 +1,59 @@
+// state.dart
 import 'package:equatable/equatable.dart';
 import 'package:african_windows/apps/user/models/model_user.dart';
 
-enum UserListingsStatus { initial, loading, success, error }
+enum UserListingsStatus {
+  initial,
+  loading,
+  filtering,
+  adding,
+  deleting,
+  updating,
 
-// Base State
-abstract class UserListingsState extends Equatable {
-  const UserListingsState();
+  // Success States
+  loadSuccess,
+  filterSuccess,
+  addSuccess,
+  deleteSuccess,
+  updateSuccess,
 
-  @override
-  List<Object?> get props => [];
+  // Error States
+  loadError,
+  filterError,
+  addError,
+  deleteError,
+  updateError,
 }
 
-// States for Loading Users
-class UserLoadingState extends UserListingsState {}
-
-class UserLoadedState extends UserListingsState {
+class UserListingsState extends Equatable {
+  final UserListingsStatus status;
   final List<UserModel> allUsers;
   final List<UserModel> filteredUsers;
+  final String? errorMessage;
 
-  const UserLoadedState({
-    required this.allUsers,
-    required this.filteredUsers,
+  const UserListingsState({
+    this.status = UserListingsStatus.initial,
+    this.allUsers = const [],
+    this.filteredUsers = const [],
+    this.errorMessage,
   });
 
-  @override
-  List<Object?> get props => [allUsers, filteredUsers];
-}
-
-// States for Adding a User
-class UserAddingState extends UserListingsState {}
-
-class UserAddedState extends UserListingsState {
-  final List<UserModel> allUsers;
-  final List<UserModel> filteredUsers;
-
-  const UserAddedState({
-    required this.allUsers,
-    required this.filteredUsers,
-  });
-
-  @override
-  List<Object?> get props => [allUsers, filteredUsers];
-}
-
-// States for Deleting a User
-class UserDeletingState extends UserListingsState {}
-
-class UserDeletedState extends UserListingsState {
-  final List<UserModel> allUsers;
-  final List<UserModel> filteredUsers;
-
-  const UserDeletedState({
-    required this.allUsers,
-    required this.filteredUsers,
-  });
+  UserListingsState copyWith({
+    UserListingsStatus? status,
+    List<UserModel>? allUsers,
+    List<UserModel>? filteredUsers,
+    int? totalHits,
+    int? currentPage,
+    String? errorMessage,
+  }) {
+    return UserListingsState(
+      status: status ?? this.status,
+      allUsers: allUsers ?? this.allUsers,
+      filteredUsers: filteredUsers ?? this.filteredUsers,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
 
   @override
-  List<Object?> get props => [allUsers, filteredUsers];
-}
-
-// States for Updating a User
-class UserUpdatingState extends UserListingsState {}
-
-class UserUpdatedState extends UserListingsState {
-  final List<UserModel> allUsers;
-  final List<UserModel> filteredUsers;
-
-  const UserUpdatedState({
-    required this.allUsers,
-    required this.filteredUsers,
-  });
-
-  @override
-  List<Object?> get props => [allUsers, filteredUsers];
-}
-
-// State for Handling Errors
-class UserErrorState extends UserListingsState {
-  final String errorMessage;
-
-  const UserErrorState(this.errorMessage);
-
-  @override
-  List<Object?> get props => [errorMessage];
+  List<Object?> get props => [status, allUsers, filteredUsers, errorMessage];
 }

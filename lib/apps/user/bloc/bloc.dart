@@ -5,7 +5,7 @@ import 'event.dart';
 import 'state.dart';
 
 class UsersBloc extends Bloc<UserListingsEvent, UserListingsState> {
-  UsersBloc() : super(UserLoadingState()) {
+  UsersBloc() : super(const UserListingsState()) {
     on<LoadUsersEvent>(_onLoadUsers);
     on<FilterUsersEvent>(_onFilterUsers);
     on<AddUserEvent>(_onAddUser);
@@ -14,85 +14,130 @@ class UsersBloc extends Bloc<UserListingsEvent, UserListingsState> {
   }
 
   Future<void> _onLoadUsers(LoadUsersEvent event, Emitter<UserListingsState> emit) async {
-    emit(UserLoadingState());
+    emit(state.copyWith(status: UserListingsStatus.loading));
     try {
       final users = await loadUsers();
-      emit(UserLoadedState(
+      emit(state.copyWith(
+        status: UserListingsStatus.loadSuccess,
         allUsers: users,
         filteredUsers: users,
       ));
     } catch (e) {
-      emit(UserErrorState(e.toString()));
+      emit(state.copyWith(
+        status: UserListingsStatus.loadError,
+        errorMessage: e.toString(),
+      ));
     }
   }
 
   void _onFilterUsers(FilterUsersEvent event, Emitter<UserListingsState> emit) {
-    final List<UserModel> filteredUsers = state is UserLoadedState
-        ? (state as UserLoadedState).allUsers.where((user) {
-            final filter = event.filter;
-            bool matchesSearch =
-                filter.query == null ||
-                filter.query!.isEmpty ||
-                user.firstName.toLowerCase().contains(filter.query!.toLowerCase()) ||
-                user.lastName.toLowerCase().contains(filter.query!.toLowerCase()) ||
-                user.email!.toLowerCase().contains(filter.query!.toLowerCase()) ||
-                user.phone!.toLowerCase().contains(filter.query!.toLowerCase()) ||
-                user.birthday!.toLowerCase().contains(filter.query!.toLowerCase()) ||
-                user.profession!.toLowerCase().contains(filter.query!.toLowerCase()) ||
-                UserModel.roleToString(user.role).toLowerCase().contains(filter.query!.toLowerCase());
+    final currentState = state;
+    emit(currentState.copyWith(status: UserListingsStatus.filtering));
+    try {
+      final filteredUsers = currentState.allUsers.where((user) {
+        final filter = event.filter;
+        final query = filter.query?.toLowerCase() ?? '';
+        final matchesSearch = query.isEmpty ||
+            user.firstName.toLowerCase().contains(query) ||
+            user.lastName.toLowerCase().contains(query) ||
+            user.email!.toLowerCase().contains(query) ||
+            user.phone!.toLowerCase().contains(query) ||
+            user.birthday!.toLowerCase().contains(query) ||
+            user.profession!.toLowerCase().contains(query) ||
+            UserModel.roleToString(user.role).toLowerCase().contains(query);
 
-            bool matchesRole =
-                filter.role == 'Select' ||
-                user.role == UserModel.rolefromString(filter.role ?? '');
+        final matchesRole = filter.role == 'Unselected' ||
+            user.role == UserModel.rolefromString(filter.role ?? '');
 
-            return matchesSearch && matchesRole;
-          }).toList()
-        : [];
+        return matchesSearch && matchesRole;
+      }).toList();
 
-    emit(UserLoadedState(
-      allUsers: (state as UserLoadedState).allUsers,
-      filteredUsers: filteredUsers,
-    ));
+      emit(currentState.copyWith(
+        status: UserListingsStatus.filterSuccess,
+        filteredUsers: filteredUsers,
+      ));
+    } catch (e) {
+      emit(currentState.copyWith(
+        status: UserListingsStatus.filterError,
+        errorMessage: e.toString(),
+      ));
+    }
   }
 
   Future<void> _onAddUser(AddUserEvent event, Emitter<UserListingsState> emit) async {
-    emit(UserAddingState());
+    emit(state.copyWith(status: UserListingsStatus.adding));
     try {
-      final updatedUsers = List<UserModel>.from((state as UserLoadedState).allUsers)..add(event.newUser);
-      emit(UserAddedState(
-        allUsers: updatedUsers,
-        filteredUsers: updatedUsers,
-      ));
+      final currentState = state;
+      if (currentState.allUsers.isNotEmpty) {
+        final updatedUsers = List<UserModel>.from(currentState.allUsers)..add(event.newUser);
+        emit(state.copyWith(
+          status: UserListingsStatus.addSuccess,
+          allUsers: updatedUsers,
+          filteredUsers: updatedUsers,
+        ));
+      } else {
+        emit(state.copyWith(
+          status: UserListingsStatus.addError,
+          errorMessage: 'No users loaded to add',
+        ));
+      }
     } catch (e) {
-      emit(UserErrorState(e.toString()));
+      emit(state.copyWith(
+        status: UserListingsStatus.addError,
+        errorMessage: e.toString(),
+      ));
     }
   }
 
   Future<void> _onDeleteUser(DeleteUserEvent event, Emitter<UserListingsState> emit) async {
-    emit(UserDeletingState());
+    emit(state.copyWith(status: UserListingsStatus.deleting));
     try {
-      final updatedUsers = (state as UserLoadedState).allUsers.where((user) => user.id != event.userId).toList();
-      emit(UserDeletedState(
-        allUsers: updatedUsers,
-        filteredUsers: updatedUsers,
-      ));
+      final currentState = state;
+      if (currentState.allUsers.isNotEmpty) {
+        final updatedUsers = currentState.allUsers.where((user) => user.id != event.userId).toList();
+        emit(state.copyWith(
+          status: UserListingsStatus.deleteSuccess,
+          allUsers: updatedUsers,
+          filteredUsers: updatedUsers,
+        ));
+      } else {
+        emit(state.copyWith(
+          status: UserListingsStatus.deleteError,
+          errorMessage: 'No users loaded to delete',
+        ));
+      }
     } catch (e) {
-      emit(UserErrorState(e.toString()));
+      emit(state.copyWith(
+        status: UserListingsStatus.deleteError,
+        errorMessage: e.toString(),
+      ));
     }
   }
 
   Future<void> _onUpdateUser(UpdateUserEvent event, Emitter<UserListingsState> emit) async {
-    emit(UserUpdatingState());
+    emit(state.copyWith(status: UserListingsStatus.updating));
     try {
-      final updatedUsers = (state as UserLoadedState).allUsers.map((user) {
-        return user.id == event.updatedUser.id ? event.updatedUser : user;
-      }).toList();
-      emit(UserUpdatedState(
-        allUsers: updatedUsers,
-        filteredUsers: updatedUsers,
-      ));
+      final currentState = state;
+      if (currentState.allUsers.isNotEmpty) {
+        final updatedUsers = currentState.allUsers.map((user) {
+          return user.id == event.updatedUser.id ? event.updatedUser : user;
+        }).toList();
+        emit(state.copyWith(
+          status: UserListingsStatus.updateSuccess,
+          allUsers: updatedUsers,
+          filteredUsers: updatedUsers,
+        ));
+      } else {
+        emit(state.copyWith(
+          status: UserListingsStatus.updateError,
+          errorMessage: 'No users loaded to update',
+        ));
+      }
     } catch (e) {
-      emit(UserErrorState(e.toString()));
+      emit(state.copyWith(
+        status: UserListingsStatus.updateError,
+        errorMessage: e.toString(),
+      ));
     }
   }
 }
