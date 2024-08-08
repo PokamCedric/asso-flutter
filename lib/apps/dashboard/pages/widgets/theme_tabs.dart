@@ -15,21 +15,20 @@ class ThemeTabs extends StatefulWidget {
 
 class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  int _selectedIndex = 0;
 
   @override
   void initState() {
-    _selectedIndex = AppTheme.darkThemeOption == DarkOption.alwaysOn ? 1 : 0;
-
-    _tabController = TabController(length: 2, vsync: this, initialIndex: _selectedIndex)      ..addListener(() {
-    setState(() {
-        _selectedIndex = _tabController.index;
-        _onTabChanged(_selectedIndex);
-      });
-    });
-
     super.initState();
+
+    // Initialize TabController with the current theme option
+    final initialIndex = AppTheme.darkThemeOption == DarkOption.alwaysOn ? 1 : 0;
+    _tabController = TabController(length: 2, vsync: this, initialIndex: initialIndex)
+      ..addListener(() {
+        final newIndex = _tabController.index;
+        _onTabChanged(newIndex);
+      });
   }
+
   @override
   void dispose() {
     _tabController.dispose();
@@ -47,13 +46,15 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
     }
   }
 
-  ///On Change Dark Option
+  /// On Change Dark Option
   void _onChangeDarkOption(DarkOption darkOption) {
+    // Dispatch theme change event using CoreBloc
     CoreBloc.themeBloc.add(OnChangeTheme(darkOption: darkOption));
   }
 
   @override
   Widget build(BuildContext context) {
+    print('ThemeTabs');
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).highlightColor,
@@ -83,11 +84,11 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
         indicatorSize: TabBarIndicatorSize.tab,
         tabs: [
           TabWithIcon(
-            isSelected: _selectedIndex == 0,
+            isSelected: _tabController.index == 0,
             iconSrc: Images.sunFilled,
           ),
           TabWithIcon(
-            isSelected: _selectedIndex == 1,
+            isSelected: _tabController.index == 1,
             iconSrc: Images.moonLight,
           ),
         ],

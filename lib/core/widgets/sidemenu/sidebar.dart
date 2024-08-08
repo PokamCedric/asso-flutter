@@ -1,4 +1,3 @@
-import 'package:african_windows/apps/job/pages/navigation.dart';
 import 'package:african_windows/apps/user/pages/navigation.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/apps/dashboard/pages/widgets/theme_tabs.dart';
@@ -68,36 +67,6 @@ class Sidebar extends StatelessWidget {
                       inactiveIconSrc: Images.homeLight,
                       onPressed: () {},
                     ),
-                    ExpansionTile(
-                      leading:
-                          SvgPicture.asset(Images.diamondLight),
-                      title: Text(
-                        "Products",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                          color: Theme.of(context).textTheme.bodyMedium!.color,
-                        ),
-                      ),
-                      children: [
-                        MenuTile(
-                          isActive: true,
-                          title: "Dashboard",
-                          onPressed: () => nav.navigateTo(Routes.dashboard),
-                        ),
-                        MenuTile(
-                          isSubmenu: true,
-                          title: "Products",
-                          count: 16,
-                          onPressed: () {},
-                        ),
-                        MenuTile(
-                          isSubmenu: true,
-                          title: "Add Product",
-                          onPressed: () {},
-                        ),
-                      ],
-                    ),
-                    const JobNavigation(),
                     const UserNavigation(),
                     MenuTile(
                       title: "Shop",
