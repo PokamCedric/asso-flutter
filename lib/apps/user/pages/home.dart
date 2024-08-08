@@ -1,3 +1,5 @@
+import 'package:african_windows/core/configs/app_config.dart';
+import 'package:african_windows/core/models_views/breadcrumb_item.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:flutter/material.dart';
@@ -37,6 +39,10 @@ class UserListingPage extends StatelessWidget {
 
     return ResponsiveLayout(
       title: 'User Listing',
+      breadcrumbItems:  const [
+        AppConfig.breadcrumbItemDefault,
+        BreadcrumbItem(name: "Users", route: Routes.users, active: true),
+      ],
       mainContent: [
         _buildDataTable(context),
       ],
