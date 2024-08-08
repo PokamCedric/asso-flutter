@@ -28,14 +28,9 @@ class UserNavigation extends StatelessWidget {
                       children: [
                         MenuTile(
                           isSubmenu: true,
-                          title: "Overview",
+                          title: "List",
                           count: 16,
                           onPressed:  () => nav.navigateTo(Routes.users)
-                        ),
-                        MenuTile(
-                          isSubmenu: true,
-                          title: "Add User",
-                          onPressed: () => nav.navigateTo(Routes.userAdd),
                         ),
                       ],
                     );

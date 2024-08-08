@@ -39,9 +39,9 @@ class JobModel extends IdentifierModel {
     return JobModel(
       id: -1,
       title: '',
-      type: 'Unselected',
-      country: 'Unselected',
-      field: 'Unselected',
+      type: 'Select',
+      country: 'Select',
+      field: 'Select',
     );
   }
 }

@@ -14,6 +14,7 @@ class DataTableWithPagination extends StatelessWidget {
   final void Function(int? newRowsPerPage) onRowsPerPageChanged;
   final void Function(String)? onEdit;
   final void Function(String)? onDelete;
+  final void Function()? onAdd;
 
   const DataTableWithPagination({
     super.key,
@@ -26,6 +27,7 @@ class DataTableWithPagination extends StatelessWidget {
     required this.onRowsPerPageChanged,
     this.onEdit,
     this.onDelete,
+    this.onAdd,
   });
 
   @override
@@ -34,6 +36,11 @@ class DataTableWithPagination extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        if(onAdd != null) ElevatedButton(
+          onPressed: onAdd,
+          child: const Text('Add New'),
+          ),
+        if(onAdd != null)  gapH16,
         _paginationControl(),
         gapH16,
         CustomDataTable(

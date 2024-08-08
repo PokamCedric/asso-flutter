@@ -45,7 +45,7 @@ class UsersBloc extends Bloc<UserListingsEvent, UserListingsState> {
           UserModel.roleToString(user.role).toLowerCase().contains(filter.query!.toLowerCase());
 
       bool matchesRole =
-          filter.role == 'Unselected' ||
+          filter.role == 'Select' ||
           user.role == UserModel.rolefromString(filter.role ?? '');
 
       return matchesSearch && matchesRole;

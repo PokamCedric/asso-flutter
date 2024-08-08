@@ -15,7 +15,7 @@ class FilterProvider with ChangeNotifier {
   void initializeFilters(List<DropdownFilterModel> filters) {
     for (var filter in filters) {
       if (filter.items.isNotEmpty) {
-        filter.items.insert(0, 'Unselected');
+        filter.items.insert(0, 'Select');
         _selectedFilters[filter.propertyName] = filter.items.first;
       }
     }

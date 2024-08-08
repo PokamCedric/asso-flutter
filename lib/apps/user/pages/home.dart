@@ -82,6 +82,7 @@ class UserListingPage extends StatelessWidget {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
+                onAdd: () => nav.navigateTo(Routes.userAdd),
                 data: userState.filteredUsers.map((user) => user.toJson()).toList(),
                 headers: tableHeaders,
                 rowsPerPage: dataTableState.rowsPerPage,

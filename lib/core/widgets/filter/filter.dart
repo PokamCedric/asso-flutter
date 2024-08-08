@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:african_windows/core/widgets/filter/body.dart';
 import 'package:african_windows/core/widgets/filter/header.dart';
-import 'package:african_windows/core/widgets/filter/reset_button.dart';
 import 'package:african_windows/core/widgets/filter/search.dart';
 import 'package:african_windows/core/constants/gaps.dart';
-import 'package:african_windows/core/configs/theme/app_colors.dart';
 import 'package:african_windows/core/models_views/model_dropdown_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 
@@ -21,11 +19,6 @@ class Filter extends StatelessWidget {
     this.filtersPerLine = 1,
     this.selectedFilters = const {},
   });
-
-  BoxDecoration filterBoxDecoration({Color color = AppColors.iconGrey}) => BoxDecoration(
-        border: Border.all(color: color),
-        borderRadius: BorderRadius.zero,
-      );
 
   @override
   Widget build(BuildContext context) {
@@ -49,17 +42,20 @@ class Filter extends StatelessWidget {
             filtersPerLine: filtersPerLine,
           ),
           gapH8,
-          ResetButton(
-            label: 'Reset',
-            onPressed: () {
-              final resetFilters = <String, String>{};
-              for (var filter in filters) {
-                if (filter.items.isNotEmpty) {
-                  resetFilters[filter.propertyName] = filter.items.first;
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () {
+                final resetFilters = <String, String>{};
+                for (var filter in filters) {
+                  if (filter.items.isNotEmpty) {
+                    resetFilters[filter.propertyName] = filter.items.first;
+                  }
                 }
-              }
-              onFilterChanged(resetFilters);
-            },
+                onFilterChanged(resetFilters);
+              },
+              child: const Text('Reset'),
+            ),
           ),
           gapH8,
         ],

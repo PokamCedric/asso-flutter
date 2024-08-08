@@ -41,8 +41,8 @@ class ResponsiveLayout extends StatelessWidget {
                 if(breadcrumbItems.isNotEmpty)
                   Breadcrumb(children: breadcrumbItems)
                 ],
-                ),
               ),
+            ),
           gapH20,
           LayoutBuilder(
             builder: (context, constraints) {
