@@ -26,7 +26,7 @@ class Layout extends StatelessWidget {
                 Header(drawerKey: drawerKey),
                 Expanded(
                   child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 1360),
+                    constraints: const BoxConstraints(maxWidth: 1500),
                     child: ListView(
                       children: [
                         Padding(

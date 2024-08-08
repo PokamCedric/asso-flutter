@@ -10,9 +10,14 @@ import '../constants/defaults.dart';
 import '../constants/gaps.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key, required this.drawerKey});
+  const Header({
+    super.key,
+    required this.drawerKey,
+    this.onMenuPressed,
+  });
 
   final GlobalKey<ScaffoldState> drawerKey;
+  final VoidCallback? onMenuPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -25,18 +30,15 @@ class Header extends StatelessWidget {
         bottom: false,
         child: Row(
           children: [
-            if (Responsive.isMobile(context))
-              IconButton(
-                onPressed: () {
-                  drawerKey.currentState!.openDrawer();
-                },
-                icon: Badge(
-                  isLabelVisible: false,
-                  child: SvgPicture.asset(
-                    Images.menuLight,
-                  ),
-                ),
+            if (Responsive.isMobile(context)) IconButton(
+              onPressed: () {
+                drawerKey.currentState!.openDrawer();
+              },
+              icon: Badge(
+                isLabelVisible: false,
+                child: SvgPicture.asset(Images.menuLight),
               ),
+            ),
             if (Responsive.isMobile(context))
               IconButton(
                 onPressed: () {},
@@ -75,8 +77,7 @@ class Header extends StatelessWidget {
                       onPressed: () {},
                       icon: Badge(
                         isLabelVisible: true,
-                        child:
-                            SvgPicture.asset(Images.messageLight),
+                        child: SvgPicture.asset(Images.messageLight),
                       ),
                     ),
                   if (!Responsive.isMobile(context)) gapW16,
@@ -85,8 +86,7 @@ class Header extends StatelessWidget {
                       onPressed: () {},
                       icon: Badge(
                         isLabelVisible: true,
-                        child: SvgPicture.asset(
-                            Images.notificationLight),
+                        child: SvgPicture.asset(Images.notificationLight),
                       ),
                     ),
                   if (!Responsive.isMobile(context)) gapW16,
@@ -95,7 +95,7 @@ class Header extends StatelessWidget {
                       onPressed: () {},
                       icon: const CircleAvatar(
                         backgroundImage: NetworkImage(Images.customer),
-                        ),
+                      ),
                     ),
                   TextButton(
                     onPressed: () => nav.navigateTo(Routes.signin),

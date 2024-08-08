@@ -54,7 +54,6 @@ class _ThemeTabsState extends State<ThemeTabs> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    print('ThemeTabs');
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).highlightColor,

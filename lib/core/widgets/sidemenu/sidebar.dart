@@ -1,15 +1,12 @@
 import 'package:african_windows/apps/user/pages/navigation.dart';
-import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/apps/dashboard/pages/widgets/theme_tabs.dart';
 import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/constants/defaults.dart';
 import 'package:african_windows/core/constants/gaps.dart';
-import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/widgets/sidemenu/customer_info.dart';
 import 'package:african_windows/core/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
 
 import 'menu_tile.dart';
 
@@ -18,7 +15,6 @@ class Sidebar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nav = Provider.of<NavigationController>(context);
 
     return Drawer(
       // width: Responsive.isMobile(context) ? double.infinity : null,
