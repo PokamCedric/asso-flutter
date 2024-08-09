@@ -1,4 +1,5 @@
 import 'package:african_windows/core/configs/theme/app_colors.dart';
+import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/utils/images.dart';
 import 'package:flutter/material.dart';
@@ -6,13 +7,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:african_windows/core/constants/defaults.dart';
 import 'package:african_windows/core/constants/gaps.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
 
     return Scaffold(
       backgroundColor: AppColors.bgLight,
@@ -52,7 +54,7 @@ class NotFoundPage extends StatelessWidget {
                     SizedBox(
                       width: 296,
                       child: ElevatedButton(
-                        onPressed: () => Get.toNamed(Routes.dashboard),
+                        onPressed: () => nav.navigateTo(Routes.dashboard),
                         child: const Text('Go to Dashboard'),
                       ),
                     ),

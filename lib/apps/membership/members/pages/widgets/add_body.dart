@@ -1,15 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
 import 'package:african_windows/apps/membership/members/bloc/user_bloc.dart';
 import 'package:african_windows/apps/membership/utils/routes.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
+import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/other.dart';
 import 'package:african_windows/core/utils/validate.dart';
 import 'package:african_windows/core/widgets/app_button.dart';
 import 'package:african_windows/core/widgets/app_text_input.dart';
 import 'package:african_windows/core_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
-import 'package:get/get.dart';
 
 class UserAddBody extends StatefulWidget {
   const UserAddBody({super.key});
@@ -95,6 +96,7 @@ class _UserAddBodyState extends State<UserAddBody> {
 
   @override
   Widget build(BuildContext context) {
+    final nav = Provider.of<NavigationController>(context);
 
     return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
@@ -105,7 +107,7 @@ class _UserAddBodyState extends State<UserAddBody> {
           _clearForm();
 
           await Future.delayed(const Duration(seconds: 1));
-          Get.toNamed(MembershipRoutes.users);
+          nav.navigateTo(MembershipRoutes.base);
         } else if (UserListingsStatus.addError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),

@@ -1,8 +1,11 @@
+// app.dart
+import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 import 'package:african_windows/core_bloc.dart';
 import 'package:african_windows/core/blocs/application/application_bloc.dart';
+import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/blocs/theme/theme_state.dart';
 import 'package:african_windows/core/configs/theme/theme.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
@@ -53,25 +56,37 @@ class _AppState extends State<MainApp> {
   }
 
   Widget _buildLoadingScreen() {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
+    return const MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
 
   Widget _buildMainApp() {
-    return GetMaterialApp(
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
-      getPages: Routes.getPages(),
-      initialRoute: Routes.initial,
+    final route = Routes();
+    final navigationController = NavigationController();
+
+    return MultiProvider(
+      providers: [
+        Provider<NavigationController>.value(value: navigationController),
+        ChangeNotifierProvider(create: (_) => FilterProvider()),
+      ],
+      child: MaterialApp(
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
+        navigatorKey: navigationController.navigatorKey,
+        initialRoute: Routes.initial,
+        onGenerateRoute: route.generateRoute,
+      ),
     );
   }
 
   Widget _buildErrorScreen(String? errorMessage) {
-    return GetMaterialApp(
+    return MaterialApp(
       home: Scaffold(
         body: Center(
           child: Text('Failed to initialize the application: $errorMessage'),
@@ -81,7 +96,7 @@ class _AppState extends State<MainApp> {
   }
 
   Widget _buildInitialScreen() {
-    return const GetMaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         body: Center(
           child: Text('Initializing...'),

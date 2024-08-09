@@ -14,8 +14,8 @@ class UserAddPage extends StatelessWidget {
       title: 'Add User',
       breadcrumbItems:  [
         AppConfig.breadcrumbItemDefault,
-        BreadcrumbItem(name: "Users", route: MembershipRoutes.users),
-        BreadcrumbItem(name: "Add", route: MembershipRoutes.userAdd, active: true),
+        BreadcrumbItem(name: "Users", route: MembershipRoutes.base),
+        BreadcrumbItem(name: "Add", route: MembershipRoutes.add, active: true),
       ],
       mainContent: [
         UserAddBody(),

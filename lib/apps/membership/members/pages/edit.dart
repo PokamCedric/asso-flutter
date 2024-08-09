@@ -16,8 +16,8 @@ class UserEditPage extends StatelessWidget {
       title: 'Edit ${user.toString()}',
       breadcrumbItems: const [
         AppConfig.breadcrumbItemDefault,
-        BreadcrumbItem(name: "Users", route: MembershipRoutes.users),
-        BreadcrumbItem(name: "Edit", route: MembershipRoutes.userEdit, active: true),
+        BreadcrumbItem(name: "Users", route: MembershipRoutes.base),
+        BreadcrumbItem(name: "Edit", route: MembershipRoutes.edit, active: true),
       ],
       mainContent: [
         UserEditBody(user: user),

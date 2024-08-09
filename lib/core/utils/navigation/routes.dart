@@ -1,11 +1,10 @@
-// routes.dart
 import 'package:african_windows/apps/membership/utils/routes.dart';
-import 'package:get/get.dart';
-import 'package:african_windows/apps/dashboard/pages/dashboard_page.dart';
-import 'package:african_windows/apps/authentication/pages/register_page.dart';
-import 'package:african_windows/apps/authentication/pages/sign_in_page.dart';
+import 'package:flutter/material.dart';
+import 'package:african_windows/core/utils/navigation/authenticate_route.dart';
 import 'package:african_windows/core/pages/errors/not_found.dart';
-import 'package:african_windows/core/utils/navigation/auth_middleware.dart';
+import 'package:african_windows/apps/dashboard/pages/dashboard_page.dart';
+import 'package:african_windows/apps/authentication/pages/sign_in_page.dart';
+import 'package:african_windows/apps/authentication/pages/register_page.dart';
 
 class Routes {
   static const String initial = "/";
@@ -14,32 +13,42 @@ class Routes {
   static const String signin = "/sign-in";
   static const String register = "/register";
 
-  static List<GetPage> getPages() {
-    return [
-      GetPage(
-        name: initial,
-        page: () => const DashboardPage(),
-        middlewares: [AuthMiddleware()],
-      ),
-      GetPage(
-        name: dashboard,
-        page: () => const DashboardPage(),
-        middlewares: [AuthMiddleware()],
-      ),
-      GetPage(
-        name: signin,
-        page: () => const SignInPage(),
-      ),
-      GetPage(
-        name: register,
-        page: () => const RegisterPage(),
-      ),
-      // Integrate the user routes from the micro-app
-      ...MembershipRoutes.getPages(),
-      GetPage(
-        name: notFound,
-        page: () => const NotFoundPage(),
-      ),
-    ];
+  Route<dynamic> generateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case initial:
+        return AuthenticatedRoute(
+          builder: (context) => const DashboardPage(),
+          adminOnly: false,
+          settings: settings,
+        );
+      case dashboard:
+        return AuthenticatedRoute(
+          builder: (context) => const DashboardPage(),
+          adminOnly: false,
+          settings: settings,
+        );
+      case signin:
+        return MaterialPageRoute(builder: (context) => const SignInPage());
+      case register:
+        return MaterialPageRoute(builder: (context) => const RegisterPage());
+
+      case MembershipRoutes.base:
+      case MembershipRoutes.add:
+      case MembershipRoutes.edit:
+        return MembershipRoutes().generateRoute(settings);
+
+      case notFound:
+      default:
+        return MaterialPageRoute(builder: (context) => const NotFoundPage());
+    }
   }
+
+  // Singleton factory
+  static final Routes _instance = Routes._internal();
+
+  factory Routes() {
+    return _instance;
+  }
+
+  Routes._internal();
 }
