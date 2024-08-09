@@ -1,6 +1,6 @@
+import 'package:african_windows/apps/membership/utils/routes.dart';
 import 'package:african_windows/core/configs/app_config.dart';
 import 'package:african_windows/core/models_views/breadcrumb_item.dart';
-import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -41,7 +41,7 @@ class UserListingPage extends StatelessWidget {
       title: 'User Listing',
       breadcrumbItems:  const [
         AppConfig.breadcrumbItemDefault,
-        BreadcrumbItem(name: "Users", route: Routes.users, active: true),
+        BreadcrumbItem(name: "Users", route: MembershipRoutes.users, active: true),
       ],
       mainContent: [
         _buildDataTable(context),
@@ -81,7 +81,7 @@ class UserListingPage extends StatelessWidget {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
-                onAdd: () => Get.toNamed(Routes.userAdd),
+                onAdd: () => Get.toNamed(MembershipRoutes.userAdd),
                 data: userState.filteredUsers.map((user) => user.toJson()).toList(),
                 headers: tableHeaders,
                 rowsPerPage: dataTableState.rowsPerPage,
@@ -89,9 +89,9 @@ class UserListingPage extends StatelessWidget {
                 availableRowsPerPage: const [5, 10, 25, 50],
                 onEdit: (id) {
                   final selectedUser = userState.filteredUsers.firstWhere((item) => id == item.id);
-                  Get.toNamed(Routes.userEdit, arguments: selectedUser);
+                  Get.toNamed(MembershipRoutes.userEdit, arguments: selectedUser);
                 },
-                //onDelete:  () => nav.navigateTo(Routes.userDelete),
+                //onDelete:  () => nav.navigateTo(MembershipRoutes.userDelete),
                 onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
                 onRowsPerPageChanged: (newRowsPerPage) =>
                     CoreBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),

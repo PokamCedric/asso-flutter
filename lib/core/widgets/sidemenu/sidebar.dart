@@ -1,4 +1,4 @@
-import 'package:african_windows/apps/membership/members/pages/navigation.dart';
+import 'package:african_windows/apps/membership/utils/menu.dart';
 import 'package:african_windows/apps/dashboard/pages/widgets/theme_tabs.dart';
 import 'package:african_windows/core/utils/responsive.dart';
 import 'package:african_windows/core/constants/defaults.dart';

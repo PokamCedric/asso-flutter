@@ -1,6 +1,6 @@
 import 'package:african_windows/apps/membership/members/bloc/user_bloc.dart';
+import 'package:african_windows/apps/membership/utils/routes.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
-import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/utils/other.dart';
 import 'package:african_windows/core/utils/validate.dart';
 import 'package:african_windows/core/widgets/app_button.dart';
@@ -105,7 +105,7 @@ class _UserAddBodyState extends State<UserAddBody> {
           _clearForm();
 
           await Future.delayed(const Duration(seconds: 1));
-          Get.toNamed(Routes.users);
+          Get.toNamed(MembershipRoutes.users);
         } else if (UserListingsStatus.addError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),

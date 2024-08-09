@@ -1,8 +1,8 @@
 import 'package:african_windows/apps/membership/members/models/model_user.dart';
 import 'package:african_windows/apps/membership/members/pages/widgets/edit_body.dart';
+import 'package:african_windows/apps/membership/utils/routes.dart';
 import 'package:african_windows/core/configs/app_config.dart';
 import 'package:african_windows/core/models_views/breadcrumb_item.dart';
-import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
 
@@ -16,8 +16,8 @@ class UserEditPage extends StatelessWidget {
       title: 'Edit ${user.toString()}',
       breadcrumbItems: const [
         AppConfig.breadcrumbItemDefault,
-        BreadcrumbItem(name: "Users", route: Routes.users),
-        BreadcrumbItem(name: "Edit", route: Routes.userEdit, active: true),
+        BreadcrumbItem(name: "Users", route: MembershipRoutes.users),
+        BreadcrumbItem(name: "Edit", route: MembershipRoutes.userEdit, active: true),
       ],
       mainContent: [
         UserEditBody(user: user),
