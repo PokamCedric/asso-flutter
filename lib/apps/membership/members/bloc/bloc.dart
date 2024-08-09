@@ -43,10 +43,10 @@ class MembersBloc extends Bloc<MembersEvent, MembersState> {
             member.email!.toLowerCase().contains(query) ||
             member.phoneNumber!.toLowerCase().contains(query) ||
             member.address!.toLowerCase().contains(query) ||
-            MemberModel.statusToString(member.status).toLowerCase().contains(query);
+            member.status.toString().toLowerCase().contains(query);
 
-        final matchesRole = filter.status == 'Unselected' ||
-            member.status == MemberModel.statusFromString(filter.status ?? '');
+        final matchesRole = filter.status == 'Select' ||
+            member.status == MembershipStatusExtension.fromString(filter.status ?? '');
 
         return matchesSearch && matchesRole;
       }).toList();

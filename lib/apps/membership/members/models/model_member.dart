@@ -1,7 +1,7 @@
 // member_model.dart
 import 'package:african_windows/core/models/model_identifier.dart';
 
-enum MembershipStatus { active, inactive, suspended }
+enum MembershipStatus { active, inactive, pending }
 
 class MemberModel extends IdentifierModel {
   final String firstName;
@@ -10,7 +10,7 @@ class MemberModel extends IdentifierModel {
   final String? phoneNumber;
   final String? address;
   final MembershipStatus status;
-  final DateTime? joinDate;
+  final DateTime joinDate;
   final DateTime? dateOfBirth;
   final String? photo;
 
@@ -18,7 +18,7 @@ class MemberModel extends IdentifierModel {
     required super.id,
     required this.firstName,
     required this.lastName,
-    this.status = MembershipStatus.inactive,
+    required this.status,
     required this.joinDate,
     this.email,
     this.phoneNumber,
@@ -35,7 +35,7 @@ class MemberModel extends IdentifierModel {
       email: json['email'],
       phoneNumber: json['phoneNumber'],
       address: json['address'],
-      status: statusFromString(json['status']),
+      status: MembershipStatusExtension.fromString(json['status']),
       joinDate: DateTime.parse(json['joinDate']),
       dateOfBirth: json['dateOfBirth'] != null
           ? DateTime.parse(json['dateOfBirth'])
@@ -52,15 +52,15 @@ class MemberModel extends IdentifierModel {
       'email': email,
       'phoneNumber': phoneNumber,
       'address': address,
-      'status': status.toString().split('.').last,
-      'joinDate': joinDate!.toIso8601String(),
+      'status': status.toStringValue(),
+      'joinDate': joinDate.toIso8601String(),
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'photo': photo,
     };
   }
 
   MemberModel copyWith({
-    int? id,
+    String? id,
     String? firstName,
     String? lastName,
     String? email,
@@ -84,27 +84,23 @@ class MemberModel extends IdentifierModel {
       photo: photo ?? this.photo,
     );
   }
+}
 
-  static MembershipStatus statusFromString(String status) {
-    switch (status) {
-      case 'active':
-        return MembershipStatus.active;
-      case 'suspended':
-        return MembershipStatus.suspended;
-      case 'inactive':
-      default:
-        return MembershipStatus.inactive;
-    }
+// Extension for MembershipStatus
+extension MembershipStatusExtension on MembershipStatus {
+  String toStringValue() {
+    return toString().split('.').last;
   }
 
-  static String statusToString(MembershipStatus status) {
-    switch (status) {
-      case MembershipStatus.active:
-        return 'active';
-      case MembershipStatus.inactive:
-        return 'inactive';
-      case MembershipStatus.suspended:
-        return 'suspended';
-    }
+  static MembershipStatus fromString(String value) {
+    return MembershipStatus.values.firstWhere((e) => e.toString().split('.').last == value);
+  }
+
+  static List<String> toList() {
+    return MembershipStatus.values.map((status) => status.toShortString()).toList();
+  }
+
+  String toShortString() {
+    return toString().split('.').last;
   }
 }

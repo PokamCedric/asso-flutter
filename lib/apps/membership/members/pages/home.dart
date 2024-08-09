@@ -8,7 +8,7 @@ import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/apps/membership/members/data/members.dart';
 import 'package:african_windows/apps/membership/members/models_views/model_filter.dart';
 import 'package:african_windows/apps/membership/members/bloc/member_bloc.dart';
-import 'package:african_windows/apps/membership/members/data/filters.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
 import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:african_windows/core_bloc.dart';
@@ -24,7 +24,14 @@ class MembersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<DropdownFilterModel> filters = getDropdownFilterModels();
+    final List<DropdownFilterModel> filters = [
+      DropdownFilterModel(
+        'Status',
+        'status',
+        MembershipStatusExtension.toList()
+        ),
+
+    ];
 
     // Initialize filters in the provider
     WidgetsBinding.instance.addPostFrameCallback((_) {
