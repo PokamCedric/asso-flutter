@@ -1,6 +1,6 @@
 // users.dart
 import 'dart:convert';
-import 'package:african_windows/apps/user/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
 import 'package:african_windows/core/models_views/model_table_header.dart';
 import 'package:flutter/services.dart' show rootBundle;
 

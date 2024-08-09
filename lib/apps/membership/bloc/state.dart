@@ -1,6 +1,6 @@
 // state.dart
 import 'package:equatable/equatable.dart';
-import 'package:african_windows/apps/user/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
 
 enum UserListingsStatus {
   initial,

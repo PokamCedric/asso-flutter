@@ -1,10 +1,10 @@
-import 'package:african_windows/apps/user/models/model_user.dart';
-import 'package:african_windows/apps/user/pages/add.dart';
-import 'package:african_windows/apps/user/pages/edit.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/pages/add.dart';
+import 'package:african_windows/apps/membership/members/pages/edit.dart';
 import 'package:african_windows/apps/authentication/pages/register_page.dart';
 import 'package:african_windows/apps/authentication/pages/sign_in_page.dart';
 import 'package:african_windows/apps/dashboard/pages/dashboard_page.dart';
-import 'package:african_windows/apps/user/pages/home.dart';
+import 'package:african_windows/apps/membership/members/pages/home.dart';
 import 'package:african_windows/core/pages/errors/not_found.dart';
 import 'package:african_windows/core/utils/navigation/auth_middleware.dart';
 import 'package:get/get.dart';

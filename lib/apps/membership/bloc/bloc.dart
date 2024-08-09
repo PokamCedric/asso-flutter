@@ -1,6 +1,6 @@
-import 'package:african_windows/apps/user/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
 import 'package:bloc/bloc.dart';
-import 'package:african_windows/apps/user/data/users.dart';
+import 'package:african_windows/apps/membership/members/data/users.dart';
 import 'event.dart';
 import 'state.dart';
 

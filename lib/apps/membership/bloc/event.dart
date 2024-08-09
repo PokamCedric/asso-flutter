@@ -1,6 +1,6 @@
-import 'package:african_windows/apps/user/models_views/model_filter.dart';
+import 'package:african_windows/apps/membership/members/models_views/model_filter.dart';
 import 'package:equatable/equatable.dart';
-import 'package:african_windows/apps/user/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
 
 abstract class UserListingsEvent extends Equatable {
   const UserListingsEvent();

@@ -1,5 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:african_windows/apps/user/bloc/user_bloc.dart';
+import 'package:african_windows/apps/membership/members/bloc/user_bloc.dart';
 import 'package:african_windows/core/blocs/application/bloc.dart';
 import 'package:african_windows/core/blocs/datatable/bloc.dart';
 import 'package:african_windows/core/blocs/theme/bloc.dart';

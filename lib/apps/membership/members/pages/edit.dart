@@ -1,5 +1,5 @@
-import 'package:african_windows/apps/user/models/model_user.dart';
-import 'package:african_windows/apps/user/pages/widgets/edit_body.dart';
+import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/pages/widgets/edit_body.dart';
 import 'package:african_windows/core/configs/app_config.dart';
 import 'package:african_windows/core/models_views/breadcrumb_item.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
