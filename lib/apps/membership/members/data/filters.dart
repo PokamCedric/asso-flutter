@@ -5,9 +5,9 @@ List<DropdownFilterModel> getDropdownFilterModels()
   =>  [
     DropdownFilterModel(
       'Role',
-      'role',
+      'status',
       [
-        'user',
+        'member',
         'admin',
       ]),
 

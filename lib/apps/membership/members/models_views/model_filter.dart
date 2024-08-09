@@ -2,16 +2,16 @@
 
 class FilterModel {
   String? query;
-  String? role;
+  String? status;
 
   FilterModel({
-    required this.role,
+    required this.status,
     this.query,
   });
 
   factory FilterModel.fromJson(Map<String, dynamic> json) {
     return FilterModel(
-      role: json['role']?? 'user',
+      status: json['status']?? 'member',
       query: json['query'] ?? '',
     );
   }

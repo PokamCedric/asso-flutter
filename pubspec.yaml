@@ -34,8 +34,7 @@ flutter:
     - assets/images/
     - assets/images/illustration/
     - assets/logo/
-    - assets/apps/jobs/jobs.json
-    - assets/apps/users/users.json
+    - assets/apps/membership/members.json
 
   fonts:
     - family: Raleway

@@ -1,13 +1,13 @@
-// users.dart
+// members.dart
 import 'dart:convert';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
 import 'package:african_windows/core/models_views/model_table_header.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
-Future<List<UserModel>> loadUsers() async {
-  final String response = await rootBundle.loadString('apps/users/users.json');
+Future<List<MemberModel>> loadMembers() async {
+  final String response = await rootBundle.loadString('apps/membership/members.json');
   final List<dynamic> data = json.decode(response);
-  return data.map((user) => UserModel.fromJson(user)).toList();
+  return data.map((member) => MemberModel.fromJson(member)).toList();
 }
 
 List<TableHeader> tableHeaders = [

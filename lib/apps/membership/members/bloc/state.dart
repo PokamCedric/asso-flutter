@@ -1,8 +1,8 @@
 // state.dart
 import 'package:equatable/equatable.dart';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
 
-enum UsersStatus {
+enum MembersStatus {
   initial,
   loading,
   filtering,
@@ -25,35 +25,35 @@ enum UsersStatus {
   updateError,
 }
 
-class UsersState extends Equatable {
-  final UsersStatus status;
-  final List<UserModel> allUsers;
-  final List<UserModel> filteredUsers;
+class MembersState extends Equatable {
+  final MembersStatus status;
+  final List<MemberModel> allMembers;
+  final List<MemberModel> filteredMembers;
   final String? errorMessage;
 
-  const UsersState({
-    this.status = UsersStatus.initial,
-    this.allUsers = const [],
-    this.filteredUsers = const [],
+  const MembersState({
+    this.status = MembersStatus.initial,
+    this.allMembers = const [],
+    this.filteredMembers = const [],
     this.errorMessage,
   });
 
-  UsersState copyWith({
-    UsersStatus? status,
-    List<UserModel>? allUsers,
-    List<UserModel>? filteredUsers,
+  MembersState copyWith({
+    MembersStatus? status,
+    List<MemberModel>? allMembers,
+    List<MemberModel>? filteredMembers,
     int? totalHits,
     int? currentPage,
     String? errorMessage,
   }) {
-    return UsersState(
+    return MembersState(
       status: status ?? this.status,
-      allUsers: allUsers ?? this.allUsers,
-      filteredUsers: filteredUsers ?? this.filteredUsers,
+      allMembers: allMembers ?? this.allMembers,
+      filteredMembers: filteredMembers ?? this.filteredMembers,
       errorMessage: errorMessage ?? this.errorMessage,
     );
   }
 
   @override
-  List<Object?> get props => [status, allUsers, filteredUsers, errorMessage];
+  List<Object?> get props => [status, allMembers, filteredMembers, errorMessage];
 }

@@ -8,9 +8,9 @@ import 'package:african_windows/core/utils/images.dart';
 import 'package:african_windows/core/widgets/sidemenu/menu_tile.dart';
 import 'package:provider/provider.dart';
 
-class UserNavigation extends StatelessWidget {
+class MemberNavigation extends StatelessWidget {
 
-  const UserNavigation({super.key});
+  const MemberNavigation({super.key});
 
   @override
   Widget build(BuildContext context) {

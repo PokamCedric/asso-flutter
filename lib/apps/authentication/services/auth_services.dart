@@ -1,4 +1,4 @@
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/core/models/model_user.dart';
 import 'package:african_windows/core/utils/local_storage/local_storage.dart';
 
 class AuthService {

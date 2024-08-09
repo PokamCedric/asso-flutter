@@ -1,40 +1,40 @@
 import 'package:flutter/material.dart';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
 import 'package:african_windows/apps/membership/members/pages/add.dart';
 import 'package:african_windows/apps/membership/members/pages/edit.dart';
 import 'package:african_windows/apps/membership/members/pages/home.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
 import 'package:african_windows/core/pages/errors/not_found.dart';
 import 'package:african_windows/core/utils/navigation/authenticate_route.dart';
 
 class MembershipRoutes {
-  static const String base = "/users";
-  static const String add = "/users/add";
-  static const String edit = "/users/edit";
+  static const String base = "/members";
+  static const String add = "/members/add";
+  static const String edit = "/members/edit";
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case base:
         return AuthenticatedRoute(
-          builder: (context) => const UsersPage(),
+          builder: (context) => const MembersPage(),
           adminOnly: true,
           settings: settings,
         );
       case add:
         return AuthenticatedRoute(
-          builder: (context) => const UserAddPage(),
+          builder: (context) => const MemberAddPage(),
           adminOnly: true,
           settings: settings,
         );
       case edit:
-        if (settings.arguments != null && settings.arguments is UserModel) {
-          final UserModel user = settings.arguments as UserModel;
+        if (settings.arguments != null && settings.arguments is MemberModel) {
+          final MemberModel member = settings.arguments as MemberModel;
           return AuthenticatedRoute(
-            builder: (context) => UserEditPage(user: user),
+            builder: (context) => MemberEditPage(member: member),
             adminOnly: true,
             settings: settings,
           );
         } else {
-          // Handle case where the user argument is not provided or is invalid
+          // Handle case where the member argument is not provided or is invalid
           return MaterialPageRoute(
             builder: (context) => const NotFoundPage(),
           );

@@ -5,9 +5,9 @@ import 'package:african_windows/apps/membership/utils/routes.dart';
 import 'package:african_windows/core/configs/app_config.dart';
 import 'package:african_windows/core/models_views/breadcrumb_item.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
-import 'package:african_windows/apps/membership/members/data/users.dart';
+import 'package:african_windows/apps/membership/members/data/members.dart';
 import 'package:african_windows/apps/membership/members/models_views/model_filter.dart';
-import 'package:african_windows/apps/membership/members/bloc/user_bloc.dart';
+import 'package:african_windows/apps/membership/members/bloc/member_bloc.dart';
 import 'package:african_windows/apps/membership/members/data/filters.dart';
 import 'package:african_windows/core/controllers/provider_filter.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
@@ -19,8 +19,8 @@ import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
 import 'package:african_windows/core/widgets/filter/filter.dart';
 
 
-class UsersPage extends StatelessWidget {
-  const UsersPage({super.key});
+class MembersPage extends StatelessWidget {
+  const MembersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class UsersPage extends StatelessWidget {
     void onFilterChanged(Map<String, String> newFilters) {
       Provider.of<FilterProvider>(context, listen: false).updateFilters(newFilters);
       // Trigger BLoC to fetch new data based on filters
-      CoreBloc.usersBloc.add(FilterUsersEvent(FilterModel.fromJson(newFilters)));
+      CoreBloc.membersBloc.add(FilterMembersEvent(FilterModel.fromJson(newFilters)));
     }
 
     return ResponsiveLayout(
@@ -63,15 +63,15 @@ class UsersPage extends StatelessWidget {
   Widget _buildDataTable(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocBuilder<UsersBloc, UsersState>(
-      builder: (userContext, userState) {
-        if (userState.status == UsersStatus.loading) {
+    return BlocBuilder<MembersBloc, MembersState>(
+      builder: (memberContext, memberState) {
+        if (memberState.status == MembersStatus.loading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (UsersStatus.loadError == userState.status) {
+        } else if (MembersStatus.loadError == memberState.status) {
           return CardLayout(
             child: Center(
               child: Text(
-                'An error occurred: ${userState.errorMessage}',
+                'An error occurred: ${memberState.errorMessage}',
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.error,
                 ),
@@ -83,16 +83,16 @@ class UsersPage extends StatelessWidget {
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
                 onAdd: () => nav.navigateTo(MembershipRoutes.add),
-                data: userState.filteredUsers.map((user) => user.toJson()).toList(),
+                data: memberState.filteredMembers.map((member) => member.toJson()).toList(),
                 headers: tableHeaders,
                 rowsPerPage: dataTableState.rowsPerPage,
                 currentPage: dataTableState.currentPage,
                 availableRowsPerPage: const [5, 10, 25, 50],
                 onEdit: (id) {
-                  final selectedUser = userState.filteredUsers.firstWhere((item) => id == item.id);
-                  nav.navigateTo(MembershipRoutes.edit, arguments: selectedUser);
+                  final selectedMember = memberState.filteredMembers.firstWhere((item) => id == item.id);
+                  nav.navigateTo(MembershipRoutes.edit, arguments: selectedMember);
                 },
-                //onDelete:  () => nav.navigateTo(Routes.userDelete),
+                //onDelete:  () => nav.navigateTo(Routes.memberDelete),
                 onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
                 onRowsPerPageChanged: (newRowsPerPage) =>
                     CoreBloc.dataTableBloc.add(ChangeRowsPerPageEvent(newRowsPerPage!)),

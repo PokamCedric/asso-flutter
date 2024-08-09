@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
-import 'package:african_windows/apps/membership/members/bloc/user_bloc.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
+import 'package:african_windows/apps/membership/members/bloc/member_bloc.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/other.dart';
@@ -11,15 +11,15 @@ import 'package:african_windows/core/widgets/app_button.dart';
 import 'package:african_windows/core/widgets/app_text_input.dart';
 import 'package:african_windows/core_bloc.dart';
 
-class UserEditBody extends StatefulWidget {
-  final UserModel user;
-  const UserEditBody({super.key, required this.user});
+class MemberEditBody extends StatefulWidget {
+  final MemberModel member;
+  const MemberEditBody({super.key, required this.member});
 
   @override
-  State<UserEditBody> createState() => _UserEditBodyState();
+  State<MemberEditBody> createState() => _MemberEditBodyState();
 }
 
-class _UserEditBodyState extends State<UserEditBody> {
+class _MemberEditBodyState extends State<MemberEditBody> {
   late TextEditingController _firstNameController;
   late TextEditingController _lastNameController;
   late TextEditingController _emailController;
@@ -41,11 +41,11 @@ class _UserEditBodyState extends State<UserEditBody> {
   @override
   void initState() {
     super.initState();
-    _firstNameController = TextEditingController(text: widget.user.firstName);
-    _lastNameController = TextEditingController(text: widget.user.lastName);
-    _emailController = TextEditingController(text: widget.user.email);
-    _phoneController = TextEditingController(text: widget.user.phone);
-    _addressController = TextEditingController(text: widget.user.address);
+    _firstNameController = TextEditingController(text: widget.member.firstName);
+    _lastNameController = TextEditingController(text: widget.member.lastName);
+    _emailController = TextEditingController(text: widget.member.email);
+    _phoneController = TextEditingController(text: widget.member.phoneNumber);
+    _addressController = TextEditingController(text: widget.member.address);
   }
 
   @override
@@ -65,14 +65,14 @@ class _UserEditBodyState extends State<UserEditBody> {
 
   void _update() {
     if (_isValid()) {
-      final updatedUser = widget.user.copyWith(
+      final updatedMember = widget.member.copyWith(
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
         email: _emailController.text.trim(),
-        phone: _phoneController.text.trim(),
+        phoneNumber: _phoneController.text.trim(),
         address: _addressController.text.trim(),
       );
-      CoreBloc.usersBloc.add(UpdateUserEvent(updatedUser));
+      CoreBloc.membersBloc.add(UpdateMemberEvent(updatedMember));
     }
   }
 
@@ -106,22 +106,22 @@ class _UserEditBodyState extends State<UserEditBody> {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocConsumer<UsersBloc, UsersState>(
+    return BlocConsumer<MembersBloc, MembersState>(
       listener: (context, state) async {
-        if (UsersStatus.updateSuccess == state.status) {
+        if (MembersStatus.updateSuccess == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('User updated successfully!')),
+            const SnackBar(content: Text('Member updated successfully!')),
           );
           await Future.delayed(const Duration(seconds: 1));
           nav.goBack();
-        } else if (UsersStatus.updateError == state.status) {
+        } else if (MembersStatus.updateError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),
           );
         }
       },
       builder: (context, state) {
-        bool isLoading = (UsersStatus.updating == state.status);
+        bool isLoading = (MembersStatus.updating == state.status);
 
         return CardLayout(
           child: Column(

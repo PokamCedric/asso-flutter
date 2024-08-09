@@ -1,141 +1,140 @@
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
 import 'package:bloc/bloc.dart';
-import 'package:african_windows/apps/membership/members/data/users.dart';
+import 'package:african_windows/apps/membership/members/data/members.dart';
 import 'event.dart';
 import 'state.dart';
 
-class UsersBloc extends Bloc<UsersEvent, UsersState> {
-  UsersBloc() : super(const UsersState()) {
-    on<LoadUsersEvent>(_onLoadUsers);
-    on<FilterUsersEvent>(_onFilterUsers);
-    on<AddUserEvent>(_onAddUser);
-    on<DeleteUserEvent>(_onDeleteUser);
-    on<UpdateUserEvent>(_onUpdateUser);
+class MembersBloc extends Bloc<MembersEvent, MembersState> {
+  MembersBloc() : super(const MembersState()) {
+    on<LoadMembersEvent>(_onLoadMembers);
+    on<FilterMembersEvent>(_onFilterMembers);
+    on<AddMemberEvent>(_onAddMember);
+    on<DeleteMemberEvent>(_onDeleteMember);
+    on<UpdateMemberEvent>(_onUpdateMember);
   }
 
-  Future<void> _onLoadUsers(LoadUsersEvent event, Emitter<UsersState> emit) async {
-    emit(state.copyWith(status: UsersStatus.loading));
+  Future<void> _onLoadMembers(LoadMembersEvent event, Emitter<MembersState> emit) async {
+    emit(state.copyWith(status: MembersStatus.loading));
     try {
-      final users = await loadUsers();
+      final members = await loadMembers();
       emit(state.copyWith(
-        status: UsersStatus.loadSuccess,
-        allUsers: users,
-        filteredUsers: users,
+        status: MembersStatus.loadSuccess,
+        allMembers: members,
+        filteredMembers: members,
       ));
     } catch (e) {
       emit(state.copyWith(
-        status: UsersStatus.loadError,
+        status: MembersStatus.loadError,
         errorMessage: e.toString(),
       ));
     }
   }
 
-  void _onFilterUsers(FilterUsersEvent event, Emitter<UsersState> emit) {
+  void _onFilterMembers(FilterMembersEvent event, Emitter<MembersState> emit) {
     final currentState = state;
-    emit(currentState.copyWith(status: UsersStatus.filtering));
+    emit(currentState.copyWith(status: MembersStatus.filtering));
     try {
-      final filteredUsers = currentState.allUsers.where((user) {
+      final filteredMembers = currentState.allMembers.where((member) {
         final filter = event.filter;
         final query = filter.query?.toLowerCase() ?? '';
         final matchesSearch = query.isEmpty ||
-            user.firstName.toLowerCase().contains(query) ||
-            user.lastName.toLowerCase().contains(query) ||
-            user.email!.toLowerCase().contains(query) ||
-            user.phone!.toLowerCase().contains(query) ||
-            user.birthday!.toLowerCase().contains(query) ||
-            user.profession!.toLowerCase().contains(query) ||
-            UserModel.roleToString(user.role).toLowerCase().contains(query);
+            member.firstName.toLowerCase().contains(query) ||
+            member.lastName.toLowerCase().contains(query) ||
+            member.email!.toLowerCase().contains(query) ||
+            member.phoneNumber!.toLowerCase().contains(query) ||
+            member.address!.toLowerCase().contains(query) ||
+            MemberModel.statusToString(member.status).toLowerCase().contains(query);
 
-        final matchesRole = filter.role == 'Unselected' ||
-            user.role == UserModel.rolefromString(filter.role ?? '');
+        final matchesRole = filter.status == 'Unselected' ||
+            member.status == MemberModel.statusFromString(filter.status ?? '');
 
         return matchesSearch && matchesRole;
       }).toList();
 
       emit(currentState.copyWith(
-        status: UsersStatus.filterSuccess,
-        filteredUsers: filteredUsers,
+        status: MembersStatus.filterSuccess,
+        filteredMembers: filteredMembers,
       ));
     } catch (e) {
       emit(currentState.copyWith(
-        status: UsersStatus.filterError,
+        status: MembersStatus.filterError,
         errorMessage: e.toString(),
       ));
     }
   }
 
-  Future<void> _onAddUser(AddUserEvent event, Emitter<UsersState> emit) async {
-    emit(state.copyWith(status: UsersStatus.adding));
+  Future<void> _onAddMember(AddMemberEvent event, Emitter<MembersState> emit) async {
+    emit(state.copyWith(status: MembersStatus.adding));
     try {
       final currentState = state;
-      if (currentState.allUsers.isNotEmpty) {
-        final updatedUsers = List<UserModel>.from(currentState.allUsers)..add(event.newUser);
+      if (currentState.allMembers.isNotEmpty) {
+        final updatedMembers = List<MemberModel>.from(currentState.allMembers)..add(event.newMember);
         emit(state.copyWith(
-          status: UsersStatus.addSuccess,
-          allUsers: updatedUsers,
-          filteredUsers: updatedUsers,
+          status: MembersStatus.addSuccess,
+          allMembers: updatedMembers,
+          filteredMembers: updatedMembers,
         ));
       } else {
         emit(state.copyWith(
-          status: UsersStatus.addError,
-          errorMessage: 'No users loaded to add',
+          status: MembersStatus.addError,
+          errorMessage: 'No members loaded to add',
         ));
       }
     } catch (e) {
       emit(state.copyWith(
-        status: UsersStatus.addError,
+        status: MembersStatus.addError,
         errorMessage: e.toString(),
       ));
     }
   }
 
-  Future<void> _onDeleteUser(DeleteUserEvent event, Emitter<UsersState> emit) async {
-    emit(state.copyWith(status: UsersStatus.deleting));
+  Future<void> _onDeleteMember(DeleteMemberEvent event, Emitter<MembersState> emit) async {
+    emit(state.copyWith(status: MembersStatus.deleting));
     try {
       final currentState = state;
-      if (currentState.allUsers.isNotEmpty) {
-        final updatedUsers = currentState.allUsers.where((user) => user.id != event.userId).toList();
+      if (currentState.allMembers.isNotEmpty) {
+        final updatedMembers = currentState.allMembers.where((member) => member.id != event.memberId).toList();
         emit(state.copyWith(
-          status: UsersStatus.deleteSuccess,
-          allUsers: updatedUsers,
-          filteredUsers: updatedUsers,
+          status: MembersStatus.deleteSuccess,
+          allMembers: updatedMembers,
+          filteredMembers: updatedMembers,
         ));
       } else {
         emit(state.copyWith(
-          status: UsersStatus.deleteError,
-          errorMessage: 'No users loaded to delete',
+          status: MembersStatus.deleteError,
+          errorMessage: 'No members loaded to delete',
         ));
       }
     } catch (e) {
       emit(state.copyWith(
-        status: UsersStatus.deleteError,
+        status: MembersStatus.deleteError,
         errorMessage: e.toString(),
       ));
     }
   }
 
-  Future<void> _onUpdateUser(UpdateUserEvent event, Emitter<UsersState> emit) async {
-    emit(state.copyWith(status: UsersStatus.updating));
+  Future<void> _onUpdateMember(UpdateMemberEvent event, Emitter<MembersState> emit) async {
+    emit(state.copyWith(status: MembersStatus.updating));
     try {
       final currentState = state;
-      if (currentState.allUsers.isNotEmpty) {
-        final updatedUsers = currentState.allUsers.map((user) {
-          return user.id == event.updatedUser.id ? event.updatedUser : user;
+      if (currentState.allMembers.isNotEmpty) {
+        final updatedMembers = currentState.allMembers.map((member) {
+          return member.id == event.updatedMember.id ? event.updatedMember : member;
         }).toList();
         emit(state.copyWith(
-          status: UsersStatus.updateSuccess,
-          allUsers: updatedUsers,
-          filteredUsers: updatedUsers,
+          status: MembersStatus.updateSuccess,
+          allMembers: updatedMembers,
+          filteredMembers: updatedMembers,
         ));
       } else {
         emit(state.copyWith(
-          status: UsersStatus.updateError,
-          errorMessage: 'No users loaded to update',
+          status: MembersStatus.updateError,
+          errorMessage: 'No members loaded to update',
         ));
       }
     } catch (e) {
       emit(state.copyWith(
-        status: UsersStatus.updateError,
+        status: MembersStatus.updateError,
         errorMessage: e.toString(),
       ));
     }

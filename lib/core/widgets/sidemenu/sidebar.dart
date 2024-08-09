@@ -63,7 +63,7 @@ class Sidebar extends StatelessWidget {
                       inactiveIconSrc: Images.homeLight,
                       onPressed: () {},
                     ),
-                    const UserNavigation(),
+                    const MemberNavigation(),
                     MenuTile(
                       title: "Shop",
                       activeIconSrc: Images.storeLight,

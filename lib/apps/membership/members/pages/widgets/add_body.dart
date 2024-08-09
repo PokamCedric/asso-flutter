@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
-import 'package:african_windows/apps/membership/members/bloc/user_bloc.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
+import 'package:african_windows/apps/membership/members/bloc/member_bloc.dart';
 import 'package:african_windows/apps/membership/utils/routes.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
 import 'package:african_windows/core/services/navigation_service.dart';
@@ -12,14 +12,14 @@ import 'package:african_windows/core/widgets/app_button.dart';
 import 'package:african_windows/core/widgets/app_text_input.dart';
 import 'package:african_windows/core_bloc.dart';
 
-class UserAddBody extends StatefulWidget {
-  const UserAddBody({super.key});
+class MemberAddBody extends StatefulWidget {
+  const MemberAddBody({super.key});
 
   @override
-  State<UserAddBody> createState() => _UserAddBodyState();
+  State<MemberAddBody> createState() => _MemberAddBodyState();
 }
 
-class _UserAddBodyState extends State<UserAddBody> {
+class _MemberAddBodyState extends State<MemberAddBody> {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -55,16 +55,18 @@ class _UserAddBodyState extends State<UserAddBody> {
 
   void _update() {
     if (_isValid()) {
-      final newUser = UserModel(
-        id: DateTime.now().millisecondsSinceEpoch, // generate a unique id
+      DateTime now = DateTime.now();
+      final newMember = MemberModel(
+        id: now.millisecondsSinceEpoch, // generate a unique id
+        joinDate: now,
         firstName: _firstNameController.text.trim(),
         lastName: _lastNameController.text.trim(),
-        role: UserRole.normalUser, // default role
+        status: MembershipStatus.inactive, // default status
         email: _emailController.text.trim(),
-        phone: _phoneController.text.trim(),
+        phoneNumber: _phoneController.text.trim(),
         address: _addressController.text.trim(),
       );
-      CoreBloc.usersBloc.add(AddUserEvent(newUser));
+      CoreBloc.membersBloc.add(AddMemberEvent(newMember));
     }
   }
 
@@ -98,24 +100,24 @@ class _UserAddBodyState extends State<UserAddBody> {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocConsumer<UsersBloc, UsersState>(
+    return BlocConsumer<MembersBloc, MembersState>(
       listener: (context, state) async {
-        if (UsersStatus.addSuccess == state.status) {
+        if (MembersStatus.addSuccess == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('User added successfully!')),
+            const SnackBar(content: Text('Member added successfully!')),
           );
           _clearForm();
 
           await Future.delayed(const Duration(seconds: 1));
           nav.navigateTo(MembershipRoutes.base);
-        } else if (UsersStatus.addError == state.status) {
+        } else if (MembersStatus.addError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),
           );
         }
       },
       builder: (context, state) {
-        bool isLoading = (UsersStatus.adding == state.status);
+        bool isLoading = (MembersStatus.adding == state.status);
 
         return CardLayout(
           child: Column(

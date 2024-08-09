@@ -1,48 +1,48 @@
 import 'package:african_windows/apps/membership/members/models_views/model_filter.dart';
 import 'package:equatable/equatable.dart';
-import 'package:african_windows/apps/membership/members/models/model_user.dart';
+import 'package:african_windows/apps/membership/members/models/model_member.dart';
 
-abstract class UsersEvent extends Equatable {
-  const UsersEvent();
+abstract class MembersEvent extends Equatable {
+  const MembersEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class LoadUsersEvent extends UsersEvent {}
+class LoadMembersEvent extends MembersEvent {}
 
-class FilterUsersEvent extends UsersEvent {
+class FilterMembersEvent extends MembersEvent {
   final FilterModel filter;
 
-  const FilterUsersEvent(this.filter);
+  const FilterMembersEvent(this.filter);
 
   @override
   List<Object> get props => [filter];
 }
 
-class AddUserEvent extends UsersEvent {
-  final UserModel newUser;
+class AddMemberEvent extends MembersEvent {
+  final MemberModel newMember;
 
-  const AddUserEvent(this.newUser);
+  const AddMemberEvent(this.newMember);
 
   @override
-  List<Object> get props => [newUser];
+  List<Object> get props => [newMember];
 }
 
-class DeleteUserEvent extends UsersEvent {
-  final String userId;
+class DeleteMemberEvent extends MembersEvent {
+  final String memberId;
 
-  const DeleteUserEvent(this.userId);
+  const DeleteMemberEvent(this.memberId);
 
   @override
-  List<Object> get props => [userId];
+  List<Object> get props => [memberId];
 }
 
-class UpdateUserEvent extends UsersEvent {
-  final UserModel updatedUser;
+class UpdateMemberEvent extends MembersEvent {
+  final MemberModel updatedMember;
 
-  const UpdateUserEvent(this.updatedUser);
+  const UpdateMemberEvent(this.updatedMember);
 
   @override
-  List<Object> get props => [updatedUser];
+  List<Object> get props => [updatedMember];
 }
