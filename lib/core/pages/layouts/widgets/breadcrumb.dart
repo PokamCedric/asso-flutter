@@ -1,9 +1,8 @@
 import 'package:african_windows/core/constants/gaps.dart';
 import 'package:african_windows/core/models_views/breadcrumb_item.dart';
-import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/responsive.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 
 class Breadcrumb extends StatelessWidget {
@@ -13,7 +12,6 @@ class Breadcrumb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nav = Provider.of<NavigationController>(context);
     List<Widget> list = [];
     for (int i = 0; i < children.length; i++) {
       var item = children[i];
@@ -33,7 +31,7 @@ class Breadcrumb extends StatelessWidget {
         list.add(InkWell(
             onTap: () => {
                   if (item.route != null)
-                    nav.navigateAndReplace(item.route!)
+                    Get.offNamed(item.route!)
                 },
             child:
             Text(

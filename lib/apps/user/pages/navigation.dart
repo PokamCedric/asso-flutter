@@ -1,12 +1,11 @@
 
 
-import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/images.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:african_windows/core/widgets/sidemenu/menu_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class UserNavigation extends StatelessWidget {
 
@@ -14,7 +13,6 @@ class UserNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nav = Provider.of<NavigationController>(context);
 
     return ExpansionTile(
                       leading: SvgPicture.asset(Images.profileCircledLight),
@@ -30,7 +28,7 @@ class UserNavigation extends StatelessWidget {
                           isSubmenu: true,
                           title: "List",
                           count: 16,
-                          onPressed:  () => nav.navigateTo(Routes.users)
+                          onPressed:  () => Get.toNamed(Routes.users)
                         ),
                       ],
                     );

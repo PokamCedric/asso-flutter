@@ -1,6 +1,5 @@
 import 'package:african_windows/apps/user/bloc/user_bloc.dart';
 import 'package:african_windows/core/pages/layouts/card_layout.dart';
-import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/other.dart';
 import 'package:african_windows/core/utils/validate.dart';
 import 'package:african_windows/core/widgets/app_button.dart';
@@ -9,7 +8,7 @@ import 'package:african_windows/core_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:african_windows/apps/user/models/model_user.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
 class UserEditBody extends StatefulWidget {
   final UserModel user;
@@ -104,7 +103,6 @@ class _UserEditBodyState extends State<UserEditBody> {
 
   @override
   Widget build(BuildContext context) {
-    final nav = Provider.of<NavigationController>(context);
 
     return BlocConsumer<UsersBloc, UserListingsState>(
       listener: (context, state) async {
@@ -113,7 +111,7 @@ class _UserEditBodyState extends State<UserEditBody> {
             const SnackBar(content: Text('User updated successfully!')),
           );
           await Future.delayed(const Duration(seconds: 1));
-          nav.goBack();
+          Get.back();
         } else if (UserListingsStatus.updateError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),

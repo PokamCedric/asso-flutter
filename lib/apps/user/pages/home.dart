@@ -1,9 +1,9 @@
 import 'package:african_windows/core/configs/app_config.dart';
 import 'package:african_windows/core/models_views/breadcrumb_item.dart';
-import 'package:african_windows/core/services/navigation_service.dart';
 import 'package:african_windows/core/utils/navigation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:african_windows/apps/user/data/users.dart';
 import 'package:african_windows/apps/user/models_views/model_filter.dart';
@@ -61,7 +61,6 @@ class UserListingPage extends StatelessWidget {
   }
 
   Widget _buildDataTable(BuildContext context) {
-    final nav = Provider.of<NavigationController>(context);
 
     return BlocBuilder<UsersBloc, UserListingsState>(
       builder: (userContext, userState) {
@@ -82,7 +81,7 @@ class UserListingPage extends StatelessWidget {
           return BlocBuilder<DataTableBloc, DataTableState>(
             builder: (dataTableContext, dataTableState) {
               return DataTableWithPagination(
-                onAdd: () => nav.navigateTo(Routes.userAdd),
+                onAdd: () => Get.toNamed(Routes.userAdd),
                 data: userState.filteredUsers.map((user) => user.toJson()).toList(),
                 headers: tableHeaders,
                 rowsPerPage: dataTableState.rowsPerPage,
@@ -90,7 +89,7 @@ class UserListingPage extends StatelessWidget {
                 availableRowsPerPage: const [5, 10, 25, 50],
                 onEdit: (id) {
                   final selectedUser = userState.filteredUsers.firstWhere((item) => id == item.id);
-                  nav.navigateTo(Routes.userEdit, arguments: selectedUser);
+                  Get.toNamed(Routes.userEdit, arguments: selectedUser);
                 },
                 //onDelete:  () => nav.navigateTo(Routes.userDelete),
                 onPageChanged: (newPage) => CoreBloc.dataTableBloc.add(ChangePageEvent(newPage)),
