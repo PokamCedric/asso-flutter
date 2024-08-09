@@ -15,7 +15,7 @@ class MembershipRoutes {
     switch (settings.name) {
       case base:
         return AuthenticatedRoute(
-          builder: (context) => const UserListingPage(),
+          builder: (context) => const UsersPage(),
           adminOnly: true,
           settings: settings,
         );

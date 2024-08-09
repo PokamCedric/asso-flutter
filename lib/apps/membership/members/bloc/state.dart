@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:african_windows/apps/membership/members/models/model_user.dart';
 
-enum UserListingsStatus {
+enum UsersStatus {
   initial,
   loading,
   filtering,
@@ -25,28 +25,28 @@ enum UserListingsStatus {
   updateError,
 }
 
-class UserListingsState extends Equatable {
-  final UserListingsStatus status;
+class UsersState extends Equatable {
+  final UsersStatus status;
   final List<UserModel> allUsers;
   final List<UserModel> filteredUsers;
   final String? errorMessage;
 
-  const UserListingsState({
-    this.status = UserListingsStatus.initial,
+  const UsersState({
+    this.status = UsersStatus.initial,
     this.allUsers = const [],
     this.filteredUsers = const [],
     this.errorMessage,
   });
 
-  UserListingsState copyWith({
-    UserListingsStatus? status,
+  UsersState copyWith({
+    UsersStatus? status,
     List<UserModel>? allUsers,
     List<UserModel>? filteredUsers,
     int? totalHits,
     int? currentPage,
     String? errorMessage,
   }) {
-    return UserListingsState(
+    return UsersState(
       status: status ?? this.status,
       allUsers: allUsers ?? this.allUsers,
       filteredUsers: filteredUsers ?? this.filteredUsers,

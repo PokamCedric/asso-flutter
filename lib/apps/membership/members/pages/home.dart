@@ -19,8 +19,8 @@ import 'package:african_windows/core/pages/layouts/reponsive_layout.dart';
 import 'package:african_windows/core/widgets/filter/filter.dart';
 
 
-class UserListingPage extends StatelessWidget {
-  const UserListingPage({super.key});
+class UsersPage extends StatelessWidget {
+  const UsersPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class UserListingPage extends StatelessWidget {
     }
 
     return ResponsiveLayout(
-      title: 'Members Listing',
+      title: 'Members s',
       breadcrumbItems:  const [
         AppConfig.breadcrumbItemDefault,
         BreadcrumbItem(name: "Members", route: MembershipRoutes.base, active: true),
@@ -63,11 +63,11 @@ class UserListingPage extends StatelessWidget {
   Widget _buildDataTable(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocBuilder<UsersBloc, UserListingsState>(
+    return BlocBuilder<UsersBloc, UsersState>(
       builder: (userContext, userState) {
-        if (userState.status == UserListingsStatus.loading) {
+        if (userState.status == UsersStatus.loading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (UserListingsStatus.loadError == userState.status) {
+        } else if (UsersStatus.loadError == userState.status) {
           return CardLayout(
             child: Center(
               child: Text(

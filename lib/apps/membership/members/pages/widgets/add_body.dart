@@ -98,9 +98,9 @@ class _UserAddBodyState extends State<UserAddBody> {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocConsumer<UsersBloc, UserListingsState>(
+    return BlocConsumer<UsersBloc, UsersState>(
       listener: (context, state) async {
-        if (UserListingsStatus.addSuccess == state.status) {
+        if (UsersStatus.addSuccess == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('User added successfully!')),
           );
@@ -108,14 +108,14 @@ class _UserAddBodyState extends State<UserAddBody> {
 
           await Future.delayed(const Duration(seconds: 1));
           nav.navigateTo(MembershipRoutes.base);
-        } else if (UserListingsStatus.addError == state.status) {
+        } else if (UsersStatus.addError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),
           );
         }
       },
       builder: (context, state) {
-        bool isLoading = (UserListingsStatus.adding == state.status);
+        bool isLoading = (UsersStatus.adding == state.status);
 
         return CardLayout(
           child: Column(

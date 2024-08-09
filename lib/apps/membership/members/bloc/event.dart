@@ -2,16 +2,16 @@ import 'package:african_windows/apps/membership/members/models_views/model_filte
 import 'package:equatable/equatable.dart';
 import 'package:african_windows/apps/membership/members/models/model_user.dart';
 
-abstract class UserListingsEvent extends Equatable {
-  const UserListingsEvent();
+abstract class UsersEvent extends Equatable {
+  const UsersEvent();
 
   @override
   List<Object> get props => [];
 }
 
-class LoadUsersEvent extends UserListingsEvent {}
+class LoadUsersEvent extends UsersEvent {}
 
-class FilterUsersEvent extends UserListingsEvent {
+class FilterUsersEvent extends UsersEvent {
   final FilterModel filter;
 
   const FilterUsersEvent(this.filter);
@@ -20,7 +20,7 @@ class FilterUsersEvent extends UserListingsEvent {
   List<Object> get props => [filter];
 }
 
-class AddUserEvent extends UserListingsEvent {
+class AddUserEvent extends UsersEvent {
   final UserModel newUser;
 
   const AddUserEvent(this.newUser);
@@ -29,7 +29,7 @@ class AddUserEvent extends UserListingsEvent {
   List<Object> get props => [newUser];
 }
 
-class DeleteUserEvent extends UserListingsEvent {
+class DeleteUserEvent extends UsersEvent {
   final String userId;
 
   const DeleteUserEvent(this.userId);
@@ -38,7 +38,7 @@ class DeleteUserEvent extends UserListingsEvent {
   List<Object> get props => [userId];
 }
 
-class UpdateUserEvent extends UserListingsEvent {
+class UpdateUserEvent extends UsersEvent {
   final UserModel updatedUser;
 
   const UpdateUserEvent(this.updatedUser);

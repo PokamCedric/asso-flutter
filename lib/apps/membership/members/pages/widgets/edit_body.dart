@@ -106,22 +106,22 @@ class _UserEditBodyState extends State<UserEditBody> {
   Widget build(BuildContext context) {
     final nav = Provider.of<NavigationController>(context);
 
-    return BlocConsumer<UsersBloc, UserListingsState>(
+    return BlocConsumer<UsersBloc, UsersState>(
       listener: (context, state) async {
-        if (UserListingsStatus.updateSuccess == state.status) {
+        if (UsersStatus.updateSuccess == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('User updated successfully!')),
           );
           await Future.delayed(const Duration(seconds: 1));
           nav.goBack();
-        } else if (UserListingsStatus.updateError == state.status) {
+        } else if (UsersStatus.updateError == state.status) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage??'Error')),
           );
         }
       },
       builder: (context, state) {
-        bool isLoading = (UserListingsStatus.updating == state.status);
+        bool isLoading = (UsersStatus.updating == state.status);
 
         return CardLayout(
           child: Column(
